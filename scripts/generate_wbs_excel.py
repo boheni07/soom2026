@@ -115,11 +115,9 @@ def create_wbs_sheet(ws, wbs_data):
 
     phase_fills = {
         "M-01": "BDD7EE",
-        "M-02": "D5A6BD",
-        "M-03": "FFF2CC",
-        "M-04": "B4C6E7",
-        "M-05": "E2EFDA",
-        "M-06": "FCE4D6"
+        "M-02": "FFF2CC",
+        "M-03": "E2EFDA",
+        "M-04": "FCE4D6"
     }
 
     for i, row_data in enumerate(rows):
@@ -246,11 +244,9 @@ def create_gantt_sheet(ws, wbs_data):
     
     phase_fills = {
         "M-01": "BDD7EE",
-        "M-02": "D5A6BD",
-        "M-03": "FFF2CC",
-        "M-04": "B4C6E7",
-        "M-05": "E2EFDA",
-        "M-06": "FCE4D6"
+        "M-02": "FFF2CC",
+        "M-03": "E2EFDA",
+        "M-04": "FCE4D6"
     }
     
     for i, m in enumerate(milestones):
