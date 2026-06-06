@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — G-002 가족 구성원 목록</title>
+  <style>
+    :root{--indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;--sky:#5B8DEF;--sky-light:#8BB4F7;--purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;--n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;--n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;--n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;--r8:8px;--r10:10px;--r16:16px;--shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);--font:'Inter','Noto Sans KR',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}.top-bar a{color:#fff;text-decoration:none;font-size:14px}.top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}.top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}.badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}.btn-primary{background:var(--indigo);color:#fff}.btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700)}.btn-sm{padding:6px 12px;font-size:12px}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-8{gap:8px}.gap-12{gap:12px}
+    .text-sm{font-size:12px}.text-xs{font-size:11px}.text-muted{color:var(--n500)}
+    .badge-sm{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600}
+    .badge-sm-lime{background:rgba(168,211,66,.15);color:#5A8F2A}.badge-sm-indigo{background:rgba(74,95,193,.1);color:var(--indigo)}
+    .input{width:100%;padding:10px 12px;border:1px solid var(--n200);border-radius:var(--r8);font-size:14px;font-family:var(--font);background:#fff}
+    .form-group{margin-bottom:12px}
+    .form-label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--n700)}
+  </style>
+</head>
+<body>
+  <div class="top-bar"><a class="logo">LifeLog</a><a class="back-btn" href="../index.html">← 인덱스로</a><span class="badge">G-002</span></div>
+  <div class="page-content">
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:20px;">가족 구성원 목록</h2>
+
+    <div class="flex items-center justify-between" style="margin-bottom:16px;">
+      <input class="input" type="text" placeholder="🔍 가족 구성원 검색..." value="김사랑" style="width:300px;">
+      <button class="btn btn-primary btn-sm">+ 가족 추가</button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+      <div class="card" style="text-align:center;">
+        <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--indigo),var(--sky));border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;">김</div>
+        <h3 style="font-size:16px;font-weight:700;">김사랑</h3>
+        <div class="text-xs text-muted" style="margin-bottom:4px;">당사자 · 본인</div>
+        <div class="text-xs text-muted" style="margin-bottom:12px;">2008.05.15 (17세)</div>
+        <span class="badge-sm badge-sm-lime">활성</span>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--n100);">
+          <div class="text-xs text-muted">라이프사이클: 교육/취업기</div>
+          <div class="text-xs text-muted">기록: 156건 · 전문인력: 4명</div>
+        </div>
+        <div style="margin-top:12px;">
+          <a href="G-003.html" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center;">타임라인 보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="text-align:center;">
+        <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--sky),var(--purple));border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;">김</div>
+        <h3 style="font-size:16px;font-weight:700;">김민수</h3>
+        <div class="text-xs text-muted" style="margin-bottom:4px;">배우자 · 파트너</div>
+        <div class="text-xs text-muted" style="margin-bottom:12px;">2006.03.22 (20세)</div>
+        <span class="badge-sm badge-sm-indigo">준비중</span>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--n100);">
+          <div class="text-xs text-muted">라이프사이클: 성인기</div>
+          <div class="text-xs text-muted">기록: 0건</div>
+        </div>
+        <div style="margin-top:12px;">
+          <button class="btn btn-ghost btn-sm" style="width:100%;justify-content:center;">설정하기</button>
+        </div>
+      </div>
+
+      <div class="card" style="text-align:center;">
+        <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--lime),#6AAF10);border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;">김</div>
+        <h3 style="font-size:16px;font-weight:700;">김사랑이</h3>
+        <div class="text-xs text-muted" style="margin-bottom:4px;">손녀 · 친가</div>
+        <div class="text-xs text-muted" style="margin-bottom:12px;">2018.11.01 (7세)</div>
+        <span class="badge-sm badge-sm-indigo">준비중</span>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--n100);">
+          <div class="text-xs text-muted">라이프사이클: 유아기</div>
+          <div class="text-xs text-muted">기록: 0건</div>
+        </div>
+        <div style="margin-top:12px;">
+          <button class="btn btn-ghost btn-sm" style="width:100%;justify-content:center;">설정하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

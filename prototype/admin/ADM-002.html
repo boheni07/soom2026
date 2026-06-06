@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — ADM-002 법정 이관</title>
+  <style>
+    :root{--indigo:#4A5FC1;--indigo-deep:#2A356E;--sky:#5B8DEF;--purple:#8B7EC8;--lime:#A8D342;--coral:#E8645A;--n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;--n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;--n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;--r8:8px;--r10:10px;--r16:16px;--shadow-s:0 1px 3px rgba(42,90,152,.08);--font:'Inter','Noto Sans KR',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+    .top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}
+    .top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}
+    .badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .card-header{font-size:15px;font-weight:600;margin-bottom:8px}
+    h2{font-size:18px;font-weight:700;margin-bottom:20px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font)}
+    .btn-primary{background:var(--indigo);color:#fff}
+    .btn-ghost{background:rgba(232,100,90,.1);color:var(--coral)}
+    select{width:100;padding:10px;border:1px solid var(--n300);border-radius:var(--r8);font-size:14px;margin-top:4px}
+    label{font-size:13px;font-weight:600;margin-top:12px;display:block}
+    textarea{width:100%;min-height:80px;padding:12px;border:1px solid var(--n300);border-radius:var(--r8);font-size:14px;font-family:var(--font);margin-top:4px}
+    .warning{background:var(--n50);border-left:3px solid var(--coral);padding:12px;margin-top:16px;font-size:14px;color:var(--n700)}
+    @media(max-width:78px){.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <span class="logo">LifeLog</span>
+    <a class="back-btn" href="../index.html">← 인덱스로</a>
+    <span class="badge">ADM-002</span>
+  </div>
+  <div class="page-content">
+    <h2>법정 이관 관리</h2>
+    <div class="card">
+      <div class="card-header">후견인 선택</div>
+      <div style="margin-top:8px">
+        <label>보호자 목록</label>
+        <div style="margin-top:8px">
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 0"><input type="checkbox"><span>이영희 — 김사랑 보호자</span></div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 0"><input type="checkbox"><span>박정수 — 최유나 보호자</span></div>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 0"><input type="checkbox"><span>권민수 — 정수진 보호자</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">이관 작업 설정</div>
+      <div style="margin-top:8px">
+        <label>후견인 범위 지정</label>
+        <select><option>전체 권한 이관</option><option>일부 권한 이관</option><option>제한된 권한</option></select>
+        <label style="margin-top:12px">이유 입력</label>
+        <textarea>만 18세 도달에 따른 법정 이관</textarea>
+      </div>
+    </div>
+    <div class="warning">⚠️ 법정 후견 범위 내에서만 권한 이양됩니다. 법적 문제가 발생할 수 있으니 신중하게 결정하세요.</div>
+    <div style="margin-top:16px;display:flex;gap:8px">
+      <button class="btn btn-primary">이관 확정</button>
+      <button class="btn btn-ghost">취소</button>
+    </div>
+  </div>
+</body>
+</html>

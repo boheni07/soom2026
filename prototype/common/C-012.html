@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — C-012 이메일 인증</title>
+  <style>
+    :root{
+      --indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;
+      --sky:#5B8DEF;--sky-light:#8BB4F7;
+      --purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;
+      --n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;
+      --n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;
+      --n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;
+      --r8:8px;--r10:10px;--r12:12px;--r16:16px;
+      --shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);
+      --font:'Inter','Noto Sans KR',sans-serif
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+    .top-bar a{color:#fff;text-decoration:none;font-size:14px}
+    .top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}
+    .top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}
+    .badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s;width:100%;justify-content:center}
+    .btn-primary{background:var(--indigo);color:#fff}.btn-primary:hover{opacity:.9}
+    .btn-sm{padding:6px 12px;font-size:12px}
+    .input{width:100%;padding:10px 12px;border:1px solid var(--n200);border-radius:var(--r8);font-size:14px;font-family:var(--font);background:#fff;transition:all .2s}
+    .input:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(74,95,193,.1)}
+    .form-group{margin-bottom:12px}
+    .form-label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--n700)}
+    .flex{display:flex}.flex-col{flex-direction:column}.text-xs{font-size:11px}.text-muted{color:var(--n500)}
+    .card{background:#fff;border-radius:var(--r10);padding:24px;box-shadow:var(--shadow-m);margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a class="logo">LifeLog</a>
+    <a class="back-btn" href="../index.html">← 인덱스로</a>
+    <span class="badge">C-012</span>
+  </div>
+  <div class="page-content">
+    <div style="max-width:400px;margin:0 auto;">
+      <h2 style="font-size:18px;font-weight:700;margin-bottom:8px;text-align:center;">이메일 인증</h2>
+      <p class="text-muted" style="font-size:14px;margin-bottom:24px;text-align:center;">인증번호를 입력해주세요. 발송된 이메일에서 확인하실 수 있습니다.</p>
+
+      <div class="card">
+        <div class="form-group">
+          <label class="form-label">이메일 주소</label>
+          <input class="input" type="email" value="s.nam@gamil.com">
+        </div>
+        <div style="text-align:right;margin-top:4px;">
+          <button class="btn btn-sm" style="width:auto;background:var(--n50);color:var(--n700);border:1px solid var(--n300);">
+            재전송 (24)
+          </button>
+        </div>
+
+        <div class="form-group" style="margin-top:16px;">
+          <label class="form-label">인증 코드</label>
+          <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;">
+            <input class="input" type="text" maxlength="1" style="text-align:center;font-size:18px;font-weight:700;" value="3" placeholder="_">
+            <input class="input" type="text" maxlength="1" style="text-align:center;font-size:18px;font-weight:700;" value="8" placeholder="_">
+            <input class="input" type="text" maxlength="1" style="text-align:center;font-size:18px;font-weight:700;" value="5" placeholder="_">
+            <input class="input" type="text" maxlength="1" style="text-align:center;font-size:18px;font-weight:700;" value="1" placeholder="_">
+            <input class="input" type="text" maxlength="1" style="text-align:center;font-size:18px;font-weight:700;">
+            <input class="input" type="text" maxlength="1" style="text-align:center;font-size:18px;font-weight:700;">
+          </div>
+        </div>
+
+        <button class="btn btn-primary" style="margin-top:16px;">인증 확인</button>
+
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--n100);text-align:center;">
+          <p class="text-xs text-muted">이메일을 받지 못하셨나요?</p>
+          <a href="#" style="font-size:13px;color:var(--indigo);text-decoration:none;font-weight:600;">재전송 요청하기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

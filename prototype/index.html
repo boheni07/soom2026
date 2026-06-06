@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — Screen Prototype Index</title>
+  <style>
+    :root{
+      --indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;
+      --sky:#5B8DEF;--sky-light:#8BB4F7;
+      --purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;
+      --n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;
+      --n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;
+      --n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;
+      --r8:8px;--r10:10px;--r12:12px;--r16:16px;
+      --shadow-s:0 1px 3px rgba(42,90,152,.08);
+      --shadow-m:0 2px 8px rgba(42,90,152,.1);
+      --font:'Inter','Noto Sans KR',sans-serif
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800)}
+    .hero{background:linear-gradient(135deg,var(--indigo-deep) 0%,var(--indigo) 50%,var(--sky) 100%);color:#fff;padding:48px 24px;text-align:center}
+    .hero h1{font-size:28px;font-weight:700;margin-bottom:8px}
+    .hero p{font-size:15px;opacity:.85;max-width:600px;margin:0 auto}
+    .container{max-width:1200px;margin:0 auto;padding:24px}
+    .group-title{font-size:18px;font-weight:700;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--n200);display:flex;align-items:center;gap:8px}
+    .group-title .count{background:var(--indigo);color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:8px}
+    .card{background:var(--white);border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);transition:box-shadow .2s,transform .2s;text-decoration:none;color:inherit;display:block}
+    .card:hover{box-shadow:var(--shadow-m);transform:translateY(-2px)}
+    .card-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+    .card-id{background:var(--n50);color:var(--indigo);padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;font-family:monospace}
+    .card-role{padding:3px 8px;border-radius:999px;font-size:10px;font-weight:600}
+    .role-auth{background:rgba(168,211,66,.15);color:#5A8F2A}
+    .role-common{background:rgba(91,141,239,.1);color:var(--sky)}
+    .role-guardian{background:rgba(139,126,200,.1);color:var(--purple)}
+    .role-person{background:rgba(232,100,90,.1);color:var(--coral)}
+    .role-sw{background:rgba(74,95,193,.1);color:var(--indigo)}
+    .role-st{background:rgba(91,141,239,.1);color:var(--sky)}
+    .role-swk{background:rgba(168,211,66,.15);color:#5A8F2A}
+    .role-admin{background:rgba(232,100,90,.15);color:#C44D44}
+    .card-name{font-size:14px;font-weight:700;color:var(--n800)}
+    .card-desc{font-size:12px;color:var(--n500);line-height:1.5}
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>LifeLog — Screen Prototype</h1>
+    <p>발달장애인 생애전주기 기록 플랫폼 — 모든 화면의 프로토타입 설계서. 각 화면은 독립 HTML 파일이며 실제 데이터와 UI 컴포넌트를 포함합니다.</p>
+  </div>
+
+  <div class="container">
+
+    <!-- ====== AUTH ====== -->
+    <h2 class="group-title">🔐 인증 (Auth) <span class="count">4</span></h2>
+    <div class="grid">
+      <a href="auth/C-001.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-001</span>
+          <span class="card-role role-auth">Auth</span>
+        </div>
+        <div class="card-name">스플래쉬 / 온보딩</div>
+        <div class="card-desc">그라데이션 히어로 화면. LifeLog 로고, "발달장애인 생애전주기 기록 플랫폼" 타이틀, 시작하기 버튼</div>
+      </a>
+      <a href="auth/C-002.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-002</span>
+          <span class="card-role role-auth">Auth</span>
+        </div>
+        <div class="card-name">로그인</div>
+        <div class="card-desc">중앙 카드형 로그인. 이메일/비밀번호, PASS/Kakao 로그인, 비밀번호 찾기 링크</div>
+      </a>
+      <a href="auth/C-003.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-003</span>
+          <span class="card-role role-auth">Auth</span>
+        </div>
+        <div class="card-name">역할 온보딩</div>
+        <div class="card-desc">보호자/당사자/전문인력 역할 선택. 선택 시 인디고 테두리, 하단 상세 폼</div>
+      </a>
+      <a href="auth/C-013.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-013</span>
+          <span class="card-role role-auth">Auth</span>
+        </div>
+        <div class="card-name">비밀번호 찾기</div>
+        <div class="card-desc">이메일로 임시 비밀번호 발송 폼. 인증 코드 입력 포함</div>
+      </a>
+    </div>
+
+    <!-- ====== COMMON ====== -->
+    <h2 class="group-title">⚙️ 공통 (Common) <span class="count">11</span></h2>
+    <div class="grid">
+      <a href="common/C-004.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-004</span>
+          <span class="card-role role-common">Common</span>
+        </div>
+        <div class="card-name">공통 대시보드</div>
+        <div class="card-desc">4개 요약 카드(Total/Active/Overdue/Pending). 역할 전환 드롭다운, 전체 케이스 현황</div>
+      </a>
+      <a href="common/C-005.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-005</span>
+          <span class="card-role role-common">Common</span>
+        </div>
+        <div class="card-name">기록 상세</div>
+        <div class="card-desc">기록 수정/다운로드/공유/이력 버튼. 카테고리/라이프사이클/작성자/가시성 정보, 타임라인 이력</div>
+      </a>
+      <a href="common/C-006.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-006</span>
+          <span class="card-role role-common">Common</span>
+        </div>
+        <div class="card-name">기록 생성/수정</div>
+        <div class="card-desc">스플릿 패널 레이아웃. 좌측 템플릿 선택, 우측 폼 필드</div>
+      </a>
+      <a href="common/C-007.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-007</span>
+          <span class="card-role role-common">Common</span>
+        </div>
+        <div class="card-name">검색/필터</div>
+        <div class="card-desc">6개 카테고리 탭(전체/건강/교육/일상/서비스/자기). 검색창, 기간선택, 결과 카드</div>
+      </a>
+      <a href="common/C-008.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-008</span>
+          <span class="card-role role-common">Common</span>
+        </div>
+        <div class="card-name">PDF 출력</div>
+        <div class="card-desc">기록 선택, 생성 버튼, 진행률 바, 다운로드 링크(15분 유효 안내)</div>
+      </a>
+      <a href="common/C-009.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-009</span>
+          <span class="card-role role-common">Common</span>
+        </div>
+        <div class="card-name">알림 센터</div>
+        <div class="card-desc">전체/시스템/기록/초대/일정 탭. 타입별 아이콘 포함 알림 목록</div>
+      </a>
+      <a href="common/C-010.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-010</span>
+          <span class="card-role role-common">Common</span>
+        </div>
+        <div class="card-name">설정/프로필</div>
+        <div class="card-desc">대형 아바타 프로필 카드. 계정/알림/기타 설정 그룹</div>
+      </a>
+      <a href="common/C-011.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-011</span>
+          <span class="card-role role-common">Common</span>
+        </div>
+        <div class="card-name">역할 등록</div>
+        <div class="card-desc">역할 선택기, 역할 카드, 요청 폼. 전문인력 가입 프로세스</div>
+      </a>
+      <a href="common/C-012.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-012</span>
+          <span class="card-role role-common">Common</span>
+        </div>
+        <div class="card-name">이메일 인증</div>
+        <div class="card-desc">이메일 입력, 6자리 인증 코드 입력 필드</div>
+      </a>
+      <a href="common/C-014.html" class="card">
+        <div class="card-top">
+          <span class="card-id">C-014</span>
+          <span class="card-role role-common">Common</span>
+        </div>
+        <div class="card-name">계정 설정</div>
+        <div class="card-desc">프로필 카드, 계정/알림/기타 설정 그룹. 전체 계정 관리</div>
+      </a>
+    </div>
+
+    <!-- ====== GUARDIAN ====== -->
+    <h2 class="group-title">👨‍👩‍👧 보호자 (Guardian) <span class="count">5</span></h2>
+    <div class="grid">
+      <a href="guardian/G-001.html" class="card">
+        <div class="card-top">
+          <span class="card-id">G-001</span>
+          <span class="card-role role-guardian">Guardian</span>
+        </div>
+        <div class="card-name">보호자 대시보드</div>
+        <div class="card-desc">총기록 156/활성 42/리마인더 5/승인대기 3 요약. 가족 카드 목록, 빠른 액션</div>
+      </a>
+      <a href="guardian/G-002.html" class="card">
+        <div class="card-top">
+          <span class="card-id">G-002</span>
+          <span class="card-role role-guardian">Guardian</span>
+        </div>
+        <div class="card-name">가족 구성원 목록</div>
+        <div class="card-desc">필터 바, 가족 카드 그리드(프로필/라이프사이클/생년월일)</div>
+      </a>
+      <a href="guardian/G-003.html" class="card">
+        <div class="card-top">
+          <span class="card-id">G-003</span>
+          <span class="card-role role-guardian">Guardian</span>
+        </div>
+        <div class="card-name">타임라인 뷰</div>
+        <div class="card-desc">6개 라이프사이클 구분자. 날짜/제목/작성자/첨부파일 포함 기록 카드</div>
+      </a>
+      <a href="guardian/G-004.html" class="card">
+        <div class="card-top">
+          <span class="card-id">G-004</span>
+          <span class="card-role role-guardian">Guardian</span>
+        </div>
+        <div class="card-name">카테고리 필터</div>
+        <div class="card-desc">5개 토글 버튼, 적용 버튼. 기록 카테고리별 필터링</div>
+      </a>
+      <a href="guardian/G-005.html" class="card">
+        <div class="card-top">
+          <span class="card-id">G-005</span>
+          <span class="card-role role-guardian">Guardian</span>
+        </div>
+        <div class="card-name">공유/내보내기</div>
+        <div class="card-desc">기간 선택, PDF 미리보기, 다운로드, 공유 링크 생성</div>
+      </a>
+    </div>
+
+    <!-- ====== PERSON ====== -->
+    <h2 class="group-title">🧑 당사자 (Person) <span class="count">6</span></h2>
+    <div class="grid">
+      <a href="person/P-001.html" class="card">
+        <div class="card-top">
+          <span class="card-id">P-001</span>
+          <span class="card-role role-person">Person</span>
+        </div>
+        <div class="card-name">당사자 대시보드 (Easy Mode)</div>
+        <div class="card-desc">Easy Mode 배지. 대형 글자(20px+), 대형 아바타(64px), 인사말(H1), 2개 카드만 표시. 하단 바(홈/기록/목표/프로필)</div>
+      </a>
+      <a href="person/P-002.html" class="card">
+        <div class="card-top">
+          <span class="card-id">P-002</span>
+          <span class="card-role role-person">Person</span>
+        </div>
+        <div class="card-name">당사자 기록 열람</div>
+        <div class="card-desc">작성자 필터 드롭다운 포함 카드 목록. 카테고리 아이콘/제목/날짜</div>
+      </a>
+      <a href="person/P-003.html" class="card">
+        <div class="card-top">
+          <span class="card-id">P-003</span>
+          <span class="card-role role-person">Person</span>
+        </div>
+        <div class="card-name">당사자 자기 기록</div>
+        <div class="card-desc">대형 기록 버튼(56px), 감정 선택기(😊😐😢😡😴), 텍스트 입력, 빠른 액션 칩(밥먹기/친구만나기/운동하기)</div>
+      </a>
+      <a href="person/P-004.html" class="card">
+        <div class="card-top">
+          <span class="card-id">P-004</span>
+          <span class="card-role role-person">Person</span>
+        </div>
+        <div class="card-name">당사자 프로필 &amp; 목표</div>
+        <div class="card-desc">대형 아바타/이름/생년월일/장애정보 프로필 카드. 진행률 바 포함 목표 설정, 생애 타임라인</div>
+      </a>
+      <a href="person/P-005.html" class="card">
+        <div class="card-top">
+          <span class="card-id">P-005</span>
+          <span class="card-role role-person">Person</span>
+        </div>
+        <div class="card-name">당사자 알림</div>
+        <div class="card-desc">새 기록 추가/예정 일정/초대 수락 알림 카드</div>
+      </a>
+      <a href="person/P-006.html" class="card">
+        <div class="card-top">
+          <span class="card-id">P-006</span>
+          <span class="card-role role-person">Person</span>
+        </div>
+        <div class="card-name">이지 모드 토글</div>
+        <div class="card-desc">Easy Mode 토글, 글자 크기 슬라이더(16~24px), 터치 타겟 크기 선택, 테마 토글</div>
+      </a>
+    </div>
+
+    <!-- ====== SW (Social Worker) ====== -->
+    <h2 class="group-title">🏢 사회복지사 (SW) <span class="count">6</span></h2>
+    <div class="grid">
+      <a href="sw/S-001.html" class="card">
+        <div class="card-top">
+          <span class="card-id">S-001</span>
+          <span class="card-role role-sw">SW</span>
+        </div>
+        <div class="card-name">케이스 관리 대시보드</div>
+        <div class="card-desc">4개 요약 카드(Total/Active/Overdue/Pending). 작업 목록(팔로우업/승인/리마인더), 정렬 가능한 케이스 테이블</div>
+      </a>
+      <a href="sw/S-002.html" class="card">
+        <div class="card-top">
+          <span class="card-id">S-002</span>
+          <span class="card-role role-sw">SW</span>
+        </div>
+        <div class="card-name">케이스 상세</div>
+        <div class="card-desc">케이스 정보(이름/라이프사이클/서비스). 기록 목록 테이블, 협업자 목록(아바타별 역할)</div>
+      </a>
+      <a href="sw/S-003.html" class="card">
+        <div class="card-top">
+          <span class="card-id">S-003</span>
+          <span class="card-role role-sw">SW</span>
+        </div>
+        <div class="card-name">기록 생성 (社工)</div>
+        <div class="card-desc">스플릿 패널 템플릿 폼. 서비스 연동 필드 포함</div>
+      </a>
+      <a href="sw/S-004.html" class="card">
+        <div class="card-top">
+          <span class="card-id">S-004</span>
+          <span class="card-role role-sw">SW</span>
+        </div>
+        <div class="card-name">협업자 초대</div>
+        <div class="card-desc">이메일 입력, 역할 선택, 카테고리 필터 체크박스, 기간 선택, 발송 버튼</div>
+      </a>
+      <a href="sw/S-005.html" class="card">
+        <div class="card-top">
+          <span class="card-id">S-005</span>
+          <span class="card-role role-sw">SW</span>
+        </div>
+        <div class="card-name">기록 목록</div>
+        <div class="card-desc">검색창, 정렬 드롭다운, 필터 칩, 기록 카드, 페이지네이션</div>
+      </a>
+      <a href="sw/S-006.html" class="card">
+        <div class="card-top">
+          <span class="card-id">S-006</span>
+          <span class="card-role role-sw">SW</span>
+        </div>
+        <div class="card-name">팀 협업 뷰</div>
+        <div class="card-desc">작성자 목록(아바타/역할/상태). 권한 정의표, 초대 상태 패널</div>
+      </a>
+    </div>
+
+    <!-- ====== ST (Special Teacher) ====== -->
+    <h2 class="group-title">📚 특수교사 (ST) <span class="count">4</span></h2>
+    <div class="grid">
+      <a href="st/T-001.html" class="card">
+        <div class="card-top">
+          <span class="card-id">T-001</span>
+          <span class="card-role role-st">ST</span>
+        </div>
+        <div class="card-name">IEP 대시보드</div>
+        <div class="card-desc">IEP 목표 섹션(진행률 72%), 진행률 카드, 기록 목록, 학생 개요 카드</div>
+      </a>
+      <a href="st/T-002.html" class="card">
+        <div class="card-top">
+          <span class="card-id">T-002</span>
+          <span class="card-role role-st">ST</span>
+        </div>
+        <div class="card-name">IEP 생성/수정</div>
+        <div class="card-desc">IEP 템플릿 selector. 목표제목/장단기 목표/평가기준 폼 필드</div>
+      </a>
+      <a href="st/T-003.html" class="card">
+        <div class="card-top">
+          <span class="card-id">T-003</span>
+          <span class="card-role role-st">ST</span>
+        </div>
+        <div class="card-name">IEP 보호자 공유</div>
+        <div class="card-desc">보호자 체크박스 선택, 공유 미리보기 카드, 확인 공유 버튼</div>
+      </a>
+      <a href="st/T-004.html" class="card">
+        <div class="card-top">
+          <span class="card-id">T-004</span>
+          <span class="card-role role-st">ST</span>
+        </div>
+        <div class="card-name">학생 목록</div>
+        <div class="card-desc">상태 필터(재학/졸업). 학생 카드(아바타/이름/라이프사이클/상태)</div>
+      </a>
+    </div>
+
+    <!-- ====== SWk (Support Worker) ====== -->
+    <h2 class="group-title">🤝 돌봄도우미 (SWk) <span class="count">4</span></h2>
+    <div class="grid">
+      <a href="swk/A-001.html" class="card">
+        <div class="card-top">
+          <span class="card-id">A-001</span>
+          <span class="card-role role-swk">SWk</span>
+        </div>
+        <div class="card-name">일일 기록 대시보드</div>
+        <div class="card-desc">오늘 날짜 헤더(2026.01.15 금). 타임라인 슬롯(시간/제목/상태), 빠른 액션(기록시작/업로드/요약)</div>
+      </a>
+      <a href="swk/A-002.html" class="card">
+        <div class="card-top">
+          <span class="card-id">A-002</span>
+          <span class="card-role role-swk">SWk</span>
+        </div>
+        <div class="card-name">일일 기록</div>
+        <div class="card-desc">대상 선택자. 이동/식사/개인위생/취미 섹션(textarea). 특이사항, 사진 업로드 영역</div>
+      </a>
+      <a href="swk/A-003.html" class="card">
+        <div class="card-top">
+          <span class="card-id">A-003</span>
+          <span class="card-role role-swk">SWk</span>
+        </div>
+        <div class="card-name">주간 요약</div>
+        <div class="card-desc">주간 선택자, 4개 통계 카드(총일수/시간/이벤트/만족도), 일별 목록, 간단한 막대 차트</div>
+      </a>
+      <a href="swk/A-004.html" class="card">
+        <div class="card-top">
+          <span class="card-id">A-004</span>
+          <span class="card-role role-swk">SWk</span>
+        </div>
+        <div class="card-name">선호 리스트</div>
+        <div class="card-desc">선호 항목(이모지/아이콘 포함), 카테고리 태그, 마지막 업데이트 날짜</div>
+      </a>
+    </div>
+
+    <!-- ====== ADMIN ====== -->
+    <h2 class="group-title">⚖️ 관리자 (Admin) <span class="count">2</span></h2>
+    <div class="grid">
+      <a href="admin/ADM-001.html" class="card">
+        <div class="card-top">
+          <span class="card-id">ADM-001</span>
+          <span class="card-role role-admin">Admin</span>
+        </div>
+        <div class="card-name">관리자 대시보드</div>
+        <div class="card-desc">3개 통계 카드(기관:3/사용자:42/기록:156). 서비스 상태 표시기, 빠른 액션 버튼</div>
+      </a>
+      <a href="admin/ADM-002.html" class="card">
+        <div class="card-top">
+          <span class="card-id">ADM-002</span>
+          <span class="card-role role-admin">Admin</span>
+        </div>
+        <div class="card-name">법정 이관</div>
+        <div class="card-desc">보호자 선택 목록(체크박스 포함). 후임 보호자 할당 폼, 경고 문구 포함 확인 버튼</div>
+      </a>
+    </div>
+
+  </div>
+</body>
+</html>

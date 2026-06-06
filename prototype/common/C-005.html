@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — C-005 기록 상세</title>
+  <style>
+    :root{
+      --indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;
+      --sky:#5B8DEF;--sky-light:#8BB4F7;
+      --purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;
+      --n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;
+      --n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;
+      --n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;
+      --r8:8px;--r10:10px;--r12:12px;--r16:16px;
+      --shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);
+      --font:'Inter','Noto Sans KR',sans-serif
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+    .top-bar a{color:#fff;text-decoration:none;font-size:14px}
+    .top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}
+    .top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}
+    .badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}
+    .btn-primary{background:var(--indigo);color:#fff}.btn-primary:hover{opacity:.9}
+    .btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700)}.btn-sm{padding:6px 12px;font-size:12px}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .badge-sm{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600}
+    .badge-sm-indigo{background:rgba(74,95,193,.1);color:var(--indigo)}
+    .badge-sm-lime{background:rgba(168,211,66,.15);color:#5A8F2A}
+    .badge-sm-purple{background:rgba(139,126,200,.1);color:var(--purple)}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-8{gap:8px}.gap-12{gap:12px}
+    .text-sm{font-size:12px}.text-xs{font-size:11px}.text-muted{color:var(--n500)}.text-muted2{color:var(--n600)}
+    .w-full{width:100%}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a class="logo">LifeLog</a>
+    <a class="back-btn" href="../index.html">← 인덱스로</a>
+    <span class="badge">C-005</span>
+  </div>
+  <div class="page-content">
+    <div style="margin-bottom:16px;">
+      <a href="C-004.html" style="font-size:13px;color:var(--indigo);text-decoration:none;">대시보드</a>
+      <span style="color:var(--n400);margin:0 4px;">›</span>
+      <a href="C-007.html" style="font-size:13px;color:var(--indigo);text-decoration:none;">기록</a>
+      <span style="color:var(--n400);margin:0 4px;">›</span>
+      <span style="font-size:13px;color:var(--n800);">진달래병원 정기검진 결과</span>
+    </div>
+
+    <div class="flex items-center justify-between mb-16" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h2 style="font-size:18px;font-weight:700;">기록 상세</h2>
+      <div class="flex gap-8">
+        <button class="btn btn-ghost btn-sm">✏️ 수정</button>
+        <button class="btn btn-ghost btn-sm">📥 다운로드</button>
+        <button class="btn btn-ghost btn-sm">🔗 공유</button>
+        <button class="btn btn-ghost btn-sm">📜 이력</button>
+      </div>
+    </div>
+
+    <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+      <div class="card">
+        <div class="text-sm text-muted mb-8" style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--n700);">카테고리</div>
+        <span class="badge-sm badge-sm-indigo">건강</span>
+      </div>
+      <div class="card">
+        <div class="text-sm text-muted mb-8" style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--n700);">라이프사이클</div>
+        <span class="badge-sm badge-sm-purple">교육/취업기</span>
+      </div>
+      <div class="card">
+        <div class="text-sm text-muted mb-8" style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--n700);">작성일</div>
+        <div style="font-size:14px;">2026.01.14 10:30</div>
+      </div>
+      <div class="card">
+        <div class="text-sm text-muted mb-8" style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--n700);">작성자</div>
+        <div style="font-size:14px;">김사랑 (보호자)</div>
+      </div>
+      <div class="card" style="grid-column:span 2;">
+        <div class="text-sm text-muted mb-8" style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--n700);">가시성</div>
+        <div style="font-size:14px;">👥 공유 범위: 가족 구성원 전원, 전문인력 (박지민, 정수진, 최유나)</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="font-size:15px;font-weight:700;margin-bottom:12px;">📋 기록 내용</h3>
+      <div style="line-height:1.8;font-size:14px;">
+        <p style="margin-bottom:8px;"><strong>진단명:</strong> 발달장애 2등급 (지적장애)</p>
+        <p style="margin-bottom:8px;"><strong>검사일:</strong> 2026.01.14</p>
+        <p style="margin-bottom:8px;"><strong>진단 기관:</strong> 진달래병원 재활의학과</p>
+        <p style="margin-bottom:8px;"><strong>증상:</strong> 언어 발달 지연, 일상생활 적응 능력 양호. 사회적 상호작용에서 일부 어려움 관찰.</p>
+        <p style="margin-bottom:8px;"><strong>권장 사항:</strong>
+          <br>1. 주 2회 언어치료 추가
+          <br>2. 사회성 훈련 프로그램 참여 권고
+          <br>3. 6개월 후 재평가
+        </p>
+      </div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--n100);">
+        <span class="text-xs text-muted">첨부파일: 검사결과서.pdf (2.4MB)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="font-size:15px;font-weight:700;margin-bottom:12px;">📜 기록 이력</h3>
+      <div style="border-left:2px solid var(--n200);padding-left:20px;">
+        <div style="margin-bottom:16px;position:relative;">
+          <div style="position:absolute;left:-27px;top:0;width:12px;height:12px;background:var(--indigo);border-radius:50%;border:2px solid var(--white);"></div>
+          <div style="font-size:13px;font-weight:600;">2026.01.14 10:30 — 김사랑 생성</div>
+          <div class="text-xs text-muted">최초 기록 작성</div>
+        </div>
+        <div style="margin-bottom:16px;position:relative;">
+          <div style="position:absolute;left:-27px;top:0;width:12px;height:12px;background:var(--sky);border-radius:50%;border:2px solid var(--white);"></div>
+          <div style="font-size:13px;font-weight:600;">2026.01.14 14:20 — 박지민 수정</div>
+          <div class="text-xs text-muted">권장사항 추가</div>
+        </div>
+        <div style="position:relative;">
+          <div style="position:absolute;left:-27px;top:0;width:12px;height:12px;background:var(--lime);border-radius:50%;border:2px solid var(--white);"></div>
+          <div style="font-size:13px;font-weight:600;">2026.01.15 09:00 — 정수진 조회</div>
+          <div class="text-xs text-muted">IEP 평가 참고</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

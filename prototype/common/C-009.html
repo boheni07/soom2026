@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — C-009 알림 센터</title>
+  <style>
+    :root{
+      --indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;
+      --sky:#5B8DEF;--sky-light:#8BB4F7;
+      --purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;
+      --n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;
+      --n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;
+      --n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;
+      --r8:8px;--r10:10px;--r12:12px;--r16:16px;
+      --shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);
+      --font:'Inter','Noto Sans KR',sans-serif
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+    .top-bar a{color:#fff;text-decoration:none;font-size:14px}
+    .top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}
+    .top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}
+    .badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}
+    .btn-primary{background:var(--indigo);color:#fff}.btn-primary:hover{opacity:.9}
+    .btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700)}.btn-sm{padding:6px 12px;font-size:12px}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .badge-sm{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600}
+    .badge-sm-indigo{background:rgba(74,95,193,.1);color:var(--indigo)}
+    .badge-sm-lime{background:rgba(168,211,66,.15);color:#5A8F2A}
+    .badge-sm-coral{background:rgba(232,100,90,.1);color:var(--coral)}
+    .badge-sm-purple{background:rgba(139,126,200,.1);color:var(--purple)}
+    .badge-sm-sky{background:rgba(91,141,239,.1);color:var(--sky)}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-8{gap:8px}.gap-12{gap:12px}
+    .text-sm{font-size:12px}.text-xs{font-size:11px}.text-muted{color:var(--n500)}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a class="logo">LifeLog</a>
+    <a class="back-btn" href="../index.html">← 인덱스로</a>
+    <span class="badge">C-009</span>
+  </div>
+  <div class="page-content">
+    <div class="flex items-center justify-between" style="margin-bottom:20px;">
+      <h2 style="font-size:18px;font-weight:700;">알림 센터</h2>
+      <button class="btn btn-ghost btn-sm">모두 읽음 표시</button>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-bottom:20px;">
+      <span style="padding:8px 16px;background:var(--indigo);color:#fff;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;">전체 (23)</span>
+      <span style="padding:8px 16px;background:#fff;color:var(--n700);border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--n200);">🔔 시스템 (3)</span>
+      <span style="padding:8px 16px;background:#fff;color:var(--n700);border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--n200);">📋 기록 (12)</span>
+      <span style="padding:8px 16px;background:#fff;color:var(--n700);border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--n200);">📨 초대 (2)</span>
+      <span style="padding:8px 16px;background:#fff;color:var(--n700);border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--n200);">📅 일정 (6)</span>
+    </div>
+
+    <div class="flex flex-col gap-12">
+      <div class="card" style="border-left:3px solid var(--sky);">
+        <div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="flex items-center gap-8" style="display:flex;align-items:center;gap:8px;">
+            <div style="font-size:24px;">📋</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;">새로운 기록이 추가되었습니다</div>
+              <div class="text-xs text-muted">최유나 (돌봄도우미)가 "주간보호센터 이용 일지"를 작성했습니다</div>
+            </div>
+          </div>
+          <span class="text-xs text-muted">10분 전</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-left:3px solid var(--purple);">
+        <div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="flex items-center gap-8" style="display:flex;align-items:center;gap:8px;">
+            <div style="font-size:24px;">📅</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;">예정된 일정이 있습니다</div>
+              <div class="text-xs text-muted">내일 10:00 — 진달래병원 정기검진 (보호자 참석 권장)</div>
+            </div>
+          </div>
+          <span class="text-xs text-muted">1시간 전</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-left:3px solid var(--lime);">
+        <div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="flex items-center gap-8" style="display:flex;align-items:center;gap:8px;">
+            <div style="font-size:24px;">📨</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;">초대가 수락되었습니다</div>
+              <div class="text-xs text-muted">최유나 님이 돌봄도우미 역할로 협업에 참여합니다</div>
+            </div>
+          </div>
+          <span class="text-xs text-muted">2시간 전</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-left:3px solid var(--coral);">
+        <div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="flex items-center gap-8" style="display:flex;align-items:center;gap:8px;">
+            <div style="font-size:24px;">📋</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;">기록 검토가 필요합니다</div>
+              <div class="text-xs text-muted">정수진 (특수교사)가 "IEP 중간평가" 기록을 공유했습니다. 검토 후 승인해주세요.</div>
+            </div>
+          </div>
+          <span class="text-xs text-muted">1일 전</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="flex items-center gap-8" style="display:flex;align-items:center;gap:8px;">
+            <div style="font-size:24px;">🔔</div>
+            <div>
+              <div style="font-size:14px;font-weight:600;">시스템 업데이트 안내</div>
+              <div class="text-xs text-muted">1월 20일 PDF 내보내기 기능 개선되었습니다. 변경사항 확인하기</div>
+            </div>
+          </div>
+          <span class="text-xs text-muted">3일 전</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

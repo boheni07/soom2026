@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — C-010 설정/프로필</title>
+  <style>
+    :root{
+      --indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;
+      --sky:#5B8DEF;--sky-light:#8BB4F7;
+      --purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;
+      --n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;
+      --n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;
+      --n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;
+      --r8:8px;--r10:10px;--r12:12px;--r16:16px;
+      --shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);
+      --font:'Inter','Noto Sans KR',sans-serif
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+    .top-bar a{color:#fff;text-decoration:none;font-size:14px}
+    .top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}
+    .top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}
+    .badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}
+    .btn-primary{background:var(--indigo);color:#fff}.btn-primary:hover{opacity:.9}
+    .btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700)}.btn-sm{padding:6px 12px;font-size:12px}
+    .btn-danger{background:var(--coral);color:#fff}
+    .input{width:100%;padding:10px 12px;border:1px solid var(--n200);border-radius:var(--r8);font-size:14px;font-family:var(--font);background:#fff;transition:all .2s}
+    .input:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(74,95,193,.1)}
+    .form-group{margin-bottom:12px}
+    .form-label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--n700)}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-12{gap:12px}
+    .text-sm{font-size:12px}.text-xs{font-size:11px}.text-muted{color:var(--n500)}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a class="logo">LifeLog</a>
+    <a class="back-btn" href="../index.html">← 인덱스로</a>
+    <span class="badge">C-010</span>
+  </div>
+  <div class="page-content">
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:24px;">설정/프로필</h2>
+
+    <div class="flex gap-12" style="display:flex;gap:12px;">
+      <!-- Profile Card -->
+      <div style="width:280px;flex-shrink:0;">
+        <div class="card" style="text-align:center;">
+          <div style="width:80px;height:80px;background:linear-gradient(135deg,var(--indigo),var(--sky));border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;">김</div>
+          <h3 style="font-size:16px;font-weight:700;">김사랑</h3>
+          <p class="text-xs text-muted" style="margin-bottom:8px;">보호자 · 김사랑(당사자) 어머니</p>
+          <p class="text-xs text-muted" style="margin-bottom:12px;">sarang@gamil.com</p>
+          <div style="display:flex;justify-content:space-around;border-top:1px solid var(--n200);padding-top:12px;">
+            <div><div style="font-size:18px;font-weight:700;">3</div><div class="text-xs text-muted">가족</div></div>
+            <div><div style="font-size:18px;font-weight:700;">156</div><div class="text-xs text-muted">기록</div></div>
+            <div><div style="font-size:18px;font-weight:700;">4</div><div class="text-xs text-muted">전문인력</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Groups -->
+      <div style="flex:1;">
+        <!-- 계정 설정 -->
+        <div class="card">
+          <h3 style="font-size:15px;font-weight:700;margin-bottom:12px;">👤 계정 설정</h3>
+          <div class="form-group">
+            <label class="form-label">이름</label>
+            <input class="input" type="text" value="김사랑">
+          </div>
+          <div class="form-group">
+            <label class="form-label">이메일</label>
+            <input class="input" type="email" value="sarang.nam@gamil.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">전화번호</label>
+            <input class="input" type="tel" value="010-1234-5678">
+          </div>
+        </div>
+
+        <!-- 알림 설정 -->
+        <div class="card">
+          <h3 style="font-size:15px;font-weight:700;margin-bottom:12px;">🔔 알림 설정</h3>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:14px;">새 기록 알림</span>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox" checked> on</label>
+            </div>
+            <div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:14px;">일정 알림</span>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox" checked> on</label>
+            </div>
+            <div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:14px;">이메일 알림</span>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox"> off</label>
+            </div>
+            <div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:14px;">SMS 알림</span>
+              <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox"> off</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 기타 -->
+        <div class="card">
+          <h3 style="font-size:15px;font-weight:700;margin-bottom:12px;">⚙️ 기타</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <button class="btn btn-ghost" style="width:100%;justify-content:flex-start;">🌙 다크 모드</button>
+            <button class="btn btn-ghost" style="width:100%;justify-content:flex-start;">🌐 언어 설정 (한국어)</button>
+            <button class="btn btn-ghost" style="width:100%;justify-content:flex-start;">📱 앱 안내</button>
+          </div>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--n100);">
+            <button class="btn btn-danger" style="width:100%;justify-content:center;">계정 탈퇴하기</button>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;">
+          <button class="btn btn-primary">저장하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

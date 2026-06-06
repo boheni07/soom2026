@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sowood BrandBI — Brand Identity Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Noto Sans KR', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  color: #2D4A38;
+  background: #FFFFFF;
+  overflow-x: hidden;
+}
+:root {
+  --forest: #3D6B4F;
+  --forest-dark: #2A4D38;
+  --leaf: #5A8C6A;
+  --bark: #6B4F3B;
+  --bark-light: #8B6F5B;
+  --bloom: #D4848A;
+  --gold: #E5B85A;
+  --gold-light: #F5DFA0;
+  --n900: #1A2E22;
+  --n800: #2D4A38;
+  --n700: #3D5C46;
+  --n600: #4A6B56;
+  --n500: #6A8676;
+  --n400: #8A9F92;
+  --n200: #D0DDD6;
+  --n100: #EEF4F1;
+  --n50: #F7FAF8;
+  --white: #FFFFFF;
+  --sidebar-w: 280px;
+}
+.app { display: flex; min-height: 100vh; }
+.sidebar {
+  width: var(--sidebar-w);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: var(--n900);
+  color: var(--white);
+  padding: 32px 0;
+  overflow-y: auto;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-brand { padding: 0 24px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 8px; }
+.sidebar-brand svg { width: 40px; height: 40px; }
+.sidebar-brand h1 { font-size: 14px; font-weight: 700; margin-top: 12px; }
+.sidebar-brand p { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+.sidebar-label { font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.3); padding: 20px 24px 6px; font-weight: 700; }
+.sidebar a { display: block; padding: 8px 24px; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 12px; font-weight: 500; transition: all 0.15s; border-left: 2px solid transparent; }
+.sidebar a:hover { color: var(--white); background: rgba(255,255,255,0.05); border-left-color: var(--leaf); }
+.main { margin-left: var(--sidebar-w); flex: 1; min-width: 0; }
+.hero {
+  background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest) 50%, var(--leaf) 100%);
+  color: var(--white);
+  padding: 100px 80px;
+  text-align: center;
+}
+.hero-en { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; letter-spacing: 6px; text-transform: uppercase; opacity: 0.75; }
+.hero-title { font-size: 52px; font-weight: 900; margin: 6px 0; letter-spacing: -1px; }
+.hero-divider { width: 56px; height: 3px; background: rgba(255,255,255,0.3); margin: 28px auto; border-radius: 2px; }
+.hero-tagline { font-size: 22px; font-weight: 400; opacity: 0.95; }
+.hero-desc { font-size: 14px; opacity: 0.8; margin-top: 12px; max-width: 580px; line-height: 1.8; margin-left: auto; margin-right: auto; }
+.section { padding: 72px 80px; max-width: 960px; }
+.section:nth-child(even) { background: var(--n50); }
+.section-num { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--leaf); margin-bottom: 4px; }
+.section-divider { width: 48px; height: 3px; background: var(--leaf); margin-bottom: 32px; border-radius: 2px; }
+.section-title { font-size: 32px; font-weight: 700; margin-bottom: 12px; color: var(--n900); }
+.section-desc { font-size: 15px; color: var(--n600); line-height: 1.8; margin-bottom: 48px; max-width: 640px; }
+/* Logo */
+.logo-cards { display: grid; gap: 24px; }
+.logo-card { border-radius: 16px; padding: 48px; border: 1px solid var(--n100); }
+.logo-card.dark { background: var(--n900); border-color: transparent; }
+.logo-row { display: flex; align-items: center; gap: 16px; }
+.logo-kr { font-size: 32px; font-weight: 700; color: var(--n800); line-height: 1.2; }
+.logo-en { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: var(--leaf); letter-spacing: 1px; margin-top: 2px; }
+.dark .logo-kr { color: var(--white); }
+.dark .logo-en { color: var(--gold); }
+.logo-icons-row { display: flex; align-items: center; gap: 14px; margin-top: 32px; }
+.logo-icon-info { border-left: 1px solid var(--n200); padding-left: 20px; margin-left: 8px; }
+.logo-icon-info p { font-size: 13px; font-weight: 500; }
+.logo-icon-info span { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--n300); }
+.sizes-row { display: flex; align-items: center; gap: 32px; margin-top: 32px; flex-wrap: wrap; }
+.size-item { text-align: center; }
+.size-item span { display: block; font-family: 'Inter', sans-serif; font-size: 11px; color: var(--n300); margin-top: 8px; }
+.clearance { margin-top: 32px; }
+.clearance-box { border: 2px dashed var(--n200); border-radius: 12px; padding: 24px; display: inline-block; position: relative; }
+.clearance-box::after { content: 'clearArea'; font-family: 'Inter', sans-serif; font-size: 10px; position: absolute; top: -8px; left: 12px; background: var(--white); padding: 0 6px; color: var(--leaf); font-weight: 600; }
+/* Colors */
+.color-group-title { font-size: 16px; font-weight: 600; margin-bottom: 20px; margin-top: 48px; color: var(--n700); }
+.color-group-title:first-of-type { margin-top: 0; }
+.color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.color-card { border-radius: 12px; overflow: hidden; background: var(--white); box-shadow: 0 1px 4px rgba(0,0,0,0.06); border: 1px solid var(--n100); }
+.color-swatch { height: 120px; }
+.color-info { padding: 14px; }
+.color-name { font-weight: 600; font-size: 14px; color: var(--n800); }
+.color-hex { font-family: 'Inter', monospace; font-size: 12px; color: var(--n400); margin-top: 2px; }
+.color-rgb { font-family: 'Inter', monospace; font-size: 11px; color: var(--n300); margin-top: 1px; }
+.color-usage { font-size: 12px; color: var(--n400); margin-top: 8px; line-height: 1.4; }
+.contrast-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+.contrast-table th, .contrast-table td { padding: 12px 16px; text-align: left; font-size: 13px; border-bottom: 1px solid var(--n100); }
+.contrast-table th { font-weight: 600; color: var(--n700); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+.badge-pass { display: inline-block; padding: 3px 10px; border-radius: 4px; background: #E8F5E9; color: #2E7D32; font-size: 11px; font-weight: 600; font-family: 'Inter', sans-serif; }
+.badge-fail { background: #FFEBEE; color: #C62828; }
+/* Typography */
+.type-list { display: flex; flex-direction: column; gap: 4px; }
+.type-item { display: flex; align-items: baseline; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--n100); }
+.type-label-box { min-width: 140px; flex-shrink: 0; }
+.type-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: var(--leaf); margin-bottom: 2px; }
+.type-size { font-family: 'Inter', monospace; font-size: 11px; color: var(--n300); }
+.type-sample { flex: 1; }
+/* Patterns */
+.pattern-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.pattern-card { border-radius: 12px; overflow: hidden; border: 1px solid var(--n100); background: var(--white); }
+.pattern-preview { height: 200px; display: flex; align-items: center; justify-content: center; }
+.pattern-label { padding: 14px; font-size: 13px; text-align: center; color: var(--n600); }
+.pattern-label span { display: block; font-family: 'Inter', sans-serif; font-size: 11px; color: var(--n300); margin-top: 2px; }
+/* Icons */
+.icon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.icon-card { text-align: center; padding: 36px 20px; background: var(--white); border-radius: 12px; border: 1px solid var(--n100); transition: box-shadow 0.2s; }
+.icon-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.icon-card svg { margin-bottom: 16px; }
+.icon-name { font-size: 14px; font-weight: 500; color: var(--n700); }
+.icon-purpose { font-size: 11px; color: var(--n300); margin-top: 2px; }
+/* Slogans */
+.slogan-card { background: var(--white); border-radius: 12px; padding: 40px; border: 1px solid var(--n100); margin-bottom: 20px; }
+.slogan-context { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--leaf); margin-bottom: 12px; }
+.slogan-main { font-size: 26px; font-weight: 700; color: var(--n800); margin-bottom: 8px; line-height: 1.3; }
+.slogan-eng { font-family: 'Inter', sans-serif; font-size: 15px; color: var(--leaf); margin-bottom: 6px; }
+.slogan-detail { font-size: 13px; color: var(--n400); line-height: 1.6; }
+/* UI Mockup */
+.mockup-box { background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid var(--n200); box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+.mockup-header { padding: 18px 28px; display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, var(--forest-dark), var(--forest)); color: var(--white); }
+.mockup-brand { display: flex; align-items: center; gap: 10px; }
+.mockup-brand span { font-size: 17px; font-weight: 700; }
+.mockup-nav { display: flex; gap: 24px; margin-left: auto; }
+.mockup-nav span { font-size: 12px; opacity: 0.7; }
+.mockup-body { padding: 32px 28px; }
+.mockup-welcome { font-size: 14px; color: var(--n600); margin-bottom: 28px; }
+.dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.dash-card { border-radius: 12px; padding: 24px; color: var(--white); }
+.dash-card h4 { font-size: 12px; font-weight: 400; opacity: 0.85; margin-bottom: 8px; }
+.dash-card .value { font-size: 32px; font-weight: 700; }
+.record-list { margin-top: 24px; }
+.record-item { display: flex; align-items: center; gap: 16px; padding: 18px; background: var(--n50); border-radius: 10px; margin-bottom: 12px; }
+.record-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.record-text h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.record-text p { font-size: 12px; color: var(--n400); margin: 0; }
+.btn { display: inline-block; padding: 12px 28px; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: default; margin-top: 24px; }
+.btn-primary { background: var(--leaf); color: var(--white); }
+.btn-outline { border: 2px solid var(--leaf); color: var(--leaf); background: transparent; margin-left: 8px; }
+/* Stationery */
+.stn-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 32px; }
+.business-card { border-radius: 12px; overflow: hidden; background: var(--white); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.stn-accent { height: 6px; background: linear-gradient(90deg, var(--leaf), var(--bark-light)); }
+.stn-inner { padding: 32px; position: relative; }
+.stn-name { font-size: 18px; font-weight: 700; }
+.stn-role { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--leaf); margin: 4px 0 16px; text-transform: uppercase; letter-spacing: 1px; }
+.stn-contact { font-size: 13px; color: var(--n500); line-height: 2; }
+.footer { padding: 48px 80px; background: var(--n900); color: rgba(255,255,255,0.4); text-align: center; font-size: 12px; }
+.footer p { margin-bottom: 4px; }
+/* Responsive */
+@media (max-width: 1024px) { .section { padding: 56px 40px; } .hero { padding: 80px 40px; } }
+@media (max-width: 768px) { .sidebar { display: none; } .main { margin-left: 0; } .hero { padding: 60px 24px; } .hero-title { font-size: 36px; } .hero-tagline { font-size: 18px; } .section { padding: 48px 24px; } .section-title { font-size: 24px; } .pattern-grid, .icon-grid { grid-template-columns: 1fr; } .color-grid { grid-template-columns: repeat(2, 1fr); } .stn-grid { grid-template-columns: 1fr; } .dashboard { grid-template-columns: repeat(2, 1fr); } .type-item { flex-direction: column; gap: 8px; } .type-label-box { min-width: auto; } .slogan-main { font-size: 20px; } }
+@media (max-width: 480px) { .color-grid { grid-template-columns: 1fr; } .dashboard { grid-template-columns: 1fr; } .hero-title { font-size: 28px; } }
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <svg viewBox="0 0 48 48" fill="none">
+      <path d="M24 40 C24 40 16 32 16 24 C16 18 20 14 24 14 C28 14 32 18 32 24 C32 32 24 40 24 40Z" fill="#5A8C6A" opacity="0.4"/>
+      <path d="M24 38 C24 38 20 32 20 28 C20 24 21.5 21 24 21 C26.5 21 28 24 28 28 C28 32 24 38 24 38Z" fill="#3D6B4F"/>
+      <path d="M24 42 L24 30" stroke="#6B4F3B" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <h1>Sowood</h1>
+    <p>BrandBI Guidelines</p>
+  </div>
+  <div class="sidebar-label">Foundation</div>
+  <a href="#sec-logo">브랜드 로고</a>
+  <a href="#sec-color">컬러 시스템</a>
+  <a href="#sec-type">타이포그래피</a>
+  <div class="sidebar-label">Expression</div>
+  <a href="#sec-pattern">패션 &amp; 텍스처</a>
+  <a href="#sec-icons">아이코노그래피</a>
+  <div class="sidebar-label">Application</div>
+  <a href="#sec-slogan">슬로건</a>
+  <a href="#sec-ui">UI 목업</a>
+  <a href="#sec-stn">사무용품</a>
+</aside>
+
+<div class="main">
+  <header class="hero">
+    <div class="hero-en">Sowood</div>
+    <h1 class="hero-title">소유드</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">당신의 기록, 당신의 것</p>
+    <p class="hero-desc">당사자 본인이 주인공이 되는 생애 기록 플랫폼</p>
+  </header>
+
+  <section id="sec-logo" class="section">
+    <div class="section-num">01 — Visual Identity</div>
+    <div class="section-divider"></div>
+    <h2 class="section-title">브랜드 로고</h2>
+    <p class="section-desc">성장하는 나무와 'S' 곡선이 만나는 로고. 당사자의 성장을 자연스럽게 표현합니다.</p>
+    <div class="logo-cards">
+      <div class="logo-card">
+        <p style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--n300);margin-bottom:24px;font-weight:600;">Primary — Light Background</p>
+        <div class="logo-row">
+          <svg width="64" height="64" viewBox="0 0 48 48" fill="none">
+            <path d="M24 6 C24 6 18 12 18 20 C18 26 20 30 24 32 C28 30 30 26 30 20 C30 12 24 6 24 6Z" stroke="#5A8C6A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M24 32 L24 44" stroke="#6B4F3B" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M24 38 C22 36 20 36 18 38" stroke="#6B4F3B" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M24 41 C26 39 28 39 30 41" stroke="#6B4F3B" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div>
+            <div class="logo-kr">소유드</div>
+            <div class="logo-en">Sowood</div>
+          </div>
+        </div>
+      </div>
+      <div class="logo-card dark">
+        <p style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.3);margin-bottom:24px;font-weight:600;">Dark Background</p>
+        <div class="logo-row">
+          <svg width="64" height="64" viewBox="0 0 48 48" fill="none">
+            <path d="M24 6 C24 6 18 12 18 20 C18 26 20 30 24 32 C28 30 30 26 30 20 C30 12 24 6 24 6Z" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M24 32 L24 44" stroke="#F5DFA0" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M24 38 C22 36 20 36 18 38" stroke="#F5DFA0" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M24 41 C26 39 28 39 30 41" stroke="#F5DFA0" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div>
+            <div class="logo-kr">소유드</div>
+            <div class="logo-en">Sowood</div>
+          </div>
+        </div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-icons-row">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <path d="M24 6 C24 6 18 12 18 20 C18 26 20 30 24 32 C28 30 30 26 30 20 C30 12 24 6 24 6Z" stroke="#5A8C6A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M24 32 L24 44" stroke="#6B4F3B" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div class="logo-icon-info"><p>Icon Only</p><span>마크 단독 사용</span></div>
+        </div>
+        <div class="sizes-row">
+          <div class="size-item" style="border:1px dashed var(--n200);border-radius:8px;padding:16px;">
+            <svg width="32" height="32" viewBox="0 0 48 48" fill="none"><path d="M24 6 C24 6 18 12 18 20 C18 26 20 30 24 32 C28 30 30 26 30 20 C30 12 24 6 24 6Z" stroke="#5A8C6A" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M24 32 L24 44" stroke="#6B4F3B" stroke-width="3" stroke-linecap="round"/></svg>
+            <span>32px</span>
+          </div>
+          <div class="size-item" style="border:1px dashed var(--n200);border-radius:8px;padding:16px;">
+            <svg width="24" height="24" viewBox="0 0 48 48" fill="none"><path d="M24 6 C24 6 18 12 18 20 C18 26 20 30 24 32 C28 30 30 26 30 20 C30 12 24 6 24 6Z" stroke="#5A8C6A" stroke-width="3.5" stroke-linecap="round" fill="none"/><path d="M24 32 L24 44" stroke="#6B4F3B" stroke-width="3.5" stroke-linecap="round"/></svg>
+            <span>24px</span>
+          </div>
+          <div class="size-item" style="border:1px dashed var(--n200);border-radius:8px;padding:16px;">
+            <svg width="16" height="16" viewBox="0 0 48 48" fill="none"><path d="M24 6 C24 6 18 12 18 20 C18 26 20 30 24 32 C28 30 30 26 30 20 C30 12 24 6 24 6Z" stroke="#5A8C6A" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M24 32 L24 44" stroke="#6B4F3B" stroke-width="4" stroke-linecap="round"/></svg>
+            <span>16px</span>
+          </div>
+        </div>
+        <div class="clearance">
+          <p style="font-size:13px;font-weight:600;margin-bottom:12px;">Clearance (안전 영역)</p>
+          <div class="clearance-box">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 6 C24 6 18 12 18 20 C18 26 20 30 24 32 C28 30 30 26 30 20 C30 12 24 6 24 6Z" stroke="#5A8C6A" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M24 32 L24 44" stroke="#6B4F3B" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec-color" class="section">
+    <div class="section-num">02 — Color</div>
+    <div class="section-divider"></div>
+    <h2 class="section-title">컬러 시스템</h2>
+    <p class="section-desc">숲의 깊은 그리와 자연의 꽃색을 메인 컬러로 사용합니다. 성장과 자연의 느낌을 전달합니다.</p>
+    <h3 class="color-group-title">Primary Palette</h3>
+    <div class="color-grid">
+      <div class="color-card"><div class="color-swatch" style="background:#3D6B4F;"></div><div class="color-info"><div class="color-name">Forest Green</div><div class="color-hex">#3D6B4F</div><div class="color-rgb">rgb(61, 107, 79)</div><div class="color-usage">40% — 주요 CTA &amp; 브랜드 대표색</div></div></div>
+      <div class="color-card"><div class="color-swatch" style="background:#5A8C6A;"></div><div class="color-info"><div class="color-name">Leaf Green</div><div class="color-hex">#5A8C6A</div><div class="color-rgb">rgb(90, 140, 106)</div><div class="color-usage">30% — 액션 버튼, 링크</div></div></div>
+      <div class="color-card"><div class="color-swatch" style="background:#6B4F3B;"></div><div class="color-info"><div class="color-name">Bark Brown</div><div class="color-hex">#6B4F3B</div><div class="color-rgb">rgb(107, 79, 59)</div><div class="color-usage">20% — 텍스트, 헤더</div></div></div>
+      <div class="color-card"><div class="color-swatch" style="background:#D4848A;"></div><div class="color-info"><div class="color-name">Bloom Rose</div><div class="color-hex">#D4848A</div><div class="color-rgb">rgb(212, 132, 138)</div><div class="color-usage">10% — 하이라이트, 알림</div></div></div>
+    </div>
+    <h3 class="color-group-title">Accent &amp; Neutral</h3>
+    <div class="color-grid">
+      <div class="color-card"><div class="color-swatch" style="background:#E5B85A;"></div><div class="color-info"><div class="color-name">Gold Harvest</div><div class="color-hex">#E5B85A</div><div class="color-rgb">rgb(229, 184, 90)</div><div class="color-usage">성과 지표, 배지</div></div></div>
+      <div class="color-card"><div class="color-swatch" style="background:#F5DFA0;"></div><div class="color-info"><div class="color-name">Warm Gold</div><div class="color-hex">#F5DFA0</div><div class="color-rgb">rgb(245, 223, 160)</div><div class="color-usage">배경 하이라이트</div></div></div>
+      <div class="color-card"><div class="color-swatch" style="background:#D0DDD6;"></div><div class="color-info"><div class="color-name">Fog</div><div class="color-hex">#D0DDD6</div><div class="color-rgb">rgb(208, 221, 214)</div><div class="color-usage">보더, 구분선</div></div></div>
+      <div class="color-card"><div class="color-swatch" style="background:#4A6B56;"></div><div class="color-info"><div class="color-name">Moss</div><div class="color-hex">#4A6B56</div><div class="color-rgb">rgb(74, 107, 86)</div><div class="color-usage">본문 텍스트</div></div></div>
+    </div>
+    <h3 class="color-group-title" style="margin-top:48px;">접근성 Contrast 체크</h3>
+    <table class="contrast-table">
+      <tr><th>조합</th><th>비율</th><th>결과</th></tr>
+      <tr><td>Forest(#3D6B4F) on White</td><td>5.82:1</td><td><span class="badge-pass">AA Pass ✓</span></td></tr>
+      <tr><td>Bark(#6B4F3B) on White</td><td>7.15:1</td><td><span class="badge-pass">AA Pass ✓</span></td></tr>
+      <tr><td>White on Forest</td><td>5.82:1</td><td><span class="badge-pass">AA Pass ✓</span></td></tr>
+      <tr><td>Moss on White</td><td>5.20:1</td><td><span class="badge-pass">AA Pass ✓</span></td></tr>
+      <tr><td>Bloom Rose on White</td><td>3.20:1</td><td><span class="badge-fail badge-pass">AA Fail</span></td></tr>
+    </table>
+  </section>
+
+  <section id="sec-type" class="section">
+    <div class="section-num">03 — Type</div>
+    <div class="section-divider"></div>
+    <h2 class="section-title">타이포그래피</h2>
+    <p class="section-desc">한국어에는 Noto Sans KR, 영어에는 Inter를 사용합니다. 자연스럽고 신뢰감 있는 인상입니다.</p>
+    <div class="type-list">
+      <div class="type-item"><div class="type-label-box"><div class="type-label">DISPLAY</div><div class="type-size">180px / 184px / 900</div></div><div class="type-sample" style="font-size:180px;font-weight:900;line-height:1;letter-spacing:-8px;">Sowood</div></div>
+      <div class="type-item"><div class="type-label-box"><div class="type-label">H1</div><div class="type-size">48px / 56px / 700</div></div><div class="type-sample" style="font-size:48px;font-weight:700;">당신의 기록, 당신의 것</div></div>
+      <div class="type-item"><div class="type-label-box"><div class="type-label">H2</div><div class="type-size">36px / 44px / 700</div></div><div class="type-sample" style="font-size:36px;font-weight:700;">성장하는 생애 기록</div></div>
+      <div class="type-item"><div class="type-label-box"><div class="type-label">H3</div><div class="type-size">24px / 32px / 700</div></div><div class="type-sample" style="font-size:24px;font-weight:700;">기록 카드 제목</div></div>
+      <div class="type-item"><div class="type-label-box"><div class="type-label">BODY</div><div class="type-size">16px / 24px / 400</div></div><div class="type-sample" style="font-size:16px;line-height:1.7;color:var(--n500);">당사자 본인이 주인공이 되는 생애 기록 플랫폼. 영유아부터 노년까지, 자연스럽고 지속적으로.</div></div>
+      <div class="type-item"><div class="type-label-box"><div class="type-label">CAPTION</div><div class="type-size">13px / 18px / 400</div></div><div class="type-sample" style="font-size:13px;line-height:1.4;color:var(--n300);">마지막 업데이트: 2025년 12월 15일</div></div>
+    </div>
+  </section>
+
+  <section id="sec-pattern" class="section">
+    <div class="section-num">04 — Pattern</div>
+    <div class="section-divider"></div>
+    <h2 class="section-title">패션 &amp; 텍스처</h2>
+    <p class="section-desc">잎맥과 나무결에서 영감받은 오가닉 패턴을 사용합니다.</p>
+    <div class="pattern-grid">
+      <div class="pattern-card"><div class="pattern-preview" style="background:#F7FAF8;"><svg width="320" height="200" viewBox="0 0 320 200">
+        <path d="M160 180 L160 20 M160 50 Q120 60 80 55 Q100 70 160 80" stroke="#5A8C6A" fill="none" stroke-width="1" opacity="0.2"/>
+        <path d="M160 50 Q200 60 240 55 Q220 70 160 80" stroke="#5A8C6A" fill="none" stroke-width="1" opacity="0.2"/>
+        <path d="M160 100 Q130 110 100 105" stroke="#5A8C6A" fill="none" stroke-width="1" opacity="0.15"/>
+        <path d="M160 100 Q190 110 220 105" stroke="#5A8C6A" fill="none" stroke-width="1" opacity="0.15"/>
+        <path d="M160 140 Q140 148 110 145" stroke="#5A8C6A" fill="none" stroke-width="1" opacity="0.15"/>
+        <path d="M160 140 Q180 148 210 145" stroke="#5A8C6A" fill="none" stroke-width="1" opacity="0.15"/>
+        <path d="M160 170 Q150 174 130 172" stroke="#5A8C6A" fill="none" stroke-width="1" opacity="0.1"/>
+        <path d="M160 170 Q170 174 190 172" stroke="#5A8C6A" fill="none" stroke-width="1" opacity="0.1"/>
+      </svg></div>
+      <div class="pattern-label">Leaf Vein Pattern<span>Background overlay — opacity 20%</span></div></div>
+      <div class="pattern-card"><div class="pattern-preview" style="background:var(--gold-light);"><svg width="320" height="200" viewBox="0 0 320 200" opacity="0.2">
+        <circle cx="24" cy="30" r="18" fill="none" stroke="#E5B85A" stroke-width="1"/>
+        <circle cx="80" cy="30" r="18" fill="none" stroke="#E5B85A" stroke-width="1"/>
+        <circle cx="136" cy="30" r="18" fill="none" stroke="#E5B85A" stroke-width="1"/>
+        <circle cx="192" cy="30" r="18" fill="none" stroke="#E5B85A" stroke-width="1"/>
+        <circle cx="248" cy="30" r="18" fill="none" stroke="#E5B85A" stroke-width="1"/>
+        <circle cx="296" cy="30" r="18" fill="none" stroke="#E5B85A" stroke-width="1"/>
+        <circle cx="52" cy="72" r="18" fill="none" stroke="#E5B85A" stroke-width="1"/>
+        <circle cx="108" cy="72" r="18" fill="none" stroke="#E5B85A" stroke-width="1"/>
+        <circle cx="164" cy="72" r="18" fill="none" stroke="#E5B85A" stroke-width="1"/>
+        <circle cx="220" cy="72" r="18" fill="none" stroke="#E5B85A" stroke-width="1"/>
+        <circle cx="276" cy="72" r="18" fill="none" stroke="#E5B85A" stroke-width="1"/>
+      </svg></div>
+      <div class="pattern-label">Growth Dot Pattern<span>Section divider — opacity 20%</span></div></div>
+    </div>
+  </section>
+
+  <section id="sec-icons" class="section">
+    <div class="section-num">05 — Iconography</div>
+    <div class="section-divider"></div>
+    <h2 class="section-title">아이코노그래피</h2>
+    <p class="section-desc">자연 친화적인 라운드 스타일, 2px stroke 기반.</p>
+    <div class="icon-grid">
+      <div class="icon-card"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#5A8C6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M24 6 C24 6 18 12 18 20 C18 26 20 30 24 32 C28 30 30 26 30 20 C30 12 24 6 24 6Z"/>
+        <path d="M24 32 L24 44"/>
+      </svg><div class="icon-name">Growth</div><div class="icon-purpose">Records</div></div>
+      <div class="icon-card"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#5A8C6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 36c0-6-2-12 8-12s8 6 8 12"/>
+        <circle cx="24" cy="14" r="6"/>
+        <path d="M34 36c0-4 3-8 6-8s2 2 2 4"/>
+      </svg><div class="icon-name">Collaboration</div><div class="icon-purpose">Team</div></div>
+      <div class="icon-card"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#5A8C6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M24 42S6 32 6 18a12 12 0 0 1 18-6 12 12 0 0 1 18 6c0 14-18 24-18 24z" fill="none"/>
+      </svg><div class="icon-name">Offer</div><div class="icon-purpose">Care</div></div>
+      <div class="icon-card"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#5A8C6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="6" y="8" width="36" height="36" rx="6"/>
+        <line x1="16" y1="18" x2="32" y2="18"/>
+        <circle cx="16" cy="28" r="3"/>
+        <circle cx="32" cy="28" r="3"/>
+        <path d="M20 42 L20 34 Q20 28 24 28 Q28 28 28 34 L28 42"/>
+      </svg><div class="icon-name">Calendar</div><div class="icon-purpose">Schedule</div></div>
+      <div class="icon-card"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#5A8C6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="24" cy="24" r="16"/>
+        <path d="M24 16 C18 16 14 22 14 28 C14 34 24 36 24 36 C24 36 34 34 34 28 C34 22 30 16 24 16Z"/>
+        <path d="M24 36 L24 44"/>
+        <path d="M18 44 Q24 40 30 44"/>
+      </svg><div class="icon-name">Tree of Life</div><div class="icon-purpose">Lifecycle</div></div>
+      <div class="icon-card"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#5A8C6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="24,4 29,18 44,18 33,26 37,40 24,32 11,40 15,26 4,18 19,18"/>
+      </svg><div class="icon-name">Achievement</div><div class="icon-purpose">Goals</div></div>
+    </div>
+  </section>
+
+  <section id="sec-slogan" class="section">
+    <div class="section-num">06 — Slogans</div>
+    <div class="section-divider"></div>
+    <h2 class="section-title">슬로건 시스템</h2>
+    <div class="slogan-card"><div class="slogan-context">Main Tagline</div><div class="slogan-main">당신의 기록, 당신의 것</div><div class="slogan-eng">Sowood — Your records, your life</div></div>
+    <div class="slogan-card"><div class="slogan-context">Hero Banner</div><div class="slogan-main">씨를 심고, 가꾸고, 자라는 기록</div><div class="slogan-eng">Plant. Grow. Become — Your life story unfolds.</div></div>
+    <div class="slogan-card"><div class="slogan-context">Product Description</div><div class="slogan-main">당사자의 성장을 함께하는 생애 기록</div><div class="slogan-eng">Lifecycle records that grow with you.</div></div>
+    <div class="slogan-card"><div class="slogan-context">App Store / B2G</div><div class="slogan-main">소유드 — 발달장애인 생애 전주기 기록 플랫폼</div><div class="slogan-detail">Sowood — Lifecycle Record Platform for Persons with Developmental Disabilities</div></div>
+    <div class="slogan-card"><div class="slogan-context">Social Media</div><div class="slogan-main">내 이야기, 내가 쓰는 기록</div><div class="slogan-detail">#소유드 #당사자의기록 #소유의기록</div></div>
+    <div class="slogan-card"><div class="slogan-context">Email Footer</div><div class="slogan-main" style="font-size:20px;">소유드 — 당신의 기록, 당신의 것</div><div class="slogan-detail">당사자 본인이 주인공이 되는 생애 기록 플랫폼</div></div>
+  </section>
+
+  <section id="sec-ui" class="section">
+    <div class="section-num">07 — UI Application</div>
+    <div class="section-divider"></div>
+    <h2 class="section-title">UI 적용 목업</h2>
+    <div class="mockup-box">
+      <div class="mockup-header"><div class="mockup-brand"><svg width="28" height="28" viewBox="0 0 48 48" fill="none"><path d="M24 6 C24 6 18 12 18 20 C18 26 20 30 24 32 C28 30 30 26 30 20 C30 12 24 6 24 6Z" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M24 32 L24 44" stroke="#F5DFA0" stroke-width="3" stroke-linecap="round"/></svg><span>소유드</span></div><div class="mockup-nav"><span>대시보드</span><span>기록</span><span>권한</span><span>설정</span></div></div>
+      <div class="mockup-body">
+        <p class="mockup-welcome">홍길동님, 좋은 아침입니다. 🌿</p>
+        <div class="dashboard">
+          <div class="dash-card" style="background:var(--forest);"><h4>총 기록</h4><div class="value">312</div></div>
+          <div class="dash-card" style="background:var(--bloom);"><h4>이번 달</h4><div class="value">18</div></div>
+          <div class="dash-card" style="background:var(--n200);"><h4>연계 기관</h4><div class="value">5</div></div>
+        </div>
+        <h4 style="font-size:15px;font-weight:600;margin-bottom:16px;">최근 기록</h4>
+        <div class="record-list">
+          <div class="record-item"><div class="record-icon" style="background:#EEF4EE;"><svg width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="#5A8C6A" stroke-width="3" stroke-linecap="round"><path d="M24 6 C24 6 18 12 18 20 C18 26 20 30 24 32 C28 30 30 26 30 20 C30 12 24 6 24 6Z"/><path d="M24 32 L24 44"/></svg></div><div class="record-text"><h4>직업 훈련 기록</h4><p>2025년 12월 12일 · 직업재활센터</p></div></div>
+          <div class="record-item"><div class="record-icon" style="background:var(--gold-light);"><svg width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="#E5B85A" stroke-width="3" stroke-linecap="round"><polygon points="24,4 29,18 44,18 33,26 37,40 24,32 11,40 15,26 4,18 19,18"/></svg></div><div class="record-text"><h4>목표 달성: 사회기술 훈련</h4><p>2025년 12월 1일</p></div></div>
+        </div>
+        <div class="btn btn-primary">새 기록 추가</div>
+        <div class="btn btn-outline">PDF 출력</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec-stn" class="section">
+    <div class="section-num">08 — Stationery</div>
+    <div class="section-divider"></div>
+    <h2 class="section-title">사무용품 시스템</h2>
+    <div class="stn-grid">
+      <div class="business-card"><div class="stn-accent"></div><div class="stn-inner"><div class="stn-name">김수진</div><div class="stn-role">Product Manager · Sowood</div><div class="stn-contact"><p>📧 sumin.kim@sowood.com</p><p>📞 02-XXX-XXXX</p><p>🌐 www.sowood.com</p><p>📍 서울특별시 강남구</p></div></div></div>
+      <div class="business-card"><div class="stn-accent"></div><div class="stn-inner"><p style="font-size:14px;font-weight:500;margin-bottom:4px;">김수진 님</p><p style="font-size:12px;color:var(--n400);line-height:1.6;">안녕하세요, 소유드의 PM 김수진입니다.<br>당사자 중심 생애 기록 플랫폼에 대해 논의하고자 연락드립니다.<br><br>감사합니다.</p><div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--n100);"><div class="stn-role" style="margin-bottom:4px;">김수진 · Product Manager</div><div class="stn-contact" style="font-size:11px;">소유드 · sumin.kim@sowood.com<br>02-XXX-XXXX · www.sowood.com</div></div></div></div>
+    </div>
+  </section>
+
+  <footer class="footer"><p>Sowood BrandBI — v1.0 — June 2025</p><p>This document is confidential and intended for internal brand reference only.</p></footer>
+</div>
+</div>
+</body>
+</html>

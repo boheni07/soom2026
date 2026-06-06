@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — C-011 역할 등록</title>
+  <style>
+    :root{
+      --indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;
+      --sky:#5B8DEF;--sky-light:#8BB4F7;
+      --purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;
+      --n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;
+      --n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;
+      --n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;
+      --r8:8px;--r10:10px;--r12:12px;--r16:16px;
+      --shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);
+      --font:'Inter','Noto Sans KR',sans-serif
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+    .top-bar a{color:#fff;text-decoration:none;font-size:14px}
+    .top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}
+    .top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}
+    .badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}
+    .btn-primary{background:var(--indigo);color:#fff}.btn-primary:hover{opacity:.9}
+    .btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700)}.btn-sm{padding:6px 12px;font-size:12px}
+    .input{width:100%;padding:10px 12px;border:1px solid var(--n200);border-radius:var(--r8);font-size:14px;font-family:var(--font);background:#fff;transition:all .2s}
+    .input:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(74,95,193,.1)}
+    .form-group{margin-bottom:12px}
+    .form-label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--n700)}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.gap-12{gap:12px}.gap-16{gap:16px}
+    .text-sm{font-size:12px}.text-xs{font-size:11px}.text-muted{color:var(--n500)}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a class="logo">LifeLog</a>
+    <a class="back-btn" href="../index.html">← 인덱스로</a>
+    <span class="badge">C-011</span>
+  </div>
+  <div class="page-content">
+    <div style="max-width:640px;margin:0 auto;">
+      <h2 style="font-size:18px;font-weight:700;margin-bottom:8px;">역할 등록</h2>
+      <p class="text-muted" style="font-size:14px;margin-bottom:24px;">새로운 전문인력 역할을 등록해주세요. 등록된 역할에 따라 접근 권한이 결정됩니다.</p>
+
+      <div class="flex flex-col gap-12" style="display:flex;flex-direction:column;gap:12px;">
+        <div style="background:#fff;border:2px solid var(--n200);border-radius:var(--r10);padding:16px;cursor:pointer;">
+          <div class="flex items-center gap-12" style="display:flex;align-items:center;gap:12px;">
+            <div style="font-size:28px;">🏢</div>
+            <div>
+              <div style="font-size:15px;font-weight:700;">사회복지사 (Social Worker)</div>
+              <div class="text-xs text-muted">케이스 관리, 기록 작성, 협업자 초대, 팀 협업 뷰 권한</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:2px solid var(--n200);border-radius:var(--r10);padding:16px;cursor:pointer;">
+          <div class="flex items-center gap-12" style="display:flex;align-items:center;gap:12px;">
+            <div style="font-size:28px;">📚</div>
+            <div>
+              <div style="font-size:15px;font-weight:700;">특수교사 (Special Teacher)</div>
+              <div class="text-xs text-muted">IEP 수립/관리, 학생 목록, 보호자 공유 권한</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:2px solid var(--n200);border-radius:var(--r10);padding:16px;cursor:pointer;">
+          <div class="flex items-center gap-12" style="display:flex;align-items:center;gap:12px;">
+            <div style="font-size:28px;">🤝</div>
+            <div>
+              <div style="font-size:15px;font-weight:700;">돌봄도우미 (Support Worker)</div>
+              <div class="text-xs text-muted">일일 기록, 주간 요약, 선호 리스트 관리 권한</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px;">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:12px;">요청 폼</h3>
+        <div class="form-group">
+          <label class="form-label">직소속 기관</label>
+          <input class="input" type="text" placeholder="기관명을 입력해주세요" value="부산발달장애인복지센터">
+        </div>
+        <div class="form-group">
+          <label class="form-label">직위/담당 분야</label>
+          <input class="input" type="text" placeholder="예: 주임 사회복지사" value="주임 사회복지사 (주거서비스)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">자기소개</label>
+          <textarea class="input" style="min-height:80px;resize:vertical;box-shadow:none;" placeholder="간단히 자기소개를 적어주세요">5년차 사회복지사입니다. 발달장애인의 지역사회 정착과 일상생활 지원에 전문성을 보유하고 있습니다.</textarea>
+        </div>
+        <button class="btn btn-primary" style="margin-top:12px;">역할 등록 요청하기</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

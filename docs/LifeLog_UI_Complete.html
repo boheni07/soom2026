@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeLog - nimmingui saengaejeonjugi girok peurimeiteo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+--indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;
+--sky:#5B8DEF;--sky-light:#8BB4F7;
+--purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;
+--n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;
+--n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;--n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;
+--r8:8px;--r10:10px;--r12:12px;--r16:16px;
+--shadow-s:0 1px 3px rgba(42,90,152,.08);
+--shadow-m:0 2px 8px rgba(42,90,152,.1);
+--shadow-l:0 4px 16px rgba(42,90,152,.14);
+--shadow-xl:0 8px 32px rgba(42,90,152,.18);
+--font:'Inter','Noto Sans KR',sans-serif
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px}
+body{font-family:var(--font);color:var(--n800);background:var(--n50);line-height:1.6;overflow-x:hidden}
+
+/* TAB NAV */
+.tab-nav{position:fixed;top:0;left:0;right:0;height:56px;background:#2A356E;display:flex;align-items:center;z-index:9999}
+.tab-nav-inner{width:100%;max-width:1400px;margin:0 auto;display:flex;padding:0 24px}
+.tab-logo{color:#fff;font-weight:800;font-size:18px;margin-right:40px}
+.tab-btn{background:none;border:none;color:rgba(255,255,255,.55);font-size:14px;font-weight:500;padding:18px 20px;cursor:pointer;transition:color .2s;font-family:var(--font);position:relative}
+.tab-btn:hover{color:rgba(255,255,255,.9)}
+.tab-btn.active{color:#fff;font-weight:600}
+.tab-btn.active::after{content:'';position:absolute;bottom:0;left:20px;right:20px;height:3px;background:#A8D342;border-radius:3px 3px 0 0}
+#sec-landing, #sec-business, #sec-mobile, #sec-admin, #sec-workflow { display: none; padding-top: 56px; min-height: 100vh; }
+#sec-landing.active, #sec-business.active, #sec-mobile.active, #sec-admin.active, #sec-workflow.active { display: block; }
+
+/* LANDING */
+.hero{background:linear-gradient(135deg,#2A356E,#4A5FC1 60%,#5B8DEF);color:#fff;padding:96px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,rgba(91,141,239,.25),transparent 60%),radial-gradient(circle at 70% 70%,rgba(139,126,200,.2),transparent 50%)}
+.hero-inner{max-width:960px;margin:0 auto;position:relative;z-index:1}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 16px;font-size:13px;margin-bottom:24px}
+h1.hero-title{font-size:clamp(28px,5vw,52px);font-weight:800;line-height:1.2;margin-bottom:20px}
+.hero p{font-size:clamp(15px,2vw,18px);opacity:.9;margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto}
+.hero-cta{display:inline-block;background:#A8D342;color:#1A1B2E;padding:14px 32px;border-radius:12px;font-weight:700;font-size:15px;border:none;cursor:pointer}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(168,211,66,.3)}
+.features{max-width:960px;margin:0 auto;padding:64px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.feat-card{background:#fff;border-radius:16px;padding:28px;box-shadow:var(--shadow-s)}
+.feat-card:hover{box-shadow:var(--shadow-l)}
+.feat-icon{font-size:32px;margin-bottom:12px}
+.feat-card h3{font-size:16px;font-weight:700;margin-bottom:8px;color:#1A1B2E}
+.feat-card p{font-size:14px;color:#5C5F82}
+.roles-sec{max-width:960px;margin:0 auto;padding:0 24px 64px}
+.roles-sec h2{font-size:24px;font-weight:800;text-align:center;margin-bottom:32px;color:#1A1B2E}
+.roles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.role-card{background:#fff;border-radius:12px;padding:24px 16px;text-align:center;box-shadow:var(--shadow-s)}
+.role-emoji{font-size:36px;margin-bottom:8px}
+.role-card h4{font-size:14px;font-weight:700;color:#1A1B2E;margin-bottom:4px}
+.role-card p{font-size:12px;color:#7C80A6}
+.stats-row{max-width:960px;margin:0 auto 64px;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat{background:#fff;border-radius:12px;padding:20px;text-align:center;box-shadow:var(--shadow-s)}
+.stat-num{font-size:28px;font-weight:800;color:#4A5FC1}
+.stat-label{font-size:13px;color:#7C80A6;margin-top:4px}
+footer{max-width:960px;margin:0 auto 48px;padding:0 24px;text-align:center;color:#9295AD;font-size:13px}
+
+/* BUSINESS WEB */
+.biz-wrap{display:flex;min-height:calc(100vh - 56px);background:var(--n50)}
+.biz-sidebar{width:240px;background:#1A1B2E;color:#fff;padding:20px 0;flex-shrink:0}
+.biz-sidebar h3{font-size:14px;font-weight:700;padding:0 20px;margin-bottom:16px;color:#9295AD;text-transform:uppercase;letter-spacing:1px}
+.biz-sidebar ul{list-style:none}
+.biz-sidebar li{padding:10px 20px;font-size:14px;cursor:pointer;transition:background .2s}
+.biz-sidebar li:hover{background:rgba(255,255,255,.06)}
+.biz-sidebar li.active{background:rgba(168,211,66,.15);color:#A8D342}
+.biz-main{flex:1;padding:24px;overflow-y:auto}
+.biz-toolbar{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.biz-role-btn{padding:8px 16px;border-radius:8px;border:1px solid #D4D6E5;background:#fff;font-size:13px;cursor:pointer;transition:all .2s;font-family:var(--font)}
+.biz-role-btn:hover{border-color:#4A5FC1;color:#4A5FC1}
+.biz-role-btn.g{background:#4A5FC1;color:#fff;border-color:#4A5FC1}
+.biz-role-btn.s{background:#5B8DEF;color:#fff;border-color:#5B8DEF}
+.biz-role-btn.t{background:#8B7EC8;color:#fff;border-color:#8B7EC8}
+.biz-role-btn.r{background:#E8645A;color:#fff;border-color:#E8645A}
+.biz-page{display:none}
+.biz-page.active{display:block}
+.biz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.biz-header h2{font-size:20px;font-weight:700;color:#1A1B2E}
+.biz-btn{padding:10px 20px;border-radius:10px;border:none;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font)}
+.biz-btn-primary{background:#4A5FC1;color:#fff}
+.biz-btn-primary:hover{background:#344594}
+.biz-card{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--shadow-s);margin-bottom:16px}
+.biz-table{width:100%;border-collapse:collapse}
+.biz-table th{text-align:left;font-size:12px;color:#7C80A6;padding:8px 12px;border-bottom:2px solid #EBECF3;font-weight:600}
+.biz-table td{font-size:13px;padding:10px 12px;border-bottom:1px solid #EBECF3}
+.biz-table tr:hover td{background:var(--n50)}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:600}
+.badge-ok{background:rgba(168,211,66,.15);color:#5a7e1e}
+.badge-warn{background:rgba(232,100,90,.12);color:#c44}
+.badge-blue{background:rgba(91,141,239,.12);color:#4A5FC1}
+.badge-purple{background:rgba(139,126,200,.12);color:#8B7EC8}
+.record-form{max-width:480px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#3D4271}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 12px;border:1px solid #D4D6E5;border-radius:8px;font-size:14px;font-family:var(--font)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#4A5FC1;box-shadow:0 0 0 3px rgba(74,95,193,.1)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.template-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.template-card{border:2px solid #D4D6E5;border-radius:10px;padding:16px;text-align:center;cursor:pointer;transition:all .2s}
+.template-card:hover{border-color:#8BB4F7}
+.template-card.selected{border-color:#4A5FC1;background:rgba(74,95,193,.04)}
+.template-icon{font-size:24px;margin-bottom:4px}
+.template-card p{font-size:13px;font-weight:600;color:#2D2F4E}
+.timeline{display:flex;flex-direction:column;gap:0;max-width:600px}
+.timeline-item{display:flex;gap:16px;padding:12px 0}
+.timeline-dot{width:12px;height:12px;border-radius:50%;background:#4A5FC1;margin-top:4px;flex-shrink:0}
+.timeline-dot.lime{background:#A8D342}
+.timeline-dot.coral{background:#E8645A}
+.timeline-dot.purple{background:#8B7EC8}
+.timeline-content{flex:1;padding-bottom:16px;border-left:2px solid #EBECF3;padding-left:16px}
+.timeline-date{font-size:12px;color:#9295AD}
+.timeline-title{font-size:14px;font-weight:600;color:#2D2F4E}
+.timeline-desc{font-size:13px;color:#5C5F82;margin-top:2px}
+
+/* MOBILE */
+.mobile-showcase{padding:40px 24px;background:linear-gradient(180deg,var(--n50),#fff)}
+.mobile-showcase h2{text-align:center;font-size:24px;font-weight:800;margin-bottom:32px;color:#1A1B2E}
+.phone-row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.phone-frame{width:280px;height:560px;background:#1a1a1a;border-radius:32px;padding:12px;box-shadow:var(--shadow-l)}
+.phone-frame-inner{width:100%;height:100%;background:var(--n50);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.phone-notch{width:120px;height:24px;background:#1a1a1a;border-radius:0 0 12px 12px;margin:0 auto}
+.phone-header{padding:12px 16px;background:#4A5FC1;color:#fff;font-size:14px;font-weight:600;text-align:center}
+.phone-body{flex:1;padding:12px;overflow:hidden}
+.phone-card{background:#fff;border-radius:12px;padding:12px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.phone-card p{font-size:11px;margin-bottom:2px}
+.phone-card h4{font-size:13px;font-weight:600;color:#2D2F4E}
+.easy-card{background:linear-gradient(135deg,#4A5FC1,#5B8DEF);color:#fff;border-radius:16px;padding:20px;margin-bottom:12px}
+.easy-card h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.big-btn{display:block;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.3);border-radius:16px;padding:16px;margin:12px 0;text-align:center;color:#fff;font-size:16px;font-weight:700;min-height:56px;line-height:1.2}
+.notif-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #EBECF3}
+.notif-icon{font-size:20px}
+.notif-text{font-size:12px;font-weight:500}
+.notif-time{font-size:10px;color:#9295AD}
+.emoji-row{display:flex;gap:8px;justify-content:center;padding:8px 0}
+.emoji-row span{font-size:28px;cursor:pointer;opacity:.6;transition:opacity .2s}
+.emoji-row span:hover{opacity:1}
+
+/* ADMIN */
+.admin-wrap{display:flex;min-height:calc(100vh - 56px);background:var(--n50)}
+.admin-sidebar{width:240px;background:#1A1B2E;color:#fff;padding:20px 0;flex-shrink:0}
+.admin-sidebar h3{font-size:13px;font-weight:700;padding:0 20px;margin-bottom:16px;color:#9295AD;text-transform:uppercase;letter-spacing:1px}
+.admin-sidebar ul{list-style:none}
+.admin-sidebar li{padding:10px 20px;font-size:14px;cursor:pointer;transition:background .2s}
+.admin-sidebar li:hover{background:rgba(255,255,255,.06)}
+.admin-sidebar li.active{background:rgba(168,211,66,.15);color:#A8D342}
+.admin-main{flex:1;padding:24px;overflow-y:auto}
+.admin-page{display:none}
+.admin-page.active{display:block}
+.admin-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.admin-top h2{font-size:20px;font-weight:700;color:#1A1B2E}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.admin-stat{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--shadow-s)}
+.admin-stat .label{font-size:12px;color:#7C80A6;margin-bottom:4px}
+.admin-stat .value{font-size:28px;font-weight:800;color:#4A5FC1}
+.admin-stat .change{font-size:12px;margin-top:4px}
+.admin-stat .change.up{color:#5a7e1e}
+.admin-stat .change.down{color:#E8645A}
+.charts-row{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:24px}
+.chart-card{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--shadow-s)}
+.chart-card h3{font-size:15px;font-weight:600;margin-bottom:16px;color:#1A1B2E}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:160px;padding-top:16px}
+.bar{flex:1;background:#4A5FC1;border-radius:4px 4px 0 0;min-width:32px;position:relative;transition:height .3s}
+.bar:hover{background:#344594}
+.bar-label{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font-size:10px;color:#9295AD}
+.bar-val{position:absolute;top:-18px;left:0;right:0;text-align:center;font-size:10px;color:#5C5F82;font-weight:600}
+.pie-chart{width:140px;height:140px;border-radius:50%;margin:0 auto;background:conic-gradient(#4A5FC1 0% 35%,#5B8DEF 35% 55%,#8B7EC8 55% 75%,#E8645A 75% 90%,#B5B8CC 90% 100%)}
+.pie-legend{margin-top:16px}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:12px;margin-bottom:6px;color:#3D4271}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.filter-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.filter-btn{padding:8px 16px;border-radius:8px;border:1px solid #D4D6E5;background:#fff;font-size:12px;cursor:pointer;font-family:var(--font)}
+.filter-btn:hover,.filter-btn.active{background:#4A5FC1;color:#fff;border-color:#4A5FC1}
+.perm-flow{display:flex;gap:12px;align-items:center;margin:16px 0}
+.perm-card{background:var(--n50);border:2px dashed #D4D6E5;border-radius:10px;padding:16px;flex:1;text-align:center}
+.perm-card h4{font-size:13px;font-weight:600;margin-bottom:4px}
+.perm-card p{font-size:11px;color:#7C80A6}
+.perm-arrow{font-size:20px;color:#4A5FC1}
+.institution-table{width:100%}
+.institution-table th{text-align:left;font-size:12px;color:#7C80A6;padding:8px 12px;border-bottom:2px solid #EBECF3;font-weight:600}
+.institution-table td{font-size:13px;padding:10px 12px;border-bottom:1px solid #EBECF3}
+
+/* MODAL & TOAST */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,27,46,.5);z-index:10000;align-items:center;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal-box{background:#fff;border-radius:16px;width:90%;max-width:480px;padding:32px;position:relative;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.modal-box h2{font-size:18px;font-weight:700;margin-bottom:20px;color:#1A1B2E}
+.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border:none;background:#EBECF3;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.toast-container{position:fixed;top:72px;right:24px;z-index:10001;display:flex;flex-direction:column;gap:8px}
+.toast{padding:12px 20px;border-radius:10px;color:#fff;font-size:13px;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,.15);animation:slideIn .3s ease}
+.toast-success{background:#2A7D4A}
+.toast-info{background:#4A5FC1}
+.toast-error{background:#E8645A}
+@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+input[type="date"]{color-scheme:light}
+select option{font-family:var(--font)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.roles-grid,.stats-row{grid-template-columns:repeat(2,1fr)}
+.biz-sidebar,.admin-sidebar{width:60px}
+.biz-sidebar span,.admin-sidebar span{display:none}
+.template-grid{grid-template-columns:repeat(2,1fr)}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.charts-row{grid-template-columns:1fr}
+.phone-frame{width:260px;height:520px}
+}
+@media(max-width:768px){
+.stats-row{grid-template-columns:1fr}
+.phone-row{flex-direction:column;align-items:center}
+.stats-grid{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.perm-flow{flex-direction:column}
+}
+
+/* Utility classes for mobile phone mini UIs */
+.mini-progress{width:100%;height:8px;background:#D4D6E5;border-radius:4px;overflow:hidden}
+.mini-progress-bar{height:100%;border-radius:4px}
+.mini-progress-bar.indigo{background:#4A5FC1}
+.mini-progress-bar.sky{background:#5B8DEF}
+.mini-progress-bar.lime{background:#A8D342}
+.mini-progress-bar.purple{background:#8B7EC8}
+
+.wf-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:24px}
+.wf-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(42,90,152,.08);transition:transform .2s,box-shadow .2s}
+.wf-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(42,90,152,.14)}
+.wf-card-header{padding:16px 20px;color:#fff;display:flex;align-items:center;gap:12px}
+.wf-card-body{padding:20px}
+.wf-steps{display:flex;flex-direction:column;gap:10px}
+.wf-step{display:flex;align-items:flex-start;gap:10px}
+.wf-step-num{font-size:14px;font-weight:700;background:#f5f6fa;color:#4A5FC1;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.wf-step-text{flex:1}
+.wf-step-arrow{font-size:18px;color:#D4D6E5;flex-shrink:0}
+.wf-cat-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.wf-cat-btn{padding:10px 20px;border-radius:999px;border:2px solid #D4D6E5;background:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:var(--font)}
+.wf-cat-btn:hover{border-color:#4A5FC1;color:#4A5FC1}
+.wf-cat-btn.active{background:#4A5FC1;color:#fff;border-color:#4A5FC1}
+.wf-cat{display:none}
+.wf-cat.active{display:block}
+.lifecycle-phase{display:flex;align-items:center}
+.wf-table{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(42,90,152,.08)}
+</style>
+</head>
+<body>
+
+<!-- TAB NAV -->
+<nav class="tab-nav">
+<div class="tab-nav-inner">
+<div class="tab-logo"><span>&#9889;</span> LifeLog</div>
+<button class="tab-btn active" data-tab="landing">Home Service Intro</button>
+<button class="tab-btn" data-tab="business">Work Web</button>
+<button class="tab-btn" data-tab="mobile">Mobile App</button>
+<button class="tab-btn" data-tab="admin">Admin Dashboard</button>
+<button class="tab-btn" data-tab="workflow">&#128200; 워크플로우</button>
+</div>
+</nav>
+
+<!-- LANDING -->
+<section class="page-section active" id="sec-landing">
+<div class="hero">
+<div class="hero-inner">
+<div class="hero-badge">&#128161; Developmentally disabled person lifecycle record platform</div>
+<h1 class="hero-title">A Living Story<br>Recording nimming's Life</h1>
+<p>From birth to old age, we record and connect the stories of developmentally disabled people's lives.</p>
+<button class="hero-cta" onclick="showToast('Welcome! Starting service usage.','success')">Get Started</button>
+</div>
+</div>
+<div style="padding:48px 24px"></div>
+<div class="features">
+<div class="feat-card"><div class="feat-icon">&#128203;</div><h3>Lifecycle Recording</h3><p>Record the entire life of developmentally disabled people from birth to old age.</p></div>
+<div class="feat-card"><div class="feat-icon">&#128200;</div><h3>Growth Tracking</h3><p>Set stage-by-stage goals and track growth visually.</p></div>
+<div class="feat-card"><div class="feat-icon">&#129309;</div><h3>Participation Support</h3><p>Support experiences of recording and sharing by yourself.</p></div>
+</div>
+<div class="roles-sec">
+<h2>Required Roles</h2>
+<div class="roles-grid">
+<div class="role-card"><div class="role-emoji">&#128374;</div><h4>Guardian</h4><p>Check child's growth records</p></div>
+<div class="role-card"><div class="role-emoji">&#128100;</div><h4>Social Worker</h4><p>Manage service support</p></div>
+<div class="role-card"><div class="role-emoji">&#127894;</div><h4>Special Teacher</h4><p>Set education goals</p></div>
+<div class="role-card"><div class="role-emoji">&#129321;</div><h4>Support Staff</h4><p>Record daily activities</p></div>
+</div>
+</div>
+<div class="stats-row">
+<div class="stat"><div class="stat-num">20-30 Types</div><div class="stat-label">Service types</div></div>
+<div class="stat"><div class="stat-num">3-5 Hrs</div><div class="stat-label">Record writing time</div></div>
+<div class="stat"><div class="stat-num">40%+</div><div class="stat-label">Participation rate</div></div>
+<div class="stat"><div class="stat-num">6 Mo</div><div class="stat-label">MVP development</div></div>
+</div>
+<footer>&copy; 2026 LifeLog (lifeNest) NUBiz AX Initiative BrandBI v1.0</footer>
+</section>
+
+<!-- BUSINESS WEB -->
+<section class="page-section" id="sec-business">
+<div class="biz-wrap">
+<div class="biz-sidebar">
+<h3>&#128188; Work Web</h3>
+<ul>
+<li class="active" data-biz="records">&#128203; Record Writing</li>
+<li data-biz="templates">&#128196; Templates</li>
+<li data-biz="timeline">&#128197; Timeline</li>
+<li data-biz="archive">&#128451; Archive</li>
+</ul>
+</div>
+<div class="biz-main">
+<div class="biz-toolbar">
+<button class="biz-role-btn g active">&#128374; Guardian</button>
+<button class="biz-role-btn s">&#128100; Social Worker</button>
+<button class="biz-role-btn t">&#127894; Special Teacher</button>
+<button class="biz-role-btn r">&#129321; Support Worker</button>
+</div>
+
+<div class="biz-page active" id="biz-records">
+<div class="biz-header">
+<h2>&#128203; Record Writing</h2>
+<button class="biz-btn biz-btn-primary" onclick="showToast('Record saved successfully.','success')">Save</button>
+</div>
+<div class="template-grid">
+<div class="template-card selected" onclick="selectTemplate(this)"><div class="template-icon">&#127775;</div><p>Daily Activities</p></div>
+<div class="template-card" onclick="selectTemplate(this)"><div class="template-icon">&#128187;</div><p>Education Activities</p></div>
+<div class="template-card" onclick="selectTemplate(this)"><div class="template-icon">&#127909;</div><p>Culture Activities</p></div>
+<div class="template-card" onclick="selectTemplate(this)"><div class="template-icon">&#9992;&#65039;</div><p>Medical Activities</p></div>
+<div class="template-card" onclick="selectTemplate(this)"><div class="template-icon">&#127942;</div><p>Work Activities</p></div>
+<div class="template-card" onclick="selectTemplate(this)"><div class="template-icon">&#128104;&#65039;</div><p>Independent Living</p></div>
+</div>
+<div class="biz-card">
+<div class="record-form">
+<div class="form-row">
+<div class="form-group"><label>Title</label><input type="text" placeholder="Enter record title"></div>
+<div class="form-group"><label>Category</label><select><option>Daily Activities</option><option>Education</option><option>Culture</option></select></div>
+</div>
+<div class="form-group"><label>Date</label><input type="date"></div>
+<div class="form-group"><label>Content</label><textarea rows="4" placeholder="Record your content..."></textarea></div>
+<div class="form-row">
+<div class="form-group"><label>Participant</label><input type="text" placeholder="Enter name"></div>
+<div class="form-group"><label>Location</label><input type="text" placeholder="Enter location"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="biz-page" id="biz-templates">
+<div class="biz-header"><h2>&#128196; Template Management</h2></div>
+<div class="biz-card">
+<table class="biz-table">
+<thead><tr><th>Template</th><th>Category</th><th>Usage</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Daily Activity Record</td><td><span class="badge badge-blue">Daily</span></td><td>124 times</td><td><span class="badge badge-ok">Active</span></td></tr>
+<tr><td>Education Goal Review</td><td><span class="badge badge-purple">Education</span></td><td>86 times</td><td><span class="badge badge-ok">Active</span></td></tr>
+<tr><td>Medical Record</td><td><span class="badge badge-warn">Medical</span></td><td>42 times</td><td><span class="badge badge-ok">Active</span></td></tr>
+<tr><td>Work Training</td><td><span class="badge badge-blue">Work</span></td><td>28 times</td><td><span class="badge badge-warn">Preparing</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="biz-page" id="biz-timeline">
+<div class="biz-header"><h2>&#128197; Timeline</h2></div>
+<div class="biz-card">
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-dot lime"></div>
+<div class="timeline-content">
+<div class="timeline-date">2026-06-05</div>
+<div class="timeline-title">Walking Activity</div>
+<div class="timeline-desc">Park walk - good mood, increased activity</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<div class="timeline-date">2026-06-04</div>
+<div class="timeline-title">Vocational Education</div>
+<div class="timeline-desc">Cafe barista training session</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot coral"></div>
+<div class="timeline-content">
+<div class="timeline-date">2026-06-03</div>
+<div class="timeline-title">Medical Visit</div>
+<div class="timeline-desc">Regular checkup - good health status</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot purple"></div>
+<div class="timeline-content">
+<div class="timeline-date">2026-06-02</div>
+<div class="timeline-title">Cultural Experience</div>
+<div class="timeline-desc">Art museum visit - drawing experience</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="biz-page" id="biz-archive">
+<div class="biz-header"><h2>&#128451; Archive</h2></div>
+<div class="biz-card">
+<table class="biz-table">
+<thead><tr><th>Title</th><th>Date</th><th>Author</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Weekend Activity Record</td><td>2026-06-05</td><td>Kim Ji-won</td><td><span class="badge badge-ok">Complete</span></td></tr>
+<tr><td>Meal Plan</td><td>2026-06-03</td><td>Lee Sang-hwa</td><td><span class="badge badge-ok">Complete</span></td></tr>
+<tr><td>Monthly Goals</td><td>2026-06-01</td><td>Park Su-jin</td><td><span class="badge badge-warn">In Progress</span></td></tr>
+<tr><td>Move Plan</td><td>2026-05-28</td><td>Choi Young-hee</td><td><span class="badge badge-ok">Complete</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- MOBILE -->
+<section class="page-section" id="sec-mobile">
+<div class="mobile-showcase">
+<h2>Mobile App</h2>
+<div class="phone-row">
+<div>
+<div style="text-align:center;font-size:13px;font-weight:600;margin-bottom:12px;color:#3D4271;pointer-events:none">Personal Dashboard (Simple Mode)</div>
+<div class="phone-frame">
+<div class="phone-frame-inner">
+<div class="phone-notch"></div>
+<div class="phone-header">Hello, nimming&#128512;</div>
+<div class="phone-body">
+<div class="easy-card">
+<h3>Today's Activities</h3>
+<div class="big-btn">&#128374; Record Activity</div>
+</div>
+<div class="phone-card">
+<h4>&#128200; This Week Progress</h4>
+<div style="padding:8px 0"><div class="mini-progress"><div class="mini-progress-bar indigo" style="width:70%"></div></div></div>
+<p style="font-size:11px;color:#7C80A6">70%</p>
+</div>
+<div class="phone-card"><h4>&#128161; Today's Goal</h4><p>Walk 20min, water 8 cups</p></div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div style="text-align:center;font-size:13px;font-weight:600;margin-bottom:12px;color:#3D4271;pointer-events:none">Quick Record</div>
+<div class="phone-frame">
+<div class="phone-frame-inner">
+<div class="phone-notch"></div>
+<div class="phone-header">&#128203; Quick Record</div>
+<div class="phone-body">
+<div class="form-group" style="margin-bottom:12px">
+<label>What activity was it?</label>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<button style="padding:8px 12px;border-radius:20px;border:1px solid #D4D6E5;background:#fff;font-size:12px;cursor:pointer">&#127775; Walk</button>
+<button style="padding:8px 12px;border-radius:20px;border:1px solid #D4D6E5;background:#fff;font-size:12px;cursor:pointer">&#127934; Exercise</button>
+<button style="padding:8px 12px;border-radius:20px;border:1px solid #D4D6E5;background:#fff;font-size:12px;cursor:pointer">&#127860; Meal</button>
+<button style="padding:8px 12px;border-radius:20px;border:1px solid #D4D6E5;background:#fff;font-size:12px;cursor:pointer">&#128218; Study</button>
+</div>
+</div>
+<div class="form-group" style="margin-bottom:16px">
+<label>How was your mood?</label>
+<div class="emoji-row">
+<span onclick="this.parentElement.querySelectorAll('span').forEach(s=>s.style.opacity='.6');this.style.opacity='1'">&#128512;</span>
+<span onclick="this.parentElement.querySelectorAll('span').forEach(s=>s.style.opacity='.6');this.style.opacity='1'">&#128515;</span>
+<span onclick="this.parentElement.querySelectorAll('span').forEach(s=>s.style.opacity='.6');this.style.opacity='1'">&#128528;</span>
+<span onclick="this.parentElement.querySelectorAll('span').forEach(s=>s.style.opacity='.6');this.style.opacity='1'">&#128542;</span>
+<span onclick="this.parentElement.querySelectorAll('span').forEach(s=>s.style.opacity='.6');this.style.opacity='1'">&#128533;</span>
+</div>
+</div>
+<div class="form-group">
+<label>Note</label>
+<textarea style="width:100%;padding:10px;border:1px solid #D4D6E5;border-radius:8px;font-size:12px;resize:none;font-family:var(--font)" rows="3" placeholder="Additional notes..."></textarea>
+</div>
+<button onclick="showToast('Record saved!','success')" style="width:100%;padding:14px;border:none;border-radius:10px;background:#4A5FC1;color:#fff;font-size:15px;font-weight:600;cursor:pointer;margin-top:8px;">Save</button>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div style="text-align:center;font-size:13px;font-weight:600;margin-bottom:12px;color:#3D4271;pointer-events:none">Daily Log</div>
+<div class="phone-frame">
+<div class="phone-frame-inner">
+<div class="phone-notch"></div>
+<div class="phone-header">Today's Log</div>
+<div class="phone-body">
+<div class="phone-card" style="background:linear-gradient(135deg,#4A5FC1,#5B8DEF);color:#fff"><h4 style="color:#fff">&#127775; Morning Walk</h4><p style="color:rgba(255,255,255,.8)">08:30 - 09:00</p></div>
+<div class="phone-card"><h4>&#127860; Lunch</h4><p>12:00 - Healthy meal, ate everything</p></div>
+<div class="phone-card"><h4>&#127934; Exercise</h4><p>14:00 - Stretching, walking</p></div>
+<div class="phone-card"><h4>&#127890; Art Time</h4><p>15:00 - Colored pencils, drawing</p></div>
+<div class="phone-card" style="background:rgba(168,211,66,.12);border:2px solid #A8D342"><h4>&#128992; Today's Summary</h4><p>Active day! Mood: Happy</p></div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div style="text-align:center;font-size:13px;font-weight:600;margin-bottom:12px;color:#3D4271;pointer-events:none">Notifications</div>
+<div class="phone-frame">
+<div class="phone-frame-inner">
+<div class="phone-notch"></div>
+<div class="phone-header">Notifications</div>
+<div class="phone-body">
+<div class="notif-item"><div class="notif-icon">&#128203;</div><div><div class="notif-text">Record written by guardian</div><div class="notif-time">2 min ago</div></div></div>
+<div class="notif-item"><div class="notif-icon">&#128197;</div><div><div class="notif-text">Timeline updated</div><div class="notif-time">1 hour ago</div></div></div>
+<div class="notif-item"><div class="notif-icon">&#128276;</div><div><div class="notif-text">Tomorrow's schedule change</div><div class="notif-time">3 hours ago</div></div></div>
+<div class="notif-item"><div class="notif-icon">&#128161;</div><div><div class="notif-text">New template available</div><div class="notif-time">1 day ago</div></div></div>
+<div class="notif-item"><div class="notif-icon">&#128272;</div><div><div class="notif-text">Profile updated</div><div class="notif-time">2 days ago</div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ADMIN -->
+<section class="page-section" id="sec-admin">
+<div class="admin-wrap">
+<div class="admin-sidebar">
+<h3>&#127970; Admin</h3>
+<ul>
+<li class="active" data-admin="dashboard">&#128200; Dashboard</li>
+<li data-admin="users">&#128101; Users</li>
+<li data-admin="institutions">&#127970; Institutions</li>
+<li data-admin="perm">&#128272; Permits</li>
+</ul>
+</div>
+<div class="admin-main">
+<div class="admin-page active" id="admin-dashboard">
+<div class="admin-top">
+<h2>Dashboard</h2>
+<button class="biz-btn biz-btn-primary" onclick="openModal()">Register Institution</button>
+</div>
+<div class="stats-grid">
+<div class="admin-stat">
+<div class="label">Total Users</div>
+<div class="value">2,847</div>
+<div class="change up">&#9650; 12% from last month</div>
+</div>
+<div class="admin-stat">
+<div class="label">Records This Month</div>
+<div class="value">3,421</div>
+<div class="change up">&#9650; 8% from last month</div>
+</div>
+<div class="admin-stat">
+<div class="label">Active Institutions</div>
+<div class="value">48</div>
+<div class="change up">&#9650; 2 new</div>
+</div>
+<div class="admin-stat">
+<div class="label">Avg. Response Time</div>
+<div class="value">2.3h</div>
+<div class="change down">&#8595; 15% improvement</div>
+</div>
+</div>
+<div class="charts-row">
+<div class="chart-card">
+<h3>Monthly Records</h3>
+<div class="bar-chart">
+<div class="bar" style="height:45%"><div class="bar-val">120</div><div class="bar-label">Jan</div></div>
+<div class="bar" style="height:55%"><div class="bar-val">148</div><div class="bar-label">Feb</div></div>
+<div class="bar" style="height:65%"><div class="bar-val">175</div><div class="bar-label">Mar</div></div>
+<div class="bar" style="height:50%"><div class="bar-val">135</div><div class="bar-label">Apr</div></div>
+<div class="bar" style="height:80%"><div class="bar-val">216</div><div class="bar-label">May</div></div>
+<div class="bar" style="height:90%"><div class="bar-val">243</div><div class="bar-label">Jun</div></div>
+</div>
+</div>
+<div class="chart-card">
+<h3>Activity Distribution</h3>
+<div class="pie-chart"></div>
+<div class="pie-legend">
+<div class="legend-item"><div class="legend-dot" style="background:#4A5FC1"></div> Daily 35%</div>
+<div class="legend-item"><div class="legend-dot" style="background:#5B8DEF"></div> Education 20%</div>
+<div class="legend-item"><div class="legend-dot" style="background:#8B7EC8"></div> Medical 20%</div>
+<div class="legend-item"><div class="legend-dot" style="background:#E8645A"></div> Work 15%</div>
+<div class="legend-item"><div class="legend-dot" style="background:#B5B8CC"></div> Other 10%</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="admin-page" id="admin-users">
+<div class="admin-top"><h2>User Management</h2></div>
+<div class="filter-row">
+<button class="filter-btn active">All</button>
+<button class="filter-btn">Guardians</button>
+<button class="filter-btn">Social Workers</button>
+<button class="filter-btn">Special Teachers</button>
+<button class="filter-btn">Support Staff</button>
+</div>
+<div class="biz-card">
+<table class="biz-table">
+<thead><tr><th>Name</th><th>Role</th><th>Institution</th><th>Status</th><th>Joined</th></tr></thead>
+<tbody>
+<tr><td>Kim Ji-won</td><td><span class="badge badge-blue">Guardian</span></td><td>LifeNest Center</td><td><span class="badge badge-ok">Active</span></td><td>2025-03-15</td></tr>
+<tr><td>Lee Sang-hwa</td><td><span class="badge badge-purple">Social Worker</span></td><td>Hope Foundation</td><td><span class="badge badge-ok">Active</span></td><td>2025-06-20</td></tr>
+<tr><td>Park Su-jin</td><td><span class="badge badge-blue">Special Teacher</span></td><td>Sunshine Academy</td><td><span class="badge badge-ok">Active</span></td><td>2025-01-08</td></tr>
+<tr><td>Choi Young-hee</td><td><span class="badge badge-purple">Support Staff</span></td><td>LifeNest Center</td><td><span class="badge badge-ok">Active</span></td><td>2025-09-01</td></tr>
+<tr><td>Yoon Min-soo</td><td><span class="badge badge-blue">Guardian</span></td><td>Hope Foundation</td><td><span class="badge badge-warn">Inactive</span></td><td>2025-11-12</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="admin-page" id="admin-institutions">
+<div class="admin-top"><h2>Institution Management</h2></div>
+<div class="biz-card">
+<table class="institution-table">
+<thead><tr><th>Name</th><th>Type</th><th>Users</th><th>Records</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody>
+<tr><td>LifeNest Center</td><td>Day service</td><td>342</td><td>1,240</td><td><span class="badge badge-ok">Active</span></td><td><button class="filter-btn" style="padding:4px 12px;font-size:11px">Edit</button></td></tr>
+<tr><td>Hope Foundation</td><td>Residential</td><td>256</td><td>896</td><td><span class="badge badge-ok">Active</span></td><td><button class="filter-btn" style="padding:4px 12px;font-size:11px">Edit</button></td></tr>
+<tr><td>Sunshine Academy</td><td>Education</td><td>189</td><td>634</td><td><span class="badge badge-ok">Active</span></td><td><button class="filter-btn" style="padding:4px 12px;font-size:11px">Edit</button></td></tr>
+<tr><td>Bright Future</td><td>Work training</td><td>124</td><td>412</td><td><span class="badge badge-ok">Active</span></td><td><button class="filter-btn" style="padding:4px 12px;font-size:11px">Edit</button></td></tr>
+<tr><td>New Dawn</td><td>Day service</td><td>67</td><td>158</td><td><span class="badge badge-warn">Review</span></td><td><button class="filter-btn active" style="padding:4px 12px;font-size:11px">Review</button></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="admin-page" id="admin-permit">
+<div class="admin-top"><h2>Permission Transfer</h2></div>
+<div class="biz-card">
+<h3 style="margin-bottom:16px;font-size:15px;font-weight:600">Current Permission Flow</h3>
+<div class="perm-flow">
+<div class="perm-card"><h4>Guardian</h4><p>Kim Ji-won</p><p>Role: Primary</p></div>
+<div class="perm-arrow">&#8594;</div>
+<div class="perm-card"><h4>Social Worker</h4><p>Lee Sang-hwa</p><p>Role: Reviewer</p></div>
+<div class="perm-arrow">&#8594;</div>
+<div class="perm-card"><h4>Support Staff</h4><p>Choi Young-hee</p><p>Role: Recorder</p></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>Change From</label><select><option>Guardian</option><option>Social Worker</option><option>Support Staff</option></select></div>
+<div class="form-group"><label>Change To</label><select><option>Guardian</option><option>Social Worker</option><option>Support Staff</option></select></div>
+</div>
+<button class="biz-btn biz-btn-primary" onclick="showToast('Permission updated successfully.','success')">Update Permissions</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+<div class="modal-box">
+<button class="modal-close" onclick="closeModal()">&#10005;</button>
+<h2>Register Institution</h2>
+<div class="form-group"><label>Institution Name</label><input type="text" placeholder="Enter institution name"></div>
+<div class="form-row">
+<div class="form-group"><label>Type</label><select><option>Day service</option><option>Residential</option><option>Education</option><option>Work training</option></select></div>
+<div class="form-group"><label>Contact</label><input type="text" placeholder="Phone number"></div>
+</div>
+<div class="form-group"><label>Address</label><input type="text" placeholder="Enter address"></div>
+<div style="display:flex;gap:12px;justify-content:flex-end;margin-top:24px">
+<button class="filter-btn" onclick="closeModal()">Cancel</button>
+<button class="biz-btn biz-btn-primary" onclick="closeModal();showToast('Institution registered.','success')">Register</button>
+</div>
+</div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toast-container"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+// Tab switching
+var tabBtns = document.querySelectorAll('.tab-btn');
+for (var i = 0; i < tabBtns.length; i++) {
+  tabBtns[i].addEventListener('click', function(e) {
+    e.preventDefault();
+    for (var j = 0; j < tabBtns.length; j++) {
+      tabBtns[j].classList.remove('active');
+    }
+    this.classList.add('active');
+    var sections = document.querySelectorAll('.page-section');
+    for (var k = 0; k < sections.length; k++) {
+      sections[k].classList.remove('active');
+    }
+    var tabId = this.getAttribute('data-tab');
+    var target = document.getElementById('sec-' + tabId);
+    if (target) target.classList.add('active');
+    window.scrollTo(0, 0);
+  });
+}
+
+// Business sidebar
+document.querySelectorAll('.biz-sidebar li').forEach(li => {
+li.addEventListener('click', function() {
+document.querySelectorAll('.biz-sidebar li').forEach(l => l.classList.remove('active'));
+this.classList.add('active');
+const bizId = this.getAttribute('data-biz');
+document.querySelectorAll('.biz-page').forEach(p => p.classList.remove('active'));
+document.getElementById('biz-' + bizId).classList.add('active');
+});
+});
+
+// Business role buttons
+document.querySelectorAll('.biz-role-btn').forEach(btn => {
+btn.addEventListener('click', function() {
+document.querySelectorAll('.biz-role-btn').forEach(b => b.classList.remove('active'));
+this.classList.add('active');
+});
+});
+
+// Template selection
+function selectTemplate(el) {
+document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
+el.classList.add('selected');
+}
+
+// Admin sidebar
+document.querySelectorAll('.admin-sidebar li').forEach(li => {
+li.addEventListener('click', function() {
+document.querySelectorAll('.admin-sidebar li').forEach(l => l.classList.remove('active'));
+this.classList.add('active');
+const adminId = this.getAttribute('data-admin');
+document.querySelectorAll('.admin-page').forEach(p => p.classList.remove('active'));
+document.getElementById('admin-' + adminId).classList.add('active');
+});
+});
+
+// Filter buttons
+document.querySelectorAll('.filter-row').forEach(row => {
+row.querySelectorAll('.filter-btn').forEach(btn => {
+btn.addEventListener('click', function() {
+row.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+this.classList.add('active');
+});
+});
+});
+
+// Modal
+function openModal() {
+document.getElementById('modal-overlay').classList.add('show');
+}
+function closeModal() {
+document.getElementById('modal-overlay').classList.remove('show');
+}
+document.getElementById('modal-overlay').addEventListener('click', function(e) {
+if (e.target === this) closeModal();
+});
+
+// Toast notifications
+function showToast(message, type) {
+type = type || 'info';
+var container = document.getElementById('toast-container');
+var toast = document.createElement('div');
+toast.className = 'toast toast-' + type;
+toast.textContent = message;
+container.appendChild(toast);
+setTimeout(function() {
+toast.style.opacity = '0';
+toast.style.transform = 'translateX(100%)';
+toast.style.transition = 'all .3s';
+setTimeout(function() { toast.remove(); }, 300);
+}, 3000);
+}
+
+// Keyboard support
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape') closeModal();
+});
+
+
+// Workflow tab switching
+document.querySelectorAll('.wf-cat-btn').forEach(btn => {
+btn.addEventListener('click', function() {
+document.querySelectorAll('.wf-cat-btn').forEach(b => b.classList.remove('active'));
+this.classList.add('active');
+document.querySelectorAll('.wf-cat').forEach(c => c.classList.remove('active'));
+document.querySelectorAll('.wf-cat').forEach(c => c.style.display = 'none');
+const catId = 'wf-' + this.getAttribute('data-cat');
+const catEl = document.getElementById(catId);
+if (catEl) { catEl.classList.add('active'); catEl.style.display = 'block'; }
+});
+});
+// Force update initial active state
+var activeSection = document.querySelector('.page-section.active');
+if (!activeSection) {
+  // If no active section, activate the first one
+  var firstSection = document.querySelector('#sec-landing');
+  if (firstSection) firstSection.classList.add('active');
+}
+var activeBtn = document.querySelector('.tab-btn.active');
+if (!activeBtn) {
+  var firstBtn = document.querySelector('[data-tab="landing"]');
+  if (firstBtn) firstBtn.classList.add('active');
+}
+});
+</script>
+
+
+<!-- WORKFLOW PAGE -->
+<section class="page-section" id="sec-workflow">
+<div style="max-width:1200px;margin:0 auto;padding:40px 24px">
+<h2 style="font-size:28px;font-weight:800;text-align:center;margin-bottom:12px;color:#1A1B2E">LifeLog 업무별/생애주기별/사용자별 워크플로우</h2>
+<p style="text-align:center;color:#5C5F82;font-size:14px;margin-bottom:40px">관심 있는 워크플로우를 선택하면 상세 과정을 시각적으로 확인할 수 있습니다.</p>
+
+<div class="wf-cat-tabs">
+<button class="wf-cat-btn active" data-cat="persona"><span style="margin-right:4px">&#128101;</span> 역할별</button>
+<button class="wf-cat-btn" data-cat="lifecycle"><span style="margin-right:4px">&#128203;</span> 생애주기별</button>
+<button class="wf-cat-btn" data-cat="business"><span style="margin-right:4px">&#128188;</span> 업무별</button>
+<button class="wf-cat-btn" data-cat="permission"><span style="margin-right:4px">&#128272;</span> 권한이양</button>
+<button class="wf-cat-btn" data-cat="transfer"><span style="margin-right:4px">&#128205;</span> 기관간이전</button>
+<button class="wf-cat-btn" data-cat="state"><span style="margin-right:4px">&#9881;</span> 상태전이</button>
+</div>
+
+<div class="wf-cat active" id="wf-persona">
+<div class="wf-grid">
+<div class="wf-card">
+<div class="wf-card-header" style="background:linear-gradient(135deg,#4A5FC1,#5B8DEF)"><div style="font-size:20px">&#128374;</div><div><div style="font-size:15px;font-weight:700">보호자</div><div style="font-size:11px;opacity:.8">Guardian Workflow</div></div></div>
+<div class="wf-card-body"><div class="wf-steps"><div class="wf-step"><div class="wf-step-num">①</div><div class="wf-step-text"><div style="font-weight:600">회원가입</div><div style="font-size:11px;color:#5C5F82">이메일 + 역할: 보호자 선택</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">②</div><div class="wf-step-text"><div style="font-weight:600">당사자추가</div><div style="font-size:11px;color:#5C5F82">기존연결 또는 신규등록, 생년월일 장애등급</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">③</div><div class="wf-step-text"><div style="font-weight:600">기록자초대</div><div style="font-size:11px;color:#5C5F82">사회복지사/특수교사/지원인 이메일 초대, 역할 및 범위지정</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">④</div><div class="wf-step-text"><div style="font-weight:600">기록작성/확인</div><div style="font-size:11px;color:#5C5F82">템플릿선택->작성->저장/출력, 전문인력작성->확인->수정요청</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">⑤</div><div class="wf-step-text"><div style="font-weight:600">PDF생성/다운로드</div><div style="font-size:11px;color:#5C5F82">단일/복수선택->비동기생성->완료->다운로드/공유</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">⑥</div><div class="wf-step-text"><div style="font-weight:600">권한관리</div><div style="font-size:11px;color:#5C5F82">공개범위설정/권한수정/만18세이양알림확인</div></div></div></div></div>
+</div>
+
+<div class="wf-card">
+<div class="wf-card-header" style="background:linear-gradient(135deg,#E8645A,#FF8A7C)"><div style="font-size:20px">&#129310;</div><div><div style="font-size:15px;font-weight:700">당사자 (성인)</div><div style="font-size:11px;opacity:.8">Adult Workflow</div></div></div>
+<div class="wf-card-body"><div class="wf-steps"><div class="wf-step"><div class="wf-step-num">①</div><div class="wf-step-text"><div style="font-weight:600">계정생성</div><div style="font-size:11px;color:#5C5F82">이메일+역할:당사자->자동로그인</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">②</div><div class="wf-step-text"><div style="font-weight:600">Easy Mode진입</div><div style="font-size:11px;color:#5C5F82">Large Text, Large Button, Simple Icon</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">③</div><div class="wf-step-text"><div style="font-weight:600">기록열람</div><div style="font-size:11px;color:#5C5F82">최근기록카드뷰, 생애주기타임라인, 기록자별필터</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">④</div><div class="wf-step-text"><div style="font-weight:600">직접기록작성</div><div style="font-size:11px;color:#5C5F82">자기소개서, 선호/관심사, 지원서비스만족도조사</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">⑤</div><div class="wf-step-text"><div style="font-weight:600">알림확인</div><div style="font-size:11px;color:#5C5F82">새기록추가,예정된일정,초대전락요청</div></div></div></div></div>
+</div>
+
+<div class="wf-card">
+<div class="wf-card-header" style="background:linear-gradient(135deg,#8B7EC8,#B5A8E8)"><div style="font-size:20px">&#128100;</div><div><div style="font-size:15px;font-weight:700">사회복지사</div><div style="font-size:11px;opacity:.8">Social Worker Workflow</div></div></div>
+<div class="wf-card-body"><div class="wf-steps"><div class="wf-step"><div class="wf-step-num">①</div><div class="wf-step-text"><div style="font-weight:600">기관코드인증</div><div style="font-size:11px;color:#5C5F82">소속기관명검색->코드요청(관리자승인)->인증완료</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">②</div><div class="wf-step-text"><div style="font-weight:600">케이스관리</div><div style="font-size:11px;color:#5C5F82">담당케이스목록:이름,생애주기,기록수,마지막활동</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">③</div><div class="wf-step-text"><div style="font-weight:600">기록작성</div><div style="font-size:11px;color:#5C5F82">템플릿선택(생애주기+카테고리)->동적폼렌더링->파일첨부->저장</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">④</div><div class="wf-step-text"><div style="font-weight:600">기록자협업</div><div style="font-size:11px;color:#5C5F82">보호자초대,특수교사/지원인공유,기록수정이력추적</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">⑤</div><div class="wf-step-text"><div style="font-weight:600">서비스연계</div><div style="font-size:11px;color:#5C5F82">현재서비스목록->다음서비스계획->기록</div></div></div></div></div>
+</div>
+
+<div class="wf-card">
+<div class="wf-card-header" style="background:linear-gradient(135deg,#5B8DEF,#8BB4F7)"><div style="font-size:20px">&#127894;</div><div><div style="font-size:15px;font-weight:700">특수교사</div><div style="font-size:11px;opacity:.8">Special Teacher Workflow</div></div></div>
+<div class="wf-card-body"><div class="wf-steps"><div class="wf-step"><div class="wf-step-num">①</div><div class="wf-step-text"><div style="font-weight:600">학교인증</div><div style="font-size:11px;color:#5C5F82">학교이름 및 기관코드검색</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">②</div><div class="wf-step-text"><div style="font-weight:600">IEP작성</div><div style="font-size:11px;color:#5C5F82">IEP템플릿선택->목표설정(장기/단기)->평가작성->보호자/사회복지사와공유</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">③</div><div class="wf-step-text"><div style="font-weight:600">졸업후기록관리</div><div style="font-size:11px;color:#5C5F82">졸업생:일정기간조회가능->이후열람전용</div></div></div></div></div>
+</div>
+
+<div class="wf-card">
+<div class="wf-card-header" style="background:linear-gradient(135deg,#A8D342,#7CB332)"><div style="font-size:20px">&#129321;</div><div><div style="font-size:15px;font-weight:700">활동지지사</div><div style="font-size:11px;opacity:.8">Support Worker Workflow</div></div></div>
+<div class="wf-card-body"><div class="wf-steps"><div class="wf-step"><div class="wf-step-num">①</div><div class="wf-step-text"><div style="font-weight:600">로그인</div><div style="font-size:11px;color:#5C5F82">이메일 + 비밀번호</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">②</div><div class="wf-step-text"><div style="font-weight:600">오늘의지원일지작성</div><div style="font-size:11px;color:#5C5F82">대상자선택->지원내용(이동/식사/개인위생/취미)->특이사항->사진첨부</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">③</div><div class="wf-step-text"><div style="font-weight:600">주간리포트</div><div style="font-size:11px;color:#5C5F82">작성된일지자동집계->주간요약확인</div></div></div></div></div>
+</div>
+</div>
+</div>
+
+<div class="wf-cat" id="wf-lifecycle" style="display:none">
+<div class="wf-grid">
+<div class="wf-card"><div class="wf-card-header" style="background:linear-gradient(135deg,#5B8DEF,#8BB4F7);color:#fff"><div style="font-size:15px;font-weight:700">영유아 (0-5세)</div><div style="font-size:11px;opacity:.8">건강검진·발달검진·조기교육</div></div><div class="wf-card-body"><div class="wf-steps"><div class="wf-step"><div class="wf-step-num">①</div><div class="wf-step-text"><div style="font-weight:600">출생등록</div><div style="font-size:11px;color:#5C5F82">이름,생년월일,성별,진단정보</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">②</div><div class="wf-step-text"><div style="font-weight:600">발달검진</div><div style="font-size:11px;color:#5C5F82">K-DST,PEDI,GMs 등->매6개월간격</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">③</div><div class="wf-step-text"><div style="font-weight:600">조기교육</div><div style="font-size:11px;color:#5C5F82">시설등록·프로그램참여·지도교사기록->특수교사협업</div></div></div></div></div>
+</div>
+<div class="wf-card"><div class="wf-card-header" style="background:linear-gradient(135deg,#8B7EC8,#B5A8E8);color:#fff"><div style="font-size:15px;font-weight:700">유아·초등 (6-11세)</div><div style="font-size:11px;opacity:.8">특수교육IEP·생활기록</div></div><div class="wf-card-body"><div class="wf-steps"><div class="wf-step"><div class="wf-step-num">①</div><div class="wf-step-text"><div style="font-weight:600">IEP목표설정</div><div style="font-size:11px;color:#5C5F82">장기목표(1년)·단기목표(학기별)·평가기준정의</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">②</div><div class="wf-step-text"><div style="font-weight:600">실행및기록</div><div style="font-size:11px;color:#5C5F82">학업성취도·사회기술·행동관찰기록</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">③</div><div class="wf-step-text"><div style="font-weight:600">보호자공유</div><div style="font-size:11px;color:#5C5F82">가정에서이어지는지원기록</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">④</div><div class="wf-step-text"><div style="font-weight:600">졸업전환</div><div style="font-size:11px;color:#5C5F82">중·고등학교전환시기록이전</div></div></div></div></div>
+</div>
+<div class="wf-card"><div class="wf-card-header" style="background:linear-gradient(135deg,#E8645A,#FF8A7C);color:#fff"><div style="font-size:15px;font-weight:700">청소년 (12-17세)</div><div style="font-size:11px;opacity:.8">진로상담·자립준비·사회기술</div></div><div class="wf-card-body"><div class="wf-steps"><div class="wf-step"><div class="wf-step-num">①</div><div class="wf-step-text"><div style="font-weight:600">진로탐색</div><div style="font-size:11px;color:#5C5F82">관심사조사·진로상담·체험활동기록</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">②</div><div class="wf-step-text"><div style="font-weight:600">자립준비</div><div style="font-size:11px;color:#5C5F82">일상기술훈련·금융교육·주거훈련</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">③</div><div class="wf-step-text"><div style="font-weight:600">사회기술향상</div><div style="font-size:11px;color:#5C5F82">대인관계·감정조절·위기대처기록</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">④</div><div class="wf-step-text"><div style="font-weight:600">만18세준비</div><div style="font-size:11px;color:#5C5F82">권리가양안내(D-90/D-30/D-7)·후견인범위파악·이양준비대화</div></div></div></div></div>
+</div>
+<div class="wf-card"><div class="wf-card-header" style="background:linear-gradient(135deg,#4A5FC1,#344594);color:#fff"><div style="font-size:15px;font-weight:700">청년 (18-29세)</div><div style="font-size:11px;opacity:.8">직업훈련·자립지원·사회참여·<strong>권리가양</strong></div></div><div class="wf-card-body"><div class="wf-steps"><div class="wf-step"><div class="wf-step-num">①</div><div class="wf-step-text"><div style="font-weight:600">만18세자동전환</div><div style="font-size:11px;color:#5C5F82">D-90,D-30,D-7알림->이양프로세스시작</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">②</div><div class="wf-step-text"><div style="font-weight:600">권리가양</div><div style="font-size:11px;color:#5C5F82">동의서서명->PASS인증->보호자쓰기->열람전용->당사자에게모든권리</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">③</div><div class="wf-step-text"><div style="font-weight:600">당사자주도기록</div><div style="font-size:11px;color:#5C5F82">직접기록작성·기록자관리·공개범위설정</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">④</div><div class="wf-step-text"><div style="font-weight:600">직업/사회참여</div><div style="font-size:11px;color:#5C5F82">직업훈련·직장적응·지역사회활동기록</div></div></div></div></div>
+</div>
+<div class="wf-card"><div class="wf-card-header" style="background:linear-gradient(135deg,#A8D342,#7CB332);color:#fff"><div style="font-size:15px;font-weight:700">성인 (30-59세)</div><div style="font-size:11px;opacity:.8">직업재활·지역사회활동·건강관리</div></div><div class="wf-card-body"><div class="wf-steps"><div class="wf-step"><div class="wf-step-num">①</div><div class="wf-step-text"><div style="font-weight:600">직업재활</div><div style="font-size:11px;color:#5C5F82">직종기록·성과기록·퇴사/이직기록</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">②</div><div class="wf-step-text"><div style="font-weight:600">지역사회활동</div><div style="font-size:11px;color:#5C5F82">자원연결·그룹활동·사회참여기록</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">③</div><div class="wf-step-text"><div style="font-weight:600">건강관리</div><div style="font-size:11px;color:#5C5F82">정기검진,치료,약기록</div></div></div></div></div>
+</div>
+<div class="wf-card"><div class="wf-card-header" style="background:linear-gradient(135deg,#9295AD,#B5B8CC);color:#fff"><div style="font-size:15px;font-weight:700">노년 (60세+)</div><div style="font-size:11px;opacity:.8">돌봄서비스·여가문화·마지막삶의기록</div></div><div class="wf-card-body"><div class="wf-steps"><div class="wf-step"><div class="wf-step-num">①</div><div class="wf-step-text"><div style="font-weight:600">돌봄서비스</div><div style="font-size:11px;color:#5C5F82">일상지원·방문간호·요양서비스기록</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">②</div><div class="wf-step-text"><div style="font-weight:600">여가·문화</div><div style="font-size:11px;color:#5C5F82">취미활동·문화참여·사회관계네트워크</div></div><div class="wf-step-arrow"><span style="color:#D4D6E5">&#8594;</span></div></div><div class="wf-step"><div class="wf-step-num">③</div><div class="wf-step-text"><div style="font-weight:600">마지막삶의기록</div><div style="font-size:11px;color:#5C5F82">유언·장례사전협의·재산관리기록·가족메시지</div></div></div></div></div>
+</div>
+</div>
+</div>
+
+<div class="wf-cat" id="wf-business" style="display:none">
+<div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(42,90,152,.08)">
+<table style="width:100%;border-collapse:collapse"><tr style="background:#f5f6fa"><th style="padding:12px;text-align:left;font-size:13px;color:#5C5F82;font-weight:600;border-bottom:2px solid #EBECF3"></th><th style="padding:12px;text-align:left;font-size:13px;color:#5C5F82;font-weight:600;border-bottom:2px solid #EBECF3">업무</th><th style="padding:12px;text-align:left;font-size:13px;color:#5C5F82;font-weight:600;border-bottom:2px solid #EBECF3">주요단계</th><th style="padding:12px;text-align:left;font-size:13px;color:#5C5F82;font-weight:600;border-bottom:2px solid #EBECF3">우선순위</th></tr><tr><td style="padding:12px;font-size:24px">&#128203;</td><td style="padding:12px;font-weight:600">템플릿 기록작성</td><td style="padding:12px;font-size:12px">템플릿선택(25종)->동적폼렌더링->필수검증->PDF생성</td><td style="padding:12px"><span class="badge badge-ok" style="background:rgba(168,211,66,.15);color:#5a7e1e">P0</span></td></tr><tr><td style="padding:12px;font-size:24px">&#128101;</td><td style="padding:12px;font-weight:600">기록자관리</td><td style="padding:12px;font-size:12px">초대이메일->수락/거절->권한설정->권한회수</td><td style="padding:12px"><span class="badge badge-ok" style="background:rgba(168,211,66,.15);color:#5a7e1e">P1</span></td></tr><tr><td style="padding:12px;font-size:24px">&#128196;</td><td style="padding:12px;font-weight:600">PDF생성/출력</td><td style="padding:12px;font-size:12px">기록선택->PDF옵션(헤더/페이지네이션/비번설정)->비동기생성->다운로드</td><td style="padding:12px"><span class="badge badge-blue" style="background:rgba(91,141,239,.12);color:#4A5FC1">P1</span></td></tr><tr><td style="padding:12px;font-size:24px">&#128269;</td><td style="padding:12px;font-weight:600">기록검색/필터</td><td style="padding:12px;font-size:12px">키워드검색(JSONB+GIN)->생애주기/카테고리/날짜/파일/작성자/공개범위</td><td style="padding:12px"><span class="badge badge-ok" style="background:rgba(168,211,66,.15);color:#5a7e1e">P0</span></td></tr><tr><td style="padding:12px;font-size:24px">&#128276;</td><td style="padding:12px;font-weight:600">알림시스템</td><td style="padding:12px;font-size:12px">계정인증·비밀번호해제·초대수락·권리가양(D-90/30/7)·시스템공지</td><td style="padding:12px"><span class="badge badge-ok" style="background:rgba(168,211,66,.15);color:#5a7e1e">P0</span></td></tr></table>
+</div>
+</div>
+
+<div class="wf-cat" id="wf-permission" style="display:none">
+<div style="background:#fff;border-radius:16px;padding:32px;box-shadow:0 1px 3px rgba(42,90,152,.08);max-width:900px;margin:0 auto">
+<h3 style="font-size:18px;font-weight:700;margin-bottom:20px;text-align:center;color:#1A1B2E">권한 이양 상태 전이도</h3>
+<div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px;margin-bottom:32px">
+<div style="background:#D4D6E5;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:600">NEW_BORN (등록완료)</div><div style="font-size:16px;color:#9295AD">&#8594;</div><div style="background:#8BB4F7;color:#fff;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:600">TRANS_PLANNED (D-90)</div><div style="font-size:16px;color:#9295AD">&#8594;</div><div style="background:#8BB4F7;color:#fff;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:600">TRANS_REMINDER (D-30)</div><div style="font-size:16px;color:#9295AD">&#8594;</div><div style="background:#8BB4F7;color:#fff;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:600">TRANS_NOTIFIED (D-7)</div><div style="font-size:16px;color:#9295AD">&#8594;</div><div style="background:#4A5FC1;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:600">TRANS_IN_PROGRESS (이용시작)</div><div style="font-size:16px;color:#9295AD">&#8594;</div><div style="background:#A8D342;color:#1A1B2E;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:600">TRANS_VERIFIED (전자서명)</div><div style="font-size:16px;color:#9295AD">&#8594;</div><div style="background:#A8D342;color:#1A1B2E;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:600">TRANS_AUTHENTICATED (PASS인증)</div><div style="font-size:16px;color:#9295AD">&#8594;</div><div style="background:#2A7D4A;color:#fff;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:600">TRANS_COMPLETE (완료)</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:24px">
+<div style="background:#FFF5F5;border:1px solid #FFCDD2;border-radius:12px;padding:16px"><div style="font-size:12px;font-weight:700;color:#C62828;margin-bottom:8px">&#128683; 이양거부</div><div style="font-size:12px;color:#5C5F82">TRANSITION_REJECTED->보호자쓰기권한유지</div></div>
+<div style="background:#FFF8E1;border:1px solid #FFE082;border-radius:12px;padding:16px"><div style="font-size:12px;font-weight:700;color:#F57F17;margin-bottom:8px">&#128196; 법정후견인</div><div style="font-size:12px;color:#5C5F82">GUARDIAN_REGISTER->후견범위내에서만권한</div></div>
+<div style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:12px;padding:16px"><div style="font-size:12px;font-weight:700;color:#2E7D32;margin-bottom:8px">&#128101; 복수보호자</div><div style="font-size:12px;color:#5C5F82">모든보호자동의필요->동전달시에만전진</div></div>
+</div>
+</div>
+</div>
+
+<div class="wf-cat" id="wf-transfer" style="display:none">
+<div class="wf-grid" style="grid-template-columns:1fr 1fr">
+<div class="wf-card" style="background:#FFF5F5;border:1px solid #FFCDD2"><div class="wf-card-header" style="background:#C62828;color:#fff"><div style="font-size:15px;font-weight:700">BEFORE LifeLog</div></div><div class="wf-card-body"><div style="text-align:center;margin:20px 0"><div style="background:#FFCDD2;padding:10px;border-radius:8px;font-size:12px;color:#C62828;margin-bottom:8px;font-weight:600">특수학교</div><div style="font-size:20px;color:#9295AD">&#8594;</div><div style="background:#FFCDD2;padding:10px;border-radius:8px;font-size:12px;color:#C62828;margin-bottom:8px;font-weight:600">복지관</div><div style="font-size:20px;color:#9295AD">&#8594;</div><div style="background:#FFCDD2;padding:10px;border-radius:8px;font-size:12px;color:#C62828;font-weight:600">직업재활센터</div></div><div style="background:rgba(198,40,40,.08);border-radius:8px;padding:12px;font-size:12px"><div style="font-weight:700;color:#C62828;margin-bottom:4px">문제점</div><div>• 기록이 없다!->처음부터다시평가</div><div>• 20~30종서류반복제출</div><div>• 3~5시간/기관 낭비</div></div></div></div>
+<div class="wf-card" style="background:#E8F5E9;border:1px solid #A5D6A7"><div class="wf-card-header" style="background:#2E7D32;color:#fff"><div style="font-size:15px;font-weight:700">AFTER LifeLog</div></div><div class="wf-card-body"><div style="text-align:center;margin:20px 0"><div style="background:#A5D6A7;padding:10px;border-radius:8px;font-size:12px;color:#2E7D32;margin-bottom:8px;font-weight:600">특수학교<br><span style="font-weight:400;font-size:10px">LifeLog 기록</span></div><div style="font-size:20px;color:#9295AD">&#8594;</div><div style="background:#A5D6A7;padding:10px;border-radius:8px;font-size:12px;color:#2E7D32;margin-bottom:8px;font-weight:600">복지관<br><span style="font-weight:400;font-size:10px">LifeLog 공유</span></div><div style="font-size:20px;color:#9295AD">&#8594;</div><div style="background:#A5D6A7;padding:10px;border-radius:8px;font-size:12px;color:#2E7D32;font-weight:600">직업재활센터<br><span style="font-weight:400;font-size:10px">LifeLog 연장</span></div></div><div style="background:rgba(46,125,50,.08);border-radius:8px;padding:12px;font-size:12px"><div style="font-weight:700;color:#2E7D32;margin-bottom:4px">개선점</div><div>• 모든기록이하나로연결!</div><div>• LifeLog 기록 자동동기화</div><div>• 10~15분/기관 절감 (80%+)</div></div></div></div>
+</div>
+</div>
+
+<div class="wf-cat" id="wf-state" style="display:none">
+<h3 style="font-size:18px;font-weight:700;margin-bottom:20px;text-align:center;color:#1A1B2E">시스템 상태 전이도</h3>
+<div class="wf-grid" style="grid-template-columns:1fr 1fr">
+<div class="wf-card"><div class="wf-card-header" style="background:linear-gradient(135deg,#4A5FC1,#5B8DEF)"><div style="font-size:15px;font-weight:700">당사자 상태 전이도</div></div><div class="wf-card-body"><div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:16px"><div style="background:#D4D6E5;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">NEW_BORN</div><div style="font-size:12px;color:#9295AD">&#8594;</div><div style="background:#8BB4F7;color:#fff;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">TRANS_PLANNED</div><div style="font-size:12px;color:#9295AD">&#8594;</div><div style="background:#8BB4F7;color:#fff;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">TRANS_REMINDER</div><div style="font-size:12px;color:#9295AD">&#8594;</div><div style="background:#8BB4F7;color:#fff;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">TRANS_NOTIFIED</div><div style="font-size:12px;color:#9295AD">&#8594;</div><div style="background:#4A5FC1;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">TRANS_IN_PROGRESS</div><div style="font-size:12px;color:#9295AD">&#8594;</div><div style="background:#A8D342;color:#1A1B2E;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">TRANS_VERIFIED</div><div style="font-size:12px;color:#9295AD">&#8594;</div><div style="background:#2A7D4A;color:#fff;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">COMPLETE</div></div><div style="font-size:11px;color:#5C5F82"><div style="margin-bottom:8px"><strong style="color:#C62828">예외: TRANS_REJECTED</strong> — 이양거부시보호자쓰기유지</div><div style="margin-bottom:8px"><strong style="color:#F57F17">예외: GUARDIAN_OVERRIDE</strong> — 법정후견인등록후권한</div></div></div></div>
+<div class="wf-card"><div class="wf-card-header" style="background:linear-gradient(135deg,#8B7EC8,#B5A8E8)"><div style="font-size:15px;font-weight:700">기록 상태 전이도</div></div><div class="wf-card-body"><div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:16px"><div style="background:#D4D6E5;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">DRAFT</div><div style="font-size:12px;color:#9295AD">&#8594;</div><div style="background:#5B8DEF;color:#fff;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">SUBMITTED</div><div style="font-size:12px;color:#9295AD">&#8594;</div><div style="background:#8B7EC8;color:#fff;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">REVISED</div><div style="font-size:12px;color:#9295AD">&#8594;</div><div style="background:#A8D342;color:#1A1B2E;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">ARCHIVED</div><div style="font-size:12px;color:#9295AD">&#8594;</div><div style="background:#9295AD;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">SOFT_DELETE</div><div style="font-size:12px;color:#9295AD">&#8594;</div><div style="background:#C62828;color:#fff;padding:6px 10px;border-radius:16px;font-size:10px;font-weight:600">PERMANENT_DELETE</div></div><div style="font-size:11px;color:#5C5F82"><div style="margin-bottom:8px">DRAFT->SUBMITTED:확정저장</div><div style="margin-bottom:8px">SUBMITTED->REVISED:수정됨(이력생성)</div><div style="margin-bottom:8px">ARCHIVED->SOFT_DELETE:30일내복구가능</div></div></div></div>
+</div>
+</div>
+</section>
+
+</body>
+</html>

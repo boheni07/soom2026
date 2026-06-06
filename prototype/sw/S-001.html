@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — S-001 케이스 관리 대시보드</title>
+  <style>
+    :root{--indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;--sky:#5B8DEF;--sky-light:#8BB4F7;--purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;--n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;--n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;--n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;--r8:8px;--r10:10px;--r16:16px;--shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);--font:'Inter','Noto Sans KR',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}.top-bar a{color:#fff;text-decoration:none;font-size:14px}.top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}.top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}.badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}.btn-primary{background:var(--indigo);color:#fff}.btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700);}.btn-sm{padding:6px 12px;font-size:12px}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-8{gap:8px}.gap-12{gap:12px}
+    .text-sm{font-size:12px}.text-xs{font-size:11px}.text-muted{color:var(--n500)}.text-muted2{color:var(--n600)}
+    .badge-sm{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600}
+    .badge-sm-lime{background:rgba(168,211,66,.15);color:#5A8F2A}.badge-sm-coral{background:rgba(232,100,90,.1);color:var(--coral)}.badge-sm-purple{background:rgba(139,126,200,.1);color:var(--purple)}
+    .table{width:100%;border-collapse:collapse;margin-top:8px}.table th{text-align:left;padding:10px 12px;font-size:12px;font-weight:600;color:var(--n600);border-bottom:2px solid var(--n200);background:var(--n50)}.table td{padding:10px 12px;font-size:14px;border-bottom:1px solid var(--n100)}
+  </style>
+</head>
+<body>
+  <div class="top-bar"><a class="logo">LifeLog</a><a class="back-btn" href="../index.html">← 인덱스로</a><span class="badge">S-001</span></div>
+  <div class="page-content">
+    <div class="flex items-center justify-between" style="margin-bottom:24px;"><h2 style="font-size:18px;font-weight:700;">케이스 관리 대시보드</h2><span class="text-sm text-muted">사회복지사 박지민 · 부산발달장애인복지센터</span></div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;">
+      <div class="card" style="border-left:4px solid var(--indigo);"><div class="text-sm text-muted">Total Cases</div><div style="font-size:28px;font-weight:700;margin:4px 0;">28</div><div class="text-xs text-muted">총 케이스 수</div></div>
+      <div class="card" style="border-left:4px solid var(--sky);"><div class="text-sm text-muted">Active</div><div style="font-size:28px;font-weight:700;margin:4px 0;">22</div><div class="text-xs text-muted">활성 케이스</div></div>
+      <div class="card" style="border-left:4px solid var(--coral);"><div class="text-sm text-muted">Overdue</div><div style="font-size:28px;font-weight:700;margin:4px 0;">3</div><div class="text-xs text-muted">기한 초과</div></div>
+      <div class="card" style="border-left:4px solid var(--purple);"><div class="text-sm text-muted">Pending</div><div style="font-size:28px;font-weight:700;margin:4px 0;">3</div><div class="text-xs text-muted">승인 대기</div></div>
+    </div>
+
+    <div class="flex items-center justify-between" style="margin:24px 0 12px;"><h3 style="font-size:15px;font-weight:700;">작업 목록</h3></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px;">
+      <div class="card" style="border-left:4px solid var(--sky);"><div class="text-sm" style="font-size:13px;font-weight:600;">📋 팔로우업</div><div style="font-size:24px;font-weight:700;margin:4px 0;">5</div><p class="text-xs text-muted" style="font-size:12px;margin:0;">완료 대기 작업</p></div>
+      <div class="card" style="border-left:4px solid var(--purple);"><div class="text-sm" style="font-size:13px;font-weight:600;">✅ 승인 대기</div><div style="font-size:24px;font-weight:700;margin:4px 0;">3</div><p class="text-xs text-muted" style="font-size:12px;margin:0;">보호자 승인 필요</p></div>
+      <div class="card" style="border-left:4px solid var(--coral);"><div class="text-sm" style="font-size:13px;font-weight:600;">⏰ 리마인더</div><div style="font-size:24px;font-weight:700;margin:4px 0;">2</div><p class="text-xs text-muted" style="font-size:12px;margin:0;">기한 임박</p></div>
+    </div>
+
+    <div class="card" style="padding:0;"><table class="table"><thead><tr><th>케이스</th><th>당사자</th><th>라이프사이클</th><th>기록 건수</th><th>상태</th></tr></thead>
+      <tbody><tr><td><a href="S-002.html" style="font-size:14px;font-weight:600;color:var(--indigo);text-decoration:none;">2026-001</a></td><td>김사랑</td><td>교육/취업기</td><td>156</td><td><span class="badge-sm badge-sm-lime">활성</span></td></tr><tr><td><a href="S-002.html" style="font-size:14px;font-weight:600;color:var(--indigo);text-decoration:none;">2026-002</a></td><td>박지민</td><td>성인기</td><td>89</td><td><span class="badge-sm badge-sm-lime">활성</span></td></tr><tr><td><a href="S-002.html" style="font-size:14px;font-weight:600;color:var(--indigo);text-decoration:none;">2026-003</a></td><td>정수진</td><td>유아기</td><td>34</td><td><span class="badge-sm badge-sm-purple">준비중</span></td></tr><tr><td><a href="S-002.html" style="font-size:14px;font-weight:600;color:var(--indigo);text-decoration:none;">2026-004</a></td><td>최유나</td><td>학동기</td><td>12</td><td><span class="badge-sm badge-sm-coral">미완료</span></td></tr></tbody></table></div>
+  </div>
+</body>
+</html>

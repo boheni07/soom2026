@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — A-001 일일 기록 대시보드</title>
+  <style>
+    :root{--indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;--sky:#5B8DEF;--sky-light:#8BB4F7;--purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;--n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;--n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;--n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;--r8:8px;--r10:10px;--r12:12px;--r16:16px;--shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);--font:'Inter','Noto Sans KR',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}.top-bar a{color:#fff;text-decoration:none;font-size:14px}.top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}.top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}.badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}.btn-primary{background:var(--indigo);color:#fff}.btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700);}.btn-sm{padding:6px 12px;font-size:12px}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .flex{display:flex}.flex-cols{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-12{gap:12px}
+    .text-xs{font-size:11px}.text-sm{font-size:12px}.text-muted{color:var(--n500)}
+    .badge-sm{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600}
+    .badge-sm-lime{background:rgba(168,211,66,.15);color:#5A8F2A}.badge-sm-indigo{background:rgba(74,95,193,.1);color:var(--indigo)}.badge-sm-purple{background:rgba(139,126,200,.1);color:var(--purple)}
+  </style>
+</head>
+<body>
+  <div class="top-bar"><a class="logo">LifeLog</a><a class="back-btn" href="../index.html">← 인덱스로</a><span class="badge">A-001</span></div>
+  <div class="page-content">
+    <div class="flex items-center justify-between" style="margin-bottom:8px;"><div><h2 style="font-size:18px;font-weight:700;">📅 2026.01.15 (금)</h2><p class="text-muted" style="font-size:14px;">돌봄도우미 최유나의 일일 기록</p></div><div class="text-xs text-muted" style="font-size:12px;">38분 전 업데이트</div></div>
+    <div class="flex gap-12" style="display:flex;gap:12px;margin-bottom:24px;"><a href="A-001.html" class="btn btn-primary btn-sm" style="flex:1;justify-content:center;">📝 기록 시작</a><a href="A-001.html" class="btn btn-ghost btn-sm" style="flex:1;justify-content:center;">📷 사진 업로드</a><a href="A-003.html" class="btn btn-ghost btn-sm" style="flex:1;justify-content:center;">📊 주간 요약</a></div>
+    <h3 style="font-size:15px;font-weight:700;margin-bottom:12px;">오늘의 타임라인</h3>
+    <div style="border-left:3px solid var(--n200);margin-left:12px;padding-left:24px;"><div style="margin-bottom:16px;position:relative;"><div style="position:absolute;left:-27px;top:0;width:12px;height:12px;background:var(--lime);border-radius:50%;border:2px solid var(--white);"></div><div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><div class="text-sm" style="font-size:14px;font-weight:600;">09:00 — 출근 & 출석 확인</div><span class="badge-sm badge-sm-lime">완료</span></div><p class="text-xs text-muted" style="font-size:12px;margin-top:4px;">사랑님이 밝게 인사했어요. 건강 상태 양호.</p></div><div style="margin-bottom:16px;position:relative;"><div style="position:absolute;left:-27px;top:0;width:12px;height:12px;background:var(--indigo);border-radius:50%;border:2px solid var(--white);"></div><div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><div class="text-sm" style="font-size:14px;font-weight:600;">10:30 — 아침 식사</div><span class="badge-sm badge-sm-lime">완료</span></div><p class="text-xs text-muted" style="font-size:12px;margin-top:4px;">죽과 김치, 우유 섭취. 잘 먹었어요!</p></div><div style="margin-bottom:16px;position:relative;"><div style="position:absolute;left:-27px;top:0;width:12px;height:12px;background:var(--sky);border-radius:50%;border:2px solid var(--white);"></div><div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><div class="text-sm" style="font-size:14px;font-weight:600;">13:00 — 미술 수업 활동</div><span class="badge-sm badge-sm-indigo">진행중</span></div></div><div style="position:relative;"><div style="position:absolute;left:-27px;top:0;width:12px;height:12px;background:var(--n300);border-radius:50%;border:2px solid var(--white);"></div><div style="font-size:14px;font-weight:600;color:var(--n500);">15:00 — 오후 간식 (예정)</div><p class="text-xs text-muted" style="margin-top:4px;color:var(--n400);">아직 미작성</p></div></div>
+  </div>
+</body>
+</html>

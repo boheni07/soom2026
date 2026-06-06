@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — P-003 당사자 자기 기록</title>
+  <style>
+    :root{--indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;--sky:#5B8DEF;--sky-light:#8BB4F7;--purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;--n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;--n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;--n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;--r8:8px;--r10:10px;--r16:16px;--r24:24px;--shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-l:0 4px 16px rgba(42,90,152,.12);--font:'Inter','Noto Sans KR',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh;font-size:18px}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}.top-bar a{color:#fff;text-decoration:none;font-size:16px}.top-bar .logo{font-weight:700;font-size:20px;margin-right:20px}.top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:8px 16px;border-radius:var(--r10);font-size:16px;cursor:pointer;font-family:var(--font)}.badge{background:var(--lime);color:var(--n900);padding:4px 12px;border-radius:999px;font-size:13px;margin-left:auto;font-weight:700}
+    .page-content{padding:20px;max-width:600px;margin:0 auto;padding-bottom:80px}
+    .card{background:#fff;border-radius:var(--r16);padding:24px;box-shadow:var(--shadow-s);margin-bottom:16px}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-8{gap:8px}.gap-12{gap:12px}
+    .text-sm{font-size:14px}.text-xs{font-size:12px}.text-muted{color:var(--n500)}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:12px 24px;border:none;border-radius:var(--r10);font-size:16px;font-weight:700;cursor:pointer;font-family:var(--font);transition:opacity .2s}
+    .btn-primary{background:var(--indigo);color:#fff}.btn-primary:hover{opacity:.9}
+    .btn-success{background:var(--lime);color:var(--n900)}
+    textarea{width:100%;min-height:120px;resize:vertical;padding:16px;border:1px solid var(--n200);border-radius:var(--r10);font-size:18px;font-family:var(--font);background:#fff;line-height:1.6}
+    textarea:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(74,95,193,.1)}
+    .chip{display:inline-block;padding:10px 18px;background:#fff;border:2px solid var(--n200);border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s}
+    .chip:hover,.chip.active{border-color:var(--indigo);background:rgba(74,95,193,.05)}
+    .save-success{background:rgba(168,211,66,.15);border:2px solid var(--lime);border-radius:var(--r10);padding:20px;text-align:center;margin-top:16px;display:none;}
+    .save-success.show{display:block;}
+  </style>
+</head>
+<body>
+  <div class="top-bar"><a class="logo">LifeLog</a><a class="back-btn" href="../index.html">← 인덱스로</a><span class="badge">이지 모드 ON</span></div>
+  <div class="page-content">
+    <h2 style="font-size:22px;font-weight:700;margin-bottom:8px;">나만의 기록장 ✍️</h2>
+    <p class="text-muted" style="font-size:16px;margin-bottom:24px;">오늘 하루를 기억해주세요!</p>
+
+    <div class="card">
+      <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">오늘 기분이 어때요? 😊</h3>
+      <div style="display:flex;gap:8px;justify-content:space-between;">
+        <label class="chip active" style="font-size:36px;padding:12px 0;"><input type="radio" name="mood" checked style="display:none;">😊<br><span style="font-size:12px;display:block;margin-top:4px;">좋아!</span></label>
+        <label class="chip" style="font-size:36px;padding:12px 0;"><input type="radio" name="mood" style="display:none;">😐<br><span style="font-size:12px;display:block;margin-top:4px;">그냥그래</span></label>
+        <label class="chip" style="font-size:36px;padding:12px 0;"><input type="radio" name="mood" style="display:none;">😢<br><span style="font-size:12px;display:block;margin-top:4px;">슬퍼</span></label>
+        <label class="chip" style="font-size:36px;padding:12px 0;"><input type="radio" name="mood" style="display:none;">😡<br><span style="font-size:12px;display:block;margin-top:4px;">화나요</span></label>
+        <label class="chip" style="font-size:36px;padding:12px 0;"><input type="radio" name="mood" style="display:none;">😴<br><span style="font-size:12px;display:block;margin-top:4px;">피곤해</span></label>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="font-size:18px;font-weight:700;margin-bottom:12px;">오늘 어땠나요?</h3>
+      <textarea placeholder="오늘 하루에 대해 적어보세요...">맛있는 점심을 먹고, 공원에서 산책했어요. 친구도 만났어요!</textarea>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px;">
+      <button class="btn btn-primary" style="padding:12px;border-radius:var(--r10);font-size:15px;font-weight:600;">🍚 밥먹기</button>
+      <button class="btn btn-primary" style="padding:12px;border-radius:var(--r10);font-size:15px;font-weight:600;">👫 친구만나기</button>
+      <button class="btn btn-primary" style="padding:12px;border-radius:var(--r10);font-size:15px;font-weight:600;">🏃 운동하기</button>
+    </div>
+
+    <button class="btn btn-success" style="width:56px;height:56px;border-radius:50%;font-size:24px;position:fixed;bottom:100px;right:20px;box-shadow:var(--shadow-l);">💾</button>
+
+    <div class="save-success" style="display:block;"><p style="font-size:20px;font-weight:700;margin-bottom:4px;">잘 저장됐어요! 👍</p><p class="text-xs text-muted" style="font-size:14px;">2026.01.15 14:30에 기록되었습니다</p></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — G-003 타임라인 뷰</title>
+  <style>
+    :root{--indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;--sky:#5B8DEF;--sky-light:#8BB4F7;--purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;--n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;--n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;--n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;--r8:8px;--r10:10px;--r16:16px;--shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);--font:'Inter','Noto Sans KR',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}.top-bar a{color:#fff;text-decoration:none;font-size:14px}.top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}.top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}.badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}.btn-primary{background:var(--indigo);color:#fff}.btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700)}.btn-sm{padding:6px 12px;font-size:12px}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-8{gap:8px}.gap-12{gap:12px}
+    .text-sm{font-size:12px}.text-xs{font-size:11px}.text-muted{color:var(--n500)}
+    .badge-sm{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600}
+    .badge-sm-indigo{background:rgba(74,95,193,.1);color:var(--indigo)}.badge-sm-purple{background:rgba(139,126,200,.1);color:var(--purple)}.badge-sm-coral{background:rgba(232,100,90,.1);color:var(--coral)}.badge-sm-lime{background:rgba(168,211,66,.15);color:#5A8F2A}
+  </style>
+</head>
+<body>
+  <div class="top-bar"><a class="logo">LifeLog</a><a class="back-btn" href="../index.html">← 인덱스로</a><span class="badge">G-003</span></div>
+  <div class="page-content">
+    <div class="flex items-center justify-between" style="margin-bottom:20px;">
+      <h2 style="font-size:18px;font-weight:700;">김사랑 · 타임라인</h2>
+      <div class="flex gap-8"><a href="G-007.html" class="btn btn-primary btn-sm">+ 기록 추가</a><a href="G-004.html" class="btn btn-ghost btn-sm">필터</a></div>
+    </div>
+
+    <div style="border-left:3px solid var(--n200);margin-left:12px;padding-left:24px;">
+      <!-- Section 1 -->
+      <div style="margin-bottom:32px;"><h3 style="font-size:16px;font-weight:700;color:var(--indigo);margin-bottom:12px;">🏥 건강 (3개)</h3>
+        <div class="card"><div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><div><div class="flex items-center gap-8" style="display:flex;align-items:center;gap:8px;"><span class="badge-sm badge-sm-indigo">건강</span><span style="font-size:14px;font-weight:600;">진달래병원 정기검진</span></div><div class="text-xs text-muted" style="margin-top:4px;">2026.01.14 · 김사랑(보호자) · 📎 검사결과서.pdf</div></div><a href="C-005.html" style="font-size:13px;color:var(--indigo);text-decoration:none;">보기 →</a></div></div>
+        <div class="card"><div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><div><div><span class="badge-sm badge-sm-indigo">건강</span><span style="font-size:14px;font-weight:600;">약물 복용 일지 — 1월</span></div><div class="text-xs text-muted" style="margin-top:4px;">2026.01.10 · 김사랑(보호자)</div></div><a href="C-005.html" style="font-size:13px;color:var(--indigo);text-decoration:none;">보기 →</a></div></div>
+      </div>
+
+      <!-- Section 2 -->
+      <div style="margin-bottom:32px;"><h3 style="font-size:16px;font-weight:700;color:var(--purple);margin-bottom:12px;">📚 교육 (3개)</h3>
+        <div class="card"><div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><div><div><span class="badge-sm badge-sm-purple">교육</span><span style="font-size:14px;font-weight:600;">특수교육 IEP 중간평가</span></div><div class="text-xs text-muted" style="margin-top:4px;">2026.01.13 · 정수진(특수교사) · 📎 IEP평가서.docx</div></div><a href="C-005.html" style="font-size:13px;color:var(--indigo);text-decoration:none;">보기 →</a></div></div>
+      </div>
+
+      <!-- Section 3 -->
+      <div style="margin-bottom:32px;"><h3 style="font-size:16px;font-weight:700;color:var(--coral);margin-bottom:12px;">☀️ 일상 (3개)</h3>
+        <div class="card"><div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><div><div><span class="badge-sm badge-sm-coral">일상</span><span style="font-size:14px;font-weight:600;">주말 가족 나들이 — 부산대공원</span></div><div class="text-xs text-muted" style="margin-top:4px;">2026.01.11 · 김사랑(보호자) · 📎 사진 5장</div></div><a href="C-005.html" style="font-size:13px;color:var(--indigo);text-decoration:none;">보기 →</a></div></div>
+      </div>
+
+      <!-- Section 4 -->
+      <div style="margin-bottom:32px;"><h3 style="font-size:16px;font-weight:700;color:var(--sky);margin-bottom:12px;">🏢 서비스 (2개)</h3>
+        <div class="card"><div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><div><div><span class="badge-sm" style="background:rgba(91,141,239,.1);color:var(--sky);">서비스</span><span style="font-size:14px;font-weight:600;">주간보호센터 이용 일지</span></div><div class="text-xs text-muted" style="margin-top:4px;">2026.01.12 · 최유나(돌봄도우미)</div></div><a href="C-005.html" style="font-size:13px;color:var(--indigo);text-decoration:none;">보기 →</a></div></div>
+      </div>
+
+      <!-- Section 5 -->
+      <div style="margin-bottom:32px;"><h3 style="font-size:16px;font-weight:700;color:#5A8F2A;margin-bottom:12px;">🎯 자기주도 (2개)</h3>
+        <div class="card"><div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><div><div><span class="badge-sm" style="background:rgba(90,143,42,.1);color:#5A8F2A;">자기주도</span><span style="font-size:14px;font-weight:600;">오늘의 기분 — 좋았어요!</span></div><div class="text-xs text-muted" style="margin-top:4px;">2026.01.11 · 김사랑(당사자)</div></div><a href="C-005.html" style="font-size:13px;color:var(--indigo);text-decoration:none;">보기 →</a></div></div>
+      </div>
+
+      <!-- Section 6 -->
+      <div><h3 style="font-size:16px;font-weight:700;color:var(--n700);margin-bottom:12px;">📋 기타 (1개)</h3>
+        <div class="card"><div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><div><div><span class="badge-sm" style="background:var(--n50);color:var(--n700);border:1px solid var(--n200);">기타</span><span style="font-size:14px;font-weight:600;">생활보호 수급 신청</span></div><div class="text-xs text-muted" style="margin-top:4px;">2026.01.09 · 박지민(사회복지사)</div></div><a href="C-005.html" style="font-size:13px;color:var(--indigo);text-decoration:none;">보기 →</a></div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

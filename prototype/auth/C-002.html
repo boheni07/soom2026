@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — C-002 로그인</title>
+  <style>
+    :root{
+      --indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;
+      --sky:#5B8DEF;--sky-light:#8BB4F7;
+      --purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;
+      --n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;
+      --n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;
+      --n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;
+      --r8:8px;--r10:10px;--r12:12px;--r16:16px;
+      --shadow-s:0 1px 3px rgba(42,90,152,.08);
+      --shadow-m:0 2px 8px rgba(42,90,152,.1);
+      --font:'Inter','Noto Sans KR',sans-serif
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+    .top-bar a{color:#fff;text-decoration:none;font-size:14px}
+    .top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}
+    .top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}
+    .badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s;width:100%;justify-content:center}
+    .btn-primary{background:var(--indigo);color:#fff}
+    .btn-primary:hover{opacity:.9}
+    .btn-sm{padding:6px 12px;font-size:12px}
+    .input{width:100%;padding:10px 12px;border:1px solid var(--n200);border-radius:var(--r8);font-size:14px;font-family:var(--font);background:#fff;transition:all .2s}
+    .input:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(74,95,193,.1)}
+    .form-group{margin-bottom:12px}
+    .form-label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--n700)}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.gap-8{gap:8px}
+    .card{background:#fff;border-radius:var(--r10);padding:24px;box-shadow:var(--shadow-m);margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a class="logo">LifeLog</a>
+    <a class="back-btn" href="../index.html">← 인덱스로</a>
+    <span class="badge">C-002</span>
+  </div>
+  <div class="page-content">
+
+    <div class="flex items-center justify-between" style="margin-bottom:24px;">
+      <h2 style="font-size:18px;font-weight:700">로그인</h2>
+    </div>
+
+    <div style="max-width:400px;margin:0 auto;">
+      <div class="card">
+        <div style="text-align:center;margin-bottom:24px;">
+          <div style="font-size:32px;margin-bottom:8px;">📋</div>
+          <h3 style="font-size:20px;font-weight:700;">LifeLog에 오신 것을 환영합니다</h3>
+          <p style="font-size:13px;color:var(--n500);margin-top:4px;">발달장애인 생애전주기 기록 플랫폼</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">이메일</label>
+          <input class="input" type="email" placeholder="example@lifellog.kr" value="김사랑@lifellog.kr">
+        </div>
+        <div class="form-group">
+          <label class="form-label">비밀번호</label>
+          <input class="input" type="password" placeholder="••••••••" value="••••••••">
+        </div>
+        <div class="form-group" style="display:flex;align-items:center;gap:8px;">
+          <input type="checkbox" id="remember" checked style="accent-color:var(--indigo);width:16px;height:16px;">
+          <label for="remember" style="font-size:13px;color:var(--n600);cursor:pointer;">로그인 상태 유지</label>
+        </div>
+        <a href="C-013.html"><button class="btn btn-primary" style="margin-bottom:12px;">로그인</button></a>
+
+        <div style="text-align:center;margin:16px 0;position:relative;">
+          <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:var(--n200);"></div>
+          <span style="position:relative;background:#fff;padding:0 12px;font-size:12px;color:var(--n500);">또는</span>
+        </div>
+
+        <div class="flex flex-col gap-8">
+          <button class="btn btn-sm" style="background:#FEE100;color:#3C1E1E;font-weight:700;">
+            <span style="font-size:16px;">K</span> PASS 로그인
+          </button>
+          <button class="btn btn-sm" style="background:#3C49E2;color:#fff;">
+            <span style="font-size:16px;">🟡</span> 카카오 로그인
+          </button>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:16px;display:flex;justify-content:center;gap:16px;">
+        <a href="C-013.html" style="font-size:13px;color:var(--indigo);text-decoration:none;">비밀번호 찾기</a>
+        <a href="C-003.html" style="font-size:13px;color:var(--indigo);text-decoration:none;">역할 선택 / 회원가입</a>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

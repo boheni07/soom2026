@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — C-001 스플래시/온보딩</title>
+  <style>
+    :root{
+      --indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;
+      --sky:#5B8DEF;--sky-light:#8BB4F7;
+      --purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;
+      --n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;
+      --n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;
+      --n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;
+      --r8:8px;--r10:10px;--r12:12px;--r16:16px;
+      --shadow-s:0 1px 3px rgba(42,90,152,.08);
+      --shadow-m:0 2px 8px rgba(42,90,152,.1);
+      --font:'Inter','Noto Sans KR',sans-serif
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh;display:flex;flex-direction:column}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+    .top-bar a{color:#fff;text-decoration:none;font-size:14px}
+    .top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}
+    .top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}
+    .badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}
+    .btn-primary{background:var(--indigo);color:#fff}
+    .btn-primary:hover{opacity:.9}
+    .btn-danger{background:var(--coral);color:#fff}
+    .btn-sm{padding:6px 12px;font-size:12px}
+    .badge-sm{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600}
+    .badge-lime{background:rgba(168,211,66,.15);color:#5A8F2A}
+    .badge-indigo{background:rgba(74,95,193,.1);color:var(--indigo)}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-8{gap:8px}.gap-12{gap:12px}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a class="logo">LifeLog</a>
+    <a class="back-btn" href="../index.html">← 인덱스로</a>
+    <span class="badge">C-001</span>
+  </div>
+  <div class="page-content">
+
+    <div style="background:linear-gradient(135deg,var(--indigo-deep) 0%,var(--indigo) 50%,var(--sky) 100%);border-radius:var(--r16);padding:48px 32px;color:#fff;text-align:center;margin-bottom:24px;">
+      <div style="font-size:48px;margin-bottom:16px;">📋</div>
+      <h1 style="font-size:32px;font-weight:800;margin-bottom:12px;">LifeLog</h1>
+      <p style="font-size:18px;opacity:.9;margin-bottom:8px;">발달장애인 생애전주기 기록 플랫폼</p>
+      <p style="font-size:14px;opacity:.7;margin-bottom:32px;">보호자 · 당사자 · 전문인력이 함께 만드는 기록</p>
+      <a href="C-002.html">
+        <button class="btn" style="background:var(--lime);color:var(--n900);padding:14px 40px;font-size:16px;">시작하기</button>
+      </a>
+    </div>
+
+    <div class="flex flex-col gap-12">
+      <div class="card" style="background:#fff;border-radius:var(--r10);padding:20px;box-shadow:var(--shadow-s);text-align:center;">
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">👨‍👩‍👧 보호자를 위한 기록</h3>
+        <p style="font-size:14px;color:var(--n600);line-height:1.6;">자식의 성장과 변화를 생애주기별로 체계적으로 기록하고, 보호자간 공유 및 전문인력 협업까지 한 번에</p>
+      </div>
+      <div class="card" style="background:#fff;border-radius:var(--r10);padding:20px;box-shadow:var(--shadow-s);text-align:center;">
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">🧑 당사자를 위한 쉬운 기록</h3>
+        <p style="font-size:14px;color:var(--n600);line-height:1.6;">이지 모드(Easy Mode)로 큰 글자와 간단한 인터페이스. 감정 선택과 사진 업로드만으로 easy 기록</p>
+      </div>
+      <div class="card" style="background:#fff;border-radius:var(--r10);padding:20px;box-shadow:var(--shadow-s);text-align:center;">
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">🏢 전문인력을 위한 협업</h3>
+        <p style="font-size:14px;color:var(--n600);line-height:1.6;">사회복지사, 특수교사, 돌봄도우미가 함께 케이스를 관리하고 IEP를 수립하고 기록을 공유합니다</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:24px;">
+      <a href="C-002.html"><button class="btn btn-primary" style="padding:14px 40px;font-size:16px;">LifeLog 시작하기</button></a>
+    </div>
+
+  </div>
+</body>
+</html>

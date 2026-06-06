@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — C-008 PDF 출력</title>
+  <style>
+    :root{
+      --indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;
+      --sky:#5B8DEF;--sky-light:#8BB4F7;
+      --purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;
+      --n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;
+      --n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;
+      --n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;
+      --r8:8px;--r10:10px;--r12:12px;--r16:16px;
+      --shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);
+      --font:'Inter','Noto Sans KR',sans-serif
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+    .top-bar a{color:#fff;text-decoration:none;font-size:14px}
+    .top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}
+    .top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}
+    .badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s;width:100%;justify-content:center}
+    .btn-primary{background:var(--indigo);color:#fff}.btn-primary:hover{opacity:.9}
+    .btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700)}.btn-sm{padding:6px 12px;font-size:12px}
+    .input{width:100%;padding:10px 12px;border:1px solid var(--n200);border-radius:var(--r8);font-size:14px;font-family:var(--font);background:#fff;transition:all .2s}
+    .input:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(74,95,193,.1)}
+    .form-group{margin-bottom:12px}
+    .form-label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--n700)}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-12{gap:12px}
+    .text-sm{font-size:12px}.text-xs{font-size:11px}.text-muted{color:var(--n500)}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .progress-bar{width:100%;height:8px;background:var(--n200);border-radius:999px;overflow:hidden}
+    .progress-bar-fill{height:100%;border-radius:999px;background:var(--indigo);transition:width .3s}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a class="logo">LifeLog</a>
+    <a class="back-btn" href="../index.html">← 인덱스로</a>
+    <span class="badge">C-008</span>
+  </div>
+  <div class="page-content">
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:24px;">PDF 출력</h2>
+
+    <div style="max-width:600px;margin:0 auto;">
+      <div class="card">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:16px;">📄 기록 선택</h3>
+
+        <div class="form-group">
+          <label class="form-label">대상</label>
+          <select class="input">
+            <option>김사랑 (전체 기록)</option>
+            <option>김사랑 (건강 분야)</option>
+            <option>김사랑 (교육 분야)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">기간</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <input class="input" type="date" value="2026-01-01">
+            <input class="input" type="date" value="2026-01-15">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">포함할 카테고리</label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <label style="font-size:13px;display:flex;align-items:center;gap:4px;"><input type="checkbox" checked> 🏥 건강</label>
+            <label style="font-size:13px;display:flex;align-items:center;gap:4px;"><input type="checkbox" checked> 📚 교육</label>
+            <label style="font-size:13px;display:flex;align-items:center;gap:4px;"><input type="checkbox" checked> ☀️ 일상</label>
+            <label style="font-size:13px;display:flex;align-items:center;gap:4px;"><input type="checkbox" checked> 🏢 서비스</label>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" style="margin-top:12px;">📄 PDF 생성하기</button>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:12px;">📊 생성 진행률</h3>
+        <div class="progress-bar" style="margin-bottom:8px;">
+          <div class="progress-bar-fill" style="width:70%;"></div>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-muted">70% 완료 (7/10 페이지)</span>
+          <span class="text-muted">추축 30초</span>
+        </div>
+      </div>
+
+      <div class="card" style="border:2px solid var(--coral);">
+        <div class="flex items-center gap-8" style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:24px;">⚠️</span>
+          <div>
+            <div style="font-size:14px;font-weight:600;">다운로드 유효기간</div>
+            <div class="text-xs text-muted">생성된 PDF는 <strong>15분간</strong> 다운로드할 수 있습니다. 시간이 초과되면 다시 생성해야 합니다.</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:12px;">
+          <a href="#" style="font-size:14px;color:var(--coral);text-decoration:underline;font-weight:600;">📥 LifeLog_김사랑_20260101-0115.pdf 다운로드</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

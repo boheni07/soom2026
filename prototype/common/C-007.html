@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — C-007 검색/필터</title>
+  <style>
+    :root{
+      --indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;
+      --sky:#5B8DEF;--sky-light:#8BB4F7;
+      --purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;
+      --n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;
+      --n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;
+      --n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;
+      --r8:8px;--r10:10px;--r12:12px;--r16:16px;
+      --shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);
+      --font:'Inter','Noto Sans KR',sans-serif
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+    .top-bar a{color:#fff;text-decoration:none;font-size:14px}
+    .top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}
+    .top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}
+    .badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}
+    .btn-primary{background:var(--indigo);color:#fff}.btn-primary:hover{opacity:.9}
+    .btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700)}.btn-sm{padding:6px 12px;font-size:12px}
+    .input{width:100%;padding:10px 12px;border:1px solid var(--n200);border-radius:var(--r8);font-size:14px;font-family:var(--font);background:#fff;transition:all .2s}
+    .input:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(74,95,193,.1)}
+    .form-group{margin-bottom:12px}
+    .form-label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--n700)}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-8{gap:8px}.gap-12{gap:12px}
+    .text-sm{font-size:12px}.text-xs{font-size:11px}.text-muted{color:var(--n500)}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .table{width:100%;border-collapse:collapse;margin-top:8px}
+    .table th{text-align:left;padding:10px 12px;font-size:12px;font-weight:600;color:var(--n600);border-bottom:2px solid var(--n200);background:var(--n50)}
+    .table td{padding:10px 12px;font-size:14px;border-bottom:1px solid var(--n100)}
+    .badge-sm{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600}
+    .badge-sm-indigo{background:rgba(74,95,193,.1);color:var(--indigo)}
+    .badge-sm-purple{background:rgba(139,126,200,.1);color:var(--purple)}
+    .badge-sm-coral{background:rgba(232,100,90,.1);color:var(--coral)}
+    .badge-sm-lime{background:rgba(168,211,66,.15);color:#5A8F2A}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a class="logo">LifeLog</a>
+    <a class="back-btn" href="../index.html">← 인덱스로</a>
+    <span class="badge">C-007</span>
+  </div>
+  <div class="page-content">
+    <div style="margin-bottom:24px;">
+      <h2 style="font-size:18px;font-weight:700;margin-bottom:16px;">검색/필터</h2>
+
+      <div style="display:flex;gap:8px;margin-bottom:16px;">
+        <span style="padding:8px 16px;background:var(--indigo);color:#fff;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;">전체 (156)</span>
+        <span style="padding:8px 16px;background:#fff;color:var(--n700);border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--n200);">🏥 건강 (42)</span>
+        <span style="padding:8px 16px;background:#fff;color:var(--n700);border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--n200);">📚 교육 (38)</span>
+        <span style="padding:8px 16px;background:#fff;color:var(--n700);border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--n200);">☀️ 일상 (35)</span>
+        <span style="padding:8px 16px;background:#fff;color:var(--n700);border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--n200);">🏢 서비스 (24)</span>
+        <span style="padding:8px 16px;background:#fff;color:var(--n700);border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--n200);">🎯 자기 (17)</span>
+      </div>
+
+      <div style="display:flex;gap:12px;">
+        <div style="flex:1;">
+          <input class="input" type="text" placeholder="🔍 기록 제목, 내용, 작성자로 검색..." value="검진">
+        </div>
+        <div style="width:160px;">
+          <input class="input" type="date" value="2026-01-01">
+        </div>
+        <div style="width:160px;">
+          <input class="input" type="date" value="2026-01-15">
+        </div>
+        <button class="btn btn-primary" style="white-space:nowrap;">검색</button>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <span class="text-sm text-muted">총 8건의 기록이 검색되었습니다</span>
+      <div class="flex gap-8">
+        <select class="input" style="width:auto;">
+          <option>최신순</option>
+          <option>오래된순</option>
+          <option>카테고리순</option>
+          <option>작성자순</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <table class="table">
+        <thead>
+          <tr><th>카테고리</th><th>제목</th><th>작성자</th><th>날짜</th><th>상태</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="badge-sm badge-sm-indigo">건강</span></td><td>진달래병원 정기검진 결과</td><td>김사랑</td><td>2026.01.14</td><td><span class="badge-sm badge-sm-lime">완료</span></td></tr>
+          <tr><td><span class="badge-sm badge-sm-indigo">건강</span></td><td>건강검진 혈액검사 소견</td><td>박지민</td><td>2026.01.10</td><td><span class="badge-sm badge-sm-lime">완료</span></td></tr>
+          <tr><td><span class="badge-sm badge-sm-indigo">건강</span></td><td>약물 복용 일지 — 검진 관련</td><td>김사랑</td><td>2026.01.08</td><td><span class="badge-sm badge-sm-purple">검토중</span></td></tr>
+          <tr><td><span class="badge-sm badge-sm-purple">교육</span></td><td>발달평가 결과 검토</td><td>정수진</td><td>2026.01.05</td><td><span class="badge-sm badge-sm-lime">완료</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flex items-center justify-between mt-20" style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;">
+      <span class="text-xs text-muted">페이지 1 / 2</span>
+      <div class="flex gap-8">
+        <button class="btn btn-ghost btn-sm">이전</button>
+        <button class="btn btn-primary btn-sm">1</button>
+        <button class="btn btn-ghost btn-sm">2</button>
+        <button class="btn btn-ghost btn-sm">다음</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

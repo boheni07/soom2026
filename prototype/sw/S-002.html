@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — S-002 케이스 상세</title>
+  <style>
+    :root{--indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;--sky:#5B8DEF;--sky-light:#8BB4F7;--purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;--n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;--n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;--n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;--r8:8px;--r10:10px;--r16:16px;--shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);--font:'Inter','Noto Sans KR',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}.top-bar a{color:#fff;text-decoration:none;font-size:14px}.top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}.top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}.badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}.btn-primary{background:var(--indigo);color:#fff}.btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700);}.btn-sm{padding:6px 12px;font-size:12px}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-12{gap:12px}
+    .text-sm{font-size:12px}.text-xs{font-size:11px}.text-muted{color:var(--n500)}.text-muted2{color:var(--n600)}
+    .badge-sm{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600}
+    .badge-sm-lime{background:rgba(168,211,66,.15);color:#5A8F2A}.badge-sm-indigo{background:rgba(74,95,193,.1);color:var(--indigo)}.badge-sm-purple{background:rgba(139,126,200,.1);color:var(--purple)}
+    .table{width:100%;border-collapse:collapse;margin-top:8px}.table th{text-align:left;padding:10px 12px;font-size:12px;font-weight:600;color:var(--n600);border-bottom:2px solid var(--n200);background:var(--n50)}.table td{padding:10px 12px;font-size:14px;border-bottom:1px solid var(--n100)}
+  </style>
+</head>
+<body>
+  <div class="top-bar"><a class="logo">LifeLog</a><a class="back-btn" href="../index.html">← 인덱스로</a><span class="badge">S-002</span></div>
+  <div class="page-content">
+    <div style="margin-bottom:16px;"><a href="S-001.html" style="font-size:13px;color:var(--indigo);text-decoration:none;">대시보드</a><span style="color:var(--n400);margin:0 4px;">›</span><span style="font-size:13px;color:var(--n800);">2026-001 · 김사랑</span></div>
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:20px;">케이스 상세 — 2026-001</h2>
+
+    <div class="flex gap-12" style="display:flex;gap:12px;">
+      <div style="flex:2;">
+        <div class="card">
+          <h3 style="font-size:15px;font-weight:700;margin-bottom:12px;">👤 케이스 정보</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div><div class="text-xs text-muted">당사자</div><div style="font-size:14px;font-weight:600;">김사랑 (2008.05.15)</div></div>
+            <div><div class="text-xs text-muted">라이프사이클</div><div style="font-size:14px;">교육/취업기</div></div>
+            <div><div class="text-xs text-muted">보호자</div><div style="font-size:14px;">김사랑 (어머니)</div></div>
+            <div><div class="text-xs text-muted">서비스</div><div style="font-size:14px;">주간보호, 언어치료</div></div>
+            <div><div class="text-xs text-muted">기재 등록일</div><div style="font-size:14px;">2025.03.15</div></div>
+            <div><div class="text-xs text-muted">상태</div><div style="font-size:14px;"><span class="badge-sm badge-sm-lime">활성</span></div></div>
+          </div>
+        </div>
+        <div class="card" style="padding:0;"><h3 style="font-size:15px;font-weight:700;margin:0 16px 12px;">📋 기록 목록</h3><table class="table"><thead><tr><th>카테고리</th><th>제목</th><th>작성자</th><th>날짜</th><th>상태</th></tr></thead>
+          <tbody><tr><td><span class="badge-sm badge-sm-indigo">건강</span></td><td>진달래병원 정기검진</td><td>김사랑</td><td>2026.01.14</td><td><span class="badge-sm badge-sm-lime">완료</span></td></tr><tr><td><span class="badge-sm badge-sm-purple">교육</span></td><td>IEP 중간평가</td><td>정수진</td><td>2026.01.13</td><td><span class="badge-sm badge-sm-lime">완료</span></td></tr><tr><td><span class="badge-sm" style="background:rgba(91,141,239,.1);color:var(--sky);">서비스</span></td><td>주간보호센터 이용일지</td><td>최유나</td><td>2026.01.12</td><td><span class="badge-sm badge-sm-purple">검토중</span></td></tr></tbody></table></div>
+      </div>
+      <div style="width:280px;flex-shrink:0;">
+        <div class="card"><h3 style="font-size:15px;font-weight:700;margin-bottom:12px;">👥 협업자</h3>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="flex items-center gap-12" style="display:flex;align-items:center;gap:12px;"><div style="width:36px;height:36px;background:var(--indigo);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;">박</div><div><div style="font-size:14px;font-weight:600;">박지민</div><div class="text-xs text-muted">사회복지사 · 케이스 매니저</div></div></div>
+            <div class="flex items-center gap-12" style="display:flex;align-items:center;gap:12px;"><div style="width:36px;height:36px;background:var(--sky);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;">정</div><div><div style="font-size:14px;font-weight:600;">정수진</div><div class="text-xs text-muted">특수교사 · 교육 평가</div></div></div>
+            <div class="flex items-center gap-12" style="display:flex;align-items:center;gap:12px;"><div style="width:36px;height:36px;background:var(--lime);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--n800);font-size:14px;">최</div><div><div style="font-size:14px;font-weight:600;">최유나</div><div class="text-xs text-muted">돌봄도우미 · 일상 기록</div></div></div>
+            <div class="flex items-center gap-12" style="display:flex;align-items:center;gap:12px;"><div style="width:36px;height:36px;background:var(--n200);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--n600);font-size:14px;">김</div><div><div style="font-size:14px;font-weight:600;">김사랑</div><div class="text-xs text-muted">보호자 · 결정권자</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

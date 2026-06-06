@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — T-002 IEP 생성/수정</title>
+  <style>
+    :root{--indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;--sky:#5B8DEF;--sky-light:#8BB4F7;--purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;--n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;--n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;--n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;--r8:8px;--r10:10px;--r16:16px;--shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);--font:'Inter','Noto Sans KR',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}.top-bar a{color:#fff;text-decoration:none;font-size:14px}.top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}.top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}.badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}.btn-primary{background:var(--indigo);color:#fff}.btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700);}.btn-sm{padding:6px 12px;font-size:12px}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .input{width:100%;padding:10px 12px;border:1px solid var(--n200);border-radius:var(--r8);font-size:14px;font-family:var(--font);background:#fff;transition:all .2s}
+    .input:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(74,95,193,.1)}
+    .textarea{min-height:80px;resize:vertical}
+    .form-group{margin-bottom:12px}.form-label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--n700)}
+    .flex{display:flex}.flex-cols{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-8{gap:8px}.gap-12{gap:12px}
+    .text-xs{font-size:11px}.text-sm{font-size:12px}.text-muted{color:var(--n500)}
+  </style>
+</head>
+<body>
+  <div class="top-bar"><a class="logo">LifeLog</a><a class="back-btn" href="../index.html">← 인덱스로</a><span class="badge">T-002</span></div>
+  <div class="page-content">
+    <div class="flex items-center justify-between" style="margin-bottom:24px;"><h2 style="font-size:18px;font-weight:700;">IEP 생성/수정</h2><div class="flex gap-8"><button class="btn btn-ghost btn-sm">임시저장</button><button class="btn btn-primary btn-sm">IEP 저장</button></div></div>
+
+    <div style="display:flex;gap:12px;">
+      <div style="width:260px;flex-shrink:0;">
+        <div class="card" style="background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px;"><h3 style="font-size:14px;font-weight:700;margin-bottom:12px;">📂 IEP 템플릿</h3><div style="display:flex;flex-direction:column;gap:6px;"><div style="padding:8px;border-radius:var(--r8);background:rgba(74,95,193,.1);border-left:3px solid var(--indigo);font-size:13px;font-weight:600;">🎯 언어/커뮤니케이션</div><div style="padding:8px;border-radius:var(--r8);border:1px solid var(--n200);cursor:pointer;font-size:13px;color:var(--n600);">🧠 인지/학습</div><div style="padding:8px;border-radius:var(--r8);border:1px solid var(--n200);cursor:pointer;font-size:13px;color:var(--n600);">🤝 사회적 기술</div><div style="padding:8px;border-radius:var(--r8);border:1px solid var(--n200);cursor:pointer;font-size:13px;color:var(--n600);">💪 일상생활</div></div></div>
+      </div>
+      <div style="flex:1;">
+        <div class="card" style="background:#fff;border-radius:var(--r10);padding:20px;box-shadow:var(--shadow-s);margin-bottom:12px;"><div class="form-group"><label class="form-label">대상 학생</label><select class="input"><option>김사랑 (교육/취업기)</option></select></div><div class="form-group"><label class="form-label">목표 제목</label><input class="input" type="text" value="자존감 향상 — 말하기 능력 개발"></div><div class="flex gap-12" style="display:flex;gap:12px;"><div class="form-group" style="flex:1;"><label class="form-label">장기 목표</label><textarea class="input textarea" style="min-height:60px;">2026년 2월까지 5문장 이상 자연스럽게 이야기할 수 있다.</textarea></div><div class="form-group" style="flex:1;"><label class="form-label">평가 시기</label><input class="input" type="date" value="2026-02-28"></div></div><h4 style="font-size:14px;font-weight:600;margin:12px 0 8px;">하위 목표</h4><div style="display:flex;flex-direction:column;gap:8px;"><div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--n50);border-radius:var(--r8);"><span style="font-size:12px;color:var(--n500);">1.</span><input class="input" value="첫인사에서 자신의 이름과 좋아하는 것 말하기 (80% 이상)" style="font-size:13px;"></div><div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--n50);border-radius:var(--r8);"><span style="font-size:12px;color:var(--n500);">2.</span><input class="input" value="자유시간에 친구와 3문장 이상 대화하기" style="font-size:13px;"></div><div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--n50);border-radius:var(--r8);"><span style="font-size:12px;color:var(--n500);">3.</span><input class="input" value="좋아하는 것에 대해 2문장 이상 설명하기" style="font-size:13px;"></div></div><div class="form-group" style="margin-top:12px;"><label class="form-label">평가기준</label><textarea class="input textarea" style="min-height:60px;">평가: 매달 관찰 기록(월 2회), 비디오 분석, 보호자 서면 설문</div></div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

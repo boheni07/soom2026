@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — C-006 기록 생성/수정</title>
+  <style>
+    :root{
+      --indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;
+      --sky:#5B8DEF;--sky-light:#8BB4F7;
+      --purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;
+      --n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;
+      --n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;
+      --n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;
+      --r8:8px;--r10:10px;--r12:12px;--r16:16px;
+      --shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-m:0 2px 8px rgba(42,90,152,.1);
+      --font:'Inter','Noto Sans KR',sans-serif
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+    .top-bar a{color:#fff;text-decoration:none;font-size:14px}
+    .top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}
+    .top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}
+    .badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}
+    .btn-primary{background:var(--indigo);color:#fff}.btn-primary:hover{opacity:.9}
+    .btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700)}.btn-sm{padding:6px 12px;font-size:12px}
+    .input{width:100%;padding:10px 12px;border:1px solid var(--n200);border-radius:var(--r8);font-size:14px;font-family:var(--font);background:#fff;transition:all .2s}
+    .input:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(74,95,193,.1)}
+    .textarea{min-height:80px;resize:vertical}
+    .form-group{margin-bottom:12px}
+    .form-label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--n700)}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-12{gap:12px}
+    .text-sm{font-size:12px}.text-xs{font-size:11px}.text-muted{color:var(--n500)}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .badge-sm{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600}
+    .badge-sm-indigo{background:rgba(74,95,193,.1);color:var(--indigo)}
+    .card-header{font-size:15px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .card-body{font-size:14px;color:var(--n600);line-height:1.6}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a class="logo">LifeLog</a>
+    <a class="back-btn" href="../index.html">← 인덱스로</a>
+    <span class="badge">C-006</span>
+  </div>
+  <div class="page-content">
+    <div class="flex items-center justify-between" style="margin-bottom:24px;">
+      <h2 style="font-size:18px;font-weight:700;">기록 생성/수정</h2>
+      <div class="flex gap-8">
+        <button class="btn btn-ghost btn-sm">임시저장</button>
+        <button class="btn btn-primary btn-sm">저장하기</button>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;">
+      <div style="width:280px;flex-shrink:0;">
+        <div class="card">
+          <h3 style="font-size:14px;font-weight:700;margin-bottom:12px;">📂 템플릿 그룹</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="padding:8px;border-radius:var(--r8);background:rgba(74,95,193,.1);border-left:3px solid var(--indigo);font-size:14px;font-weight:600;">
+              🏥 건강
+            </div>
+            <div class="text-muted" style="padding:8px;border-radius:var(--r8);cursor:pointer;font-size:14px;">
+              📚 교육
+            </div>
+            <div class="text-muted" style="padding:8px;border-radius:var(--r8);cursor:pointer;font-size:14px;">
+              ☀️ 일상
+            </div>
+            <div class="text-muted" style="padding:8px;border-radius:var(--r8);cursor:pointer;font-size:14px;">
+              🏢 서비스
+            </div>
+            <div class="text-muted" style="padding:8px;border-radius:var(--r8);cursor:pointer;font-size:14px;">
+              🎯 자기주도
+            </div>
+          </div>
+
+          <h3 style="font-size:14px;font-weight:700;margin:16px 0 8px;">📋 템플릿 목록</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="padding:8px;border-radius:var(--r8);background:#fff;border:1px solid var(--n200);cursor:pointer;font-size:13px;">
+              🩺 정기검진 결과
+            </div>
+            <div style="padding:8px;border-radius:var(--r8);background:#fff;border:1px solid var(--n200);cursor:pointer;font-size:13px;">
+              💊 약물 복용 기록
+            </div>
+            <div style="padding:8px;border-radius:var(--r8);background:#fff;border:1px solid var(--n200);cursor:pointer;font-size:13px;">
+              🧠 발달평가
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1;">
+        <div class="card">
+          <div class="form-group">
+            <label class="form-label">제목</label>
+            <input class="input" type="text" placeholder="기록 제목을 입력해주세요" value="진달래병원 정기검진 결과">
+          </div>
+          <div class="form-group">
+            <label class="form-label">카테고리</label>
+            <select class="input">
+              <option>건강</option>
+              <option>교육</option>
+              <option>일상</option>
+              <option>서비스</option>
+              <option>자기주도</option>
+            </select>
+          </div>
+          <div class="form-row-2" style="display:grid;gap:12px;grid-template-columns:1fr 1fr;">
+            <div class="form-group">
+              <label class="form-label">날짜</label>
+              <input class="input" type="date" value="2026-01-14">
+            </div>
+            <div class="form-group">
+              <label class="form-label">라이프사이클</label>
+              <select class="input">
+                <option>유아기 (0-6세)</option>
+                <option>학동기 (6-12세)</option>
+                <option selected>교육/취업기 (12-18세)</option>
+                <option>취업/사회참여기 (18-30세)</option>
+                <option>성인기 (30-65세)</option>
+                <option>노년기 (65세+)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">내용</label>
+            <textarea class="input textarea" placeholder="기록 내용을 입력해주세요">진단명: 발달장애 2등급 (지적장애)
+증상: 언어 발달 지연, 일상생활 적응 능력 양호
+권장사항: 주 2회 언어치료 추가, 사회성 훈련 프로그램 참여</textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">첨부파일</label>
+            <div style="border:2px dashed var(--n200);border-radius:var(--r8);padding:20px;text-align:center;cursor:pointer;color:var(--n500);font-size:14px;">
+              📎 파일을 드래그하거나 클릭해서 업로드하세요 (최대 20MB)
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">가시성</label>
+            <div style="display:flex;gap:12px;font-size:13px;">
+              <label><input type="radio" name="visibility" checked> 👥 전체 공유</label>
+              <label><input type="radio" name="visibility"> 👨‍👩‍👧 가족만</label>
+              <label><input type="radio" name="visibility"> 🔒 비공개</label>
+            </div>
+          </div>
+          <div class="flex gap-8" style="margin-top:16px;">
+            <button class="btn btn-primary">📋 저장하기</button>
+            <button class="btn btn-ghost">취소</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

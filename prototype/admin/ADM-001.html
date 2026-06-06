@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — ADM-001 관리자 대시보드</title>
+  <style>
+    :root{--indigo:#4A5FC1;--indigo-deep:#2A356E;--sky:#5B8DEF;--purple:#8B7EC8;--lime:#A8D342;--coral:#E8645A;--n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;--n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;--n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;--r8:8px;--r10:10px;--r16:16px;--shadow-s:0 1px 3px rgba(42,90,152,.08);--font:'Inter','Noto Sans KR',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}
+    .top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}
+    .top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}
+    .badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600;text-decoration:none}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s)}
+    h2{font-size:18px;font-weight:700;margin-bottom:20px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}
+    .btn{display:inline-flex;align-items:center;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font)}
+    .btn-primary{background:var(--indigo);color:#fff}
+    .btn-ghost{background:rgba(74,95,193,.1);color:var(--indigo)}
+    .card-header{font-size:15px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .value{font-size:32px;font-weight:700}
+    .label{font-size:14px;margin-top:4px}
+    .meta{font-size:12px;color:var(--n500);margin-top:4px}
+    @media(max-width:768px){.grid-3,.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <span class="logo">LifeLog</span>
+    <a class="back-btn" href="../index.html">← 인덱스로</a>
+    <span class="badge">ADM-001</span>
+  </div>
+  <div class="page-content">
+    <h2>관리자 대시보드</h2>
+    <div class="grid-3">
+      <div class="card" style="text-align:center">
+        <div class="value" style="color:var(--indigo)">3</div>
+        <div class="label">등록 기관</div>
+        <div class="meta">복지관 1, 특수학교 1, 생활원 1</div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="value" style="color:var(--sky)">42</div>
+        <div class="label">활성 사용자</div>
+        <div class="meta">보호자 18, 당사자 12, 전문인력 12</div>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="value" style="color:var(--purple)">156</div>
+        <div class="label">누적 기록</div>
+        <div class="meta">전체 카테고리 합산 건수</div>
+      </div>
+    </div>
+    <div class="card mt-16">
+      <div class="card-header">서비스 상태</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="padding:4px 12px;border-radius:999px;font-size:12px;background:h5F6FA;font-weight:600">API 정상</span>
+        <span style="padding:4px 12px;border-radius:999px;font-size:12px;background:h5F6FA;font-weight:600">DB 정상</span>
+        <span style="padding:4px 12px;border-radius:999px;font-size:12px;background:h5F6FA;font-weight:600">Storage 정상</span>
+      </div>
+    </div>
+    <div class="grid-2 mt-16">
+      <div class="card">
+        <div class="card-header">주요 작업</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-primary">기관 관리</button>
+          <button class="btn btn-primary">사용자 관리</button>
+          <button class="btn btn-ghost">시스템 설정</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">최근 활동</div>
+        <div style="font-size:14px;line-height:1.8">
+          <div style="display:flex;justify-content:space-between"><span>김사랑 프로필 생성</span><span style="color:var(--n500)">2026.01.15 10:30</span></div>
+          <div style="display:flex;justify-content:space-between"><span>박지민 새 계정</span><span style="color:var(--n500)">2026.01.14 18:20</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

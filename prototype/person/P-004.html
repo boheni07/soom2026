@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLog — P-004 당사자 프로필 & 목표</title>
+  <style>
+    :root{--indigo:#4A5FC1;--indigo-dk:#344594;--indigo-deep:#2A356E;--sky:#5B8DEF;--sky-light:#8BB4F7;--purple:#8B7EC8;--coral:#E8645A;--lime:#A8D342;--n900:#1A1B2E;--n800:#2D2F4E;--n700:#3D4271;--n600:#5C5F82;--n500:#7C80A6;--n400:#9295AD;--n300:#B5B8CC;--n200:#D4D6E5;--n100:#EBECF3;--n50:#F5F6FA;--white:#FFF;--r8:8px;--r10:10px;--r16:16px;--shadow-s:0 1px 3px rgba(42,90,152,.08);--shadow-l:0 4px 16px rgba(42,90,152,.12);--font:'Inter','Noto Sans KR',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font);background:var(--n50);color:var(--n800);min-height:100vh}
+    .top-bar{background:var(--indigo-deep);color:#fff;padding:12px 20px;display:flex;align-items:center;position:sticky;top:0;z-index:100}.top-bar a{color:#fff;text-decoration:none;font-size:14px}.top-bar .logo{font-weight:700;font-size:18px;margin-right:20px}.top-bar .back-btn{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:var(--r8);font-size:13px;cursor:pointer;font-family:var(--font)}.badge{background:var(--indigo);color:#fff;padding:4px 10px;border-radius:999px;font-size:11px;margin-left:auto;font-weight:600}
+    .page-content{padding:20px;max-width:1200px;margin:0 auto}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:var(--r8);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .2s}.btn-primary{background:var(--indigo);color:#fff}.btn-ghost{background:transparent;border:1px solid var(--n300);color:var(--n700)}.btn-sm{padding:6px 12px;font-size:12px}
+    .card{background:#fff;border-radius:var(--r10);padding:16px;box-shadow:var(--shadow-s);margin-bottom:12px}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.gap-12{gap:12px}
+    .text-sm{font-size:12px}.text-xs{font-size:11px}.text-muted{color:var(--n500)}
+    .text-muted2{color:var(--n600)}
+    .progress-bar{width:100%;height:10px;background:var(--n200);border-radius:999px;overflow:hidden}
+    .progress-bar-fill{height:100%;border-radius:999px}
+  </style>
+</head>
+<body>
+  <div class="top-bar"><a class="logo">LifeLog</a><a class="back-btn" href="../index.html">← 인덱스로</a><span class="badge">P-004</span></div>
+  <div class="page-content">
+    <h2 style="font-size:18px;font-weight:700;margin-bottom:20px;">프로필 & 목표</h2>
+
+    <div class="card" style="text-align:center;">
+      <div style="width:80px;height:80px;background:linear-gradient(135deg,var(--indigo),var(--sky));border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:36px;color:#fff;">김</div>
+      <h3 style="font-size:20px;font-weight:700;">김사랑</h3>
+      <p class="text-muted" style="font-size:14px;margin-bottom:2px;">2008.05.15 (17세) · 발달장애 2등급</p>
+      <p class="text-muted" style="font-size:14px;">교육/취업기 · 부산광역시</p>
+    </div>
+
+    <h3 style="font-size:15px;font-weight:700;margin:20px 0 12px;">🎯 나의 목표</h3>
+    <div class="card">
+      <div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:14px;font-weight:600;">자존 감각 향상 (말하기)</h4><span class="text-xs text-muted2" style="font-size:12px;">72%</span></div>
+      <div class="progress-bar" style="margin:8px 0;"><div class="progress-bar-fill" style="width:72%;background:var(--indigo);"></div></div>
+      <p class="text-xs text-muted" style="font-size:12px;margin-top:4px;">목표: 5문장 이상 자연스럽게 이야기하기</p>
+    </div>
+    <div class="card">
+      <div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:14px;font-weight:600;">사회적 관계 확장</h4><span class="text-xs text-muted2" style="font-size:12px;">45%</span></div>
+      <div class="progress-bar" style="margin:8px 0;"><div class="progress-bar-fill" style="width:45%;background:var(--sky);"></div></div>
+      <p class="text-xs text-muted" style="font-size:12px;margin-top:4px;">목표: 새로운 친구 2명 사귀기</p>
+    </div>
+    <div class="card">
+      <div class="flex justify-between items-center" style="display:flex;justify-content:space-between;align-items:center;"><h4 style="font-size:14px;font-weight:600;">직업 체험 경험</h4><span class="text-xs text-muted2" style="font-size:12px;">30%</span></div>
+      <div class="progress-bar" style="margin:8px 0;"><div class="progress-bar-fill" style="width:30%;background:var(--lime);"></div></div>
+      <p class="text-xs text-muted" style="font-size:12px;margin-top:4px;">목표: café서 인턴십 1개월 체험</p>
+    </div>
+
+    <h3 style="font-size:15px;font-weight:700;margin:24px 0 12px;">📅 생애 타임라인</h3>
+    <div class="card">
+      <div style="border-left:3px solid var(--n200);padding-left:20px;">
+        <div style="margin-bottom:16px;position:relative;"><div style="position:absolute;left:-26px;top:0;width:12px;height:12px;background:var(--n400);border-radius:50%;border:2px solid var(--white);"></div><div style="font-size:13px;font-weight:600;">1999.05 — 출생</div></div>
+        <div style="margin-bottom:16px;position:relative;"><div style="position:absolute;left:-26px;top:0;width:12px;height:12px;background:var(--n400);border-radius:50%;border:2px solid var(--white);"></div><div style="font-size:13px;font-weight:600;">2004.03 — 발달평가 (지적장애 진단)</div></div>
+        <div style="margin-bottom:16px;position:relative;"><div style="position:absolute;left:-26px;top:0;width:12px;height:12px;background:var(--indigo);border-radius:50%;border:2px solid var(--white);"></div><div style="font-size:13px;font-weight:600;">2014.03 — 특수학교 입학</div></div>
+        <div style="margin-bottom:16px;position:relative;"><div style="position:absolute;left:-26px;top:0;width:12px;height:12px;background:var(--sky);border-radius:50%;border:2px solid var(--white);"></div><div style="font-size:13px;font-weight:600;">2023.03 — IEP 수립</div></div>
+        <div style="position:relative;"><div style="position:absolute;left:-26px;top:0;width:12px;height:12px;background:var(--lime);border-radius:50%;border:2px solid var(--white);box-shadow:0 0 0 4px rgba(168,211,66,.3);"></div><div style="font-size:13px;font-weight:600;">2025.12 — LifeLog 시작 🎉</div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
