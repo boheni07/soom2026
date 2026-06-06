@@ -8,7 +8,7 @@
 | 항목 (Item) | 내용 (Content) |
 |------|------|
 | **문서 버전** (Document Version) | v1.0 |
-| **작성일** (Date) | 2020년 |
+| **작성일** (Date) | 2026년 |
 | **Design System** | BrandBI (라이프네스트·소유드·어울) |
 | **연계 문서** (Related Docs) | `PRD v1.0` · `Workflow Definition v1.0` · `BrandBI v1.0` |
 | **접근성 기준** (Accessibility) | WCAG 2.1 AA 준수 |
